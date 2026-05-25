@@ -32,9 +32,18 @@ function checkAuth(request: NextRequest): boolean {
   return reqPassword === expectedPassword;
 }
 
-// 1. GET: Menü Listesini Getir (Herkes erişebilir, cache-control kapalıdır)
-export async function GET() {
+// 1. GET: Menü Listesini Getir (Herkes erişebilir, şifre başlığı varsa doğrular)
+export async function GET(request: NextRequest) {
   try {
+    // Eğer şifre başlığı gönderildiyse doğrula (Giriş kontrolü için)
+    const reqPassword = request.headers.get("x-admin-password");
+    if (reqPassword) {
+      const expectedPassword = process.env.ADMIN_PASSWORD || "Sarihan123!";
+      if (reqPassword !== expectedPassword) {
+        return NextResponse.json({ success: false, error: "Yetkisiz erişim. Geçersiz admin şifresi." }, { status: 401 });
+      }
+    }
+
     const menu = await readMenu();
     return NextResponse.json(
       { success: true, data: menu },
