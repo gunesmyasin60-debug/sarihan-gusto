@@ -506,8 +506,8 @@ export default function AdminPage() {
   // Yükleme Ekranı
   if (loading && menuItems.length === 0) {
     return (
-      <div className="min-h-screen bg-[#0C0907] flex flex-col items-center justify-center text-foreground font-sans">
-        <Loader2 className="w-12 h-12 text-[#D4AF37] animate-spin mb-4" />
+      <div className="min-h-screen bg-[#1A0C0A] flex flex-col items-center justify-center text-foreground font-sans">
+        <Loader2 className="w-12 h-12 text-[#E2C569] animate-spin mb-4" />
         <p className="text-[#EDE8DF] text-sm tracking-[0.25em] font-semibold">SARIHAN GUSTO GURME PANELİ YÜKLENİYOR...</p>
       </div>
     );
@@ -516,23 +516,23 @@ export default function AdminPage() {
   // 1. Giriş Ekranı (Login Screen)
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#0C0907] flex flex-col items-center justify-center px-4 font-sans relative overflow-hidden">
+      <div className="min-h-screen bg-[#1A0C0A] flex flex-col items-center justify-center px-4 font-sans relative overflow-hidden">
         {/* Dekoratif Arka Plan Işıkları */}
-        <div className="absolute top-[-25%] left-[-25%] w-[70%] h-[70%] rounded-full bg-[#D4AF37]/5 blur-[150px] pointer-events-none" />
+        <div className="absolute top-[-25%] left-[-25%] w-[70%] h-[70%] rounded-full bg-[#E2C569]/5 blur-[150px] pointer-events-none" />
         <div className="absolute bottom-[-25%] right-[-25%] w-[70%] h-[70%] rounded-full bg-amber-900/10 blur-[150px] pointer-events-none" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full max-w-lg bg-[#140E0C]/90 backdrop-blur-2xl border border-[#D4AF37]/15 p-10 rounded-[2.5rem] shadow-2xl relative z-10 text-center"
+          className="w-full max-w-lg bg-[#261411]/90 backdrop-blur-2xl border border-[#E2C569]/15 p-10 rounded-[2.5rem] shadow-2xl relative z-10 text-center"
         >
           {/* Logo / Başlık */}
           <div className="space-y-3 mb-10">
-            <div className="w-20 h-20 rounded-3xl bg-[#D4AF37]/10 border border-[#D4AF37]/25 flex items-center justify-center mx-auto text-[#D4AF37] mb-3 shadow-inner">
+            <div className="w-20 h-20 rounded-3xl bg-[#E2C569]/10 border border-[#E2C569]/25 flex items-center justify-center mx-auto text-[#E2C569] mb-3 shadow-inner">
               <ChefHat className="w-10 h-10" />
             </div>
-            <span className="text-[11px] tracking-[0.4em] text-[#D4AF37] font-extrabold uppercase block">Sarıhan Gusto</span>
+            <span className="text-[11px] tracking-[0.4em] text-[#E2C569] font-extrabold uppercase block">Sarıhan Gusto</span>
             <h1 className="font-serif text-4xl font-extrabold text-[#EDE8DF] tracking-wide">Yönetim Paneli</h1>
             <p className="text-sm text-stone-400 max-w-sm mx-auto">
               Geliştirici kontrolleri, gurme menü yönetimi ve dinamik veri yönetim merkezi.
@@ -544,18 +544,18 @@ export default function AdminPage() {
             <div className="space-y-2.5">
               <label className="text-[11px] font-bold uppercase tracking-widest text-[#EDE8DF]/75">Yönetici Şifresi</label>
               <div className="relative">
-                <Lock className="w-5 h-5 text-[#D4AF37]/60 absolute left-4 top-1/2 -translate-y-1/2" />
+                <Lock className="w-5 h-5 text-[#E2C569]/60 absolute left-4 top-1/2 -translate-y-1/2" />
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Restoran ana şifresini girin..."
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-12 pr-12 py-4.5 bg-[#1E1613] border border-[#D4AF37]/15 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/40 focus:border-[#D4AF37] transition-all text-[#EDE8DF] placeholder-stone-600 font-medium"
+                  className="w-full pl-12 pr-12 py-4.5 bg-[#381F1A] border border-[#E2C569]/15 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#E2C569]/40 focus:border-[#E2C569] transition-all text-[#EDE8DF] placeholder-stone-600 font-medium"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-500 hover:text-[#D4AF37] transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-stone-500 hover:text-[#E2C569] transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -570,7 +570,7 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full py-4.5 rounded-2xl bg-gradient-to-r from-[#D4AF37] to-[#B38F1E] text-[#0C0907] font-bold text-xs uppercase tracking-widest shadow-lg shadow-[#D4AF37]/15 hover:shadow-[#D4AF37]/25 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center space-x-2"
+              className="w-full py-4.5 rounded-2xl bg-gradient-to-r from-[#E2C569] to-[#CBB057] text-[#1A0C0A] font-bold text-xs uppercase tracking-widest shadow-lg shadow-[#E2C569]/15 hover:shadow-[#E2C569]/25 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center space-x-2"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Panel Girişi Yap</span>}
             </button>
@@ -586,7 +586,7 @@ export default function AdminPage() {
 
   // 2. Dashboard Arayüzü (Authenticated Admin Screen)
   return (
-    <div className="min-h-screen bg-[#0C0907] text-[#EDE8DF] font-sans pb-28">
+    <div className="min-h-screen bg-[#1A0C0A] text-[#EDE8DF] font-sans pb-28">
       {/* Toast Bildirimleri */}
       <div className="fixed top-6 right-6 z-50 space-y-3 pointer-events-none max-w-md w-full">
         <AnimatePresence>
@@ -601,13 +601,13 @@ export default function AdminPage() {
                   ? "bg-emerald-950/90 border-emerald-500/30 text-emerald-200"
                   : toast.type === "error"
                   ? "bg-red-950/90 border-red-500/30 text-red-200"
-                  : "bg-stone-900/95 border-[#D4AF37]/30 text-[#EDE8DF]"
+                  : "bg-stone-900/95 border-[#E2C569]/30 text-[#EDE8DF]"
               }`}
             >
               <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
-                toast.type === "success" ? "bg-emerald-500/20" : toast.type === "error" ? "bg-red-500/20" : "bg-[#D4AF37]/20"
+                toast.type === "success" ? "bg-emerald-500/20" : toast.type === "error" ? "bg-red-500/20" : "bg-[#E2C569]/20"
               }`}>
-                {toast.type === "success" ? <Check className="w-4 h-4 text-emerald-400" /> : toast.type === "error" ? <X className="w-4 h-4 text-red-400" /> : <Sparkles className="w-4 h-4 text-[#D4AF37]" />}
+                {toast.type === "success" ? <Check className="w-4 h-4 text-emerald-400" /> : toast.type === "error" ? <X className="w-4 h-4 text-red-400" /> : <Sparkles className="w-4 h-4 text-[#E2C569]" />}
               </div>
               <span className="text-xs font-bold leading-normal">{toast.message}</span>
             </motion.div>
@@ -616,16 +616,16 @@ export default function AdminPage() {
       </div>
 
       {/* Navigasyon Bar */}
-      <nav className="bg-[#140E0C]/90 backdrop-blur-md border-b border-[#D4AF37]/10 sticky top-0 z-30 shadow-lg">
+      <nav className="bg-[#261411]/90 backdrop-blur-md border-b border-[#E2C569]/10 sticky top-0 z-30 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
           <div className="flex items-center space-x-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] shadow-inner">
+            <div className="w-12 h-12 rounded-2xl bg-[#E2C569]/10 border border-[#E2C569]/20 flex items-center justify-center text-[#E2C569] shadow-inner">
               <ChefHat className="w-6 h-6" />
             </div>
             <div>
               <h2 className="font-serif text-xl font-extrabold tracking-wide text-[#EDE8DF]">Sarıhan Gusto</h2>
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] text-[#D4AF37] uppercase tracking-widest font-bold">Yönetim Paneli</span>
+                <span className="text-[10px] text-[#E2C569] uppercase tracking-widest font-bold">Yönetim Paneli</span>
                 {isVercelDemo && (
                   <span className="px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-[8px] font-extrabold uppercase text-amber-500 tracking-wider">
                     DİNAMİK DEMO
@@ -641,7 +641,7 @@ export default function AdminPage() {
               href="/menu"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1.5 px-4 py-2.5 border border-[#D4AF37]/20 text-[#D4AF37] rounded-xl text-xs font-bold hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/45 transition-all cursor-pointer bg-[#D4AF37]/5 active:scale-95"
+              className="flex items-center space-x-1.5 px-4 py-2.5 border border-[#E2C569]/20 text-[#E2C569] rounded-xl text-xs font-bold hover:bg-[#E2C569]/10 hover:border-[#E2C569]/45 transition-all cursor-pointer bg-[#E2C569]/5 active:scale-95"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Müşteri Menüsü</span>
@@ -690,20 +690,20 @@ export default function AdminPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <motion.div
             whileHover={{ y: -4 }}
-            className="p-6.5 bg-[#140E0C] border border-[#D4AF37]/10 rounded-[2rem] flex items-center justify-between shadow-md"
+            className="p-6.5 bg-[#261411] border border-[#E2C569]/10 rounded-[2rem] flex items-center justify-between shadow-md"
           >
             <div className="space-y-1.5">
               <span className="text-stone-400 text-[10px] uppercase font-extrabold tracking-widest block">Toplam Gurme Lezzet</span>
               <h3 className="text-4xl font-serif font-extrabold text-[#EDE8DF]">{totalCount}</h3>
             </div>
-            <div className="w-14 h-14 rounded-2xl bg-stone-950 flex items-center justify-center text-[#D4AF37] border border-[#D4AF37]/10 shadow-inner">
+            <div className="w-14 h-14 rounded-2xl bg-stone-950 flex items-center justify-center text-[#E2C569] border border-[#E2C569]/10 shadow-inner">
               <ChefHat className="w-7 h-7" />
             </div>
           </motion.div>
 
           <motion.div
             whileHover={{ y: -4 }}
-            className="p-6.5 bg-[#140E0C] border border-[#D4AF37]/10 rounded-[2rem] flex items-center justify-between shadow-md"
+            className="p-6.5 bg-[#261411] border border-[#E2C569]/10 rounded-[2rem] flex items-center justify-between shadow-md"
           >
             <div className="space-y-1.5">
               <span className="text-stone-400 text-[10px] uppercase font-extrabold tracking-widest block">Aktif Satışta Olan</span>
@@ -716,7 +716,7 @@ export default function AdminPage() {
 
           <motion.div
             whileHover={{ y: -4 }}
-            className="p-6.5 bg-[#140E0C] border border-[#D4AF37]/10 rounded-[2rem] flex items-center justify-between shadow-md"
+            className="p-6.5 bg-[#261411] border border-[#E2C569]/10 rounded-[2rem] flex items-center justify-between shadow-md"
           >
             <div className="space-y-1.5">
               <span className="text-stone-400 text-[10px] uppercase font-extrabold tracking-widest block">Pasif (Gizlenmiş)</span>
@@ -729,17 +729,17 @@ export default function AdminPage() {
         </div>
 
         {/* Kontrol Alanı (Arama, Filtre, Ekle Butonu) */}
-        <div className="bg-[#140E0C] border border-[#D4AF37]/10 rounded-[2rem] p-6.5 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-md">
+        <div className="bg-[#261411] border border-[#E2C569]/10 rounded-[2rem] p-6.5 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-md">
           <div className="flex flex-col sm:flex-row gap-4 flex-grow max-w-3xl">
             {/* Arama */}
             <div className="relative flex-grow">
-              <Search className="w-4.5 h-4.5 text-[#D4AF37]/50 absolute left-4.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-4.5 h-4.5 text-[#E2C569]/50 absolute left-4.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Yemek adı, ID veya açıklamaya göre ara..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-stone-950 border border-stone-850 rounded-2xl py-3.5 pl-12 pr-4 text-xs font-bold text-stone-200 placeholder-stone-600 focus:outline-none focus:ring-1 focus:ring-[#D4AF37] focus:border-[#D4AF37]"
+                className="w-full bg-stone-950 border border-stone-850 rounded-2xl py-3.5 pl-12 pr-4 text-xs font-bold text-stone-200 placeholder-stone-600 focus:outline-none focus:ring-1 focus:ring-[#E2C569] focus:border-[#E2C569]"
               />
             </div>
 
@@ -747,7 +747,7 @@ export default function AdminPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="bg-stone-950 border border-stone-850 rounded-2xl py-3.5 px-4 text-xs font-extrabold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#D4AF37] cursor-pointer"
+              className="bg-stone-950 border border-stone-850 rounded-2xl py-3.5 px-4 text-xs font-extrabold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#E2C569] cursor-pointer"
             >
               <option value="all">Tüm Kategoriler</option>
               {KATEGORILER.map((c) => (
@@ -760,7 +760,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => openModal(null)}
-            className="bg-gradient-to-r from-[#D4AF37] to-[#B38F1E] text-[#0C0907] px-7 py-3.5 rounded-2xl font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-[#D4AF37]/10 hover:shadow-[#D4AF37]/20 flex items-center justify-center space-x-2 cursor-pointer transition-all active:scale-95 shrink-0"
+            className="bg-gradient-to-r from-[#E2C569] to-[#CBB057] text-[#1A0C0A] px-7 py-3.5 rounded-2xl font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-[#E2C569]/10 hover:shadow-[#E2C569]/20 flex items-center justify-center space-x-2 cursor-pointer transition-all active:scale-95 shrink-0"
           >
             <Plus className="w-4.5 h-4.5" />
             <span>Yeni Lezzet Ekle</span>
@@ -768,7 +768,7 @@ export default function AdminPage() {
         </div>
 
         {/* Yemek Listesi Tablosu */}
-        <div className="bg-[#140E0C] border border-[#D4AF37]/10 rounded-[2.5rem] overflow-hidden shadow-2xl">
+        <div className="bg-[#261411] border border-[#E2C569]/10 rounded-[2.5rem] overflow-hidden shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left">
               <thead>
@@ -789,7 +789,7 @@ export default function AdminPage() {
                       {/* Görsel ve ID */}
                       <td className="py-6 px-7">
                         <div className="flex items-center space-x-4">
-                          <div className="w-16 h-12 rounded-xl overflow-hidden border border-stone-850 bg-[#1C1511] flex items-center justify-center relative shrink-0">
+                          <div className="w-16 h-12 rounded-xl overflow-hidden border border-stone-850 bg-[#381F1A] flex items-center justify-center relative shrink-0">
                             {item.image ? (
                               // eslint-disable-next-line @next/next/no-img-element
                               <img
@@ -811,14 +811,14 @@ export default function AdminPage() {
                       <td className="py-6 px-7">
                         <div className="space-y-1 max-w-sm">
                           <p className="font-serif text-[15px] font-extrabold text-[#EDE8DF] leading-tight">{item.name}</p>
-                          <p className="text-[11px] text-[#D4AF37]/80 font-bold">{item.nameEn}</p>
+                          <p className="text-[11px] text-[#E2C569]/80 font-bold">{item.nameEn}</p>
                           <p className="text-[11px] text-stone-400 leading-relaxed line-clamp-2">{item.description}</p>
                         </div>
                       </td>
 
                       {/* Kategori */}
                       <td className="py-6 px-7">
-                        <span className="px-3 py-1.5 bg-stone-950 border border-stone-850 rounded-full text-[10px] uppercase font-extrabold text-[#D4AF37] tracking-wider">
+                        <span className="px-3 py-1.5 bg-stone-950 border border-stone-850 rounded-full text-[10px] uppercase font-extrabold text-[#E2C569] tracking-wider">
                           {KATEGORILER.find((cat) => cat.id === item.category)?.label || item.category}
                         </span>
                       </td>
@@ -835,7 +835,7 @@ export default function AdminPage() {
                                 if (e.key === "Enter") handleInlinePriceSave(item, Number(inlinePriceVal));
                                 if (e.key === "Escape") setEditingPriceId(null);
                               }}
-                              className="w-20 bg-stone-950 border border-[#D4AF37] rounded-lg py-1 px-1.5 text-xs text-right focus:outline-none text-[#EDE8DF] font-bold"
+                              className="w-20 bg-stone-950 border border-[#E2C569] rounded-lg py-1 px-1.5 text-xs text-right focus:outline-none text-[#EDE8DF] font-bold"
                               autoFocus
                             />
                             <button
@@ -857,10 +857,10 @@ export default function AdminPage() {
                               setEditingPriceId(item.id);
                               setInlinePriceVal(item.price.toString());
                             }}
-                            className="group flex items-center justify-end space-x-1.5 cursor-pointer hover:text-[#D4AF37]"
+                            className="group flex items-center justify-end space-x-1.5 cursor-pointer hover:text-[#E2C569]"
                             title="Hızlı Fiyat Güncelle"
                           >
-                            <span className="font-serif text-[15px] font-extrabold text-[#EDE8DF] group-hover:text-[#D4AF37] transition-all">
+                            <span className="font-serif text-[15px] font-extrabold text-[#EDE8DF] group-hover:text-[#E2C569] transition-all">
                               {item.price} ₺
                             </span>
                             <Edit3 className="w-3.5 h-3.5 text-stone-500 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
@@ -907,7 +907,7 @@ export default function AdminPage() {
                         <div className="flex items-center justify-center space-x-2.5">
                           <button
                             onClick={() => openModal(item)}
-                            className="p-2.5 border border-stone-850 rounded-xl text-stone-300 hover:border-[#D4AF37]/30 hover:text-[#D4AF37] bg-stone-950/40 cursor-pointer transition-all active:scale-95"
+                            className="p-2.5 border border-stone-850 rounded-xl text-stone-300 hover:border-[#E2C569]/30 hover:text-[#E2C569] bg-stone-950/40 cursor-pointer transition-all active:scale-95"
                             title="Yemek Bilgilerini Düzenle"
                           >
                             <Edit2 className="w-4 h-4" />
@@ -955,12 +955,12 @@ export default function AdminPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4 }}
-              className="w-full max-w-3xl bg-[#140E0C] border border-[#D4AF37]/20 rounded-[2.5rem] shadow-2xl relative z-10 overflow-hidden flex flex-col max-h-[90vh]"
+              className="w-full max-w-3xl bg-[#261411] border border-[#E2C569]/20 rounded-[2.5rem] shadow-2xl relative z-10 overflow-hidden flex flex-col max-h-[90vh]"
             >
               {/* Modal Başlık */}
               <div className="p-6 border-b border-stone-900 flex items-center justify-between bg-stone-950/40">
                 <div className="flex items-center space-x-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37]">
+                  <div className="w-9 h-9 rounded-xl bg-[#E2C569]/10 border border-[#E2C569]/20 flex items-center justify-center text-[#E2C569]">
                     <ChefHat className="w-5 h-5" />
                   </div>
                   <h3 className="font-serif text-xl font-extrabold text-[#EDE8DF]">
@@ -987,7 +987,7 @@ export default function AdminPage() {
                       value={formName}
                       onChange={(e) => setFormName(e.target.value)}
                       placeholder="Örn: Kral Kuzu Kelle Paça"
-                      className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                      className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#E2C569]"
                     />
                   </div>
 
@@ -999,7 +999,7 @@ export default function AdminPage() {
                       value={formNameEn}
                       onChange={(e) => setFormNameEn(e.target.value)}
                       placeholder="Örn: Royal LambTroter Soup"
-                      className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                      className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#E2C569]"
                     />
                   </div>
 
@@ -1013,7 +1013,7 @@ export default function AdminPage() {
                       value={formPrice}
                       onChange={(e) => setFormPrice(e.target.value)}
                       placeholder="Örn: 280"
-                      className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                      className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#E2C569]"
                     />
                   </div>
 
@@ -1023,7 +1023,7 @@ export default function AdminPage() {
                     <select
                       value={formCategory}
                       onChange={(e) => setFormCategory(e.target.value)}
-                      className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#D4AF37] cursor-pointer"
+                      className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 focus:outline-none focus:ring-1 focus:ring-[#E2C569] cursor-pointer"
                     >
                       {KATEGORILER.map((c) => (
                         <option key={c.id} value={c.id}>
@@ -1042,7 +1042,7 @@ export default function AdminPage() {
                     value={formDescription}
                     onChange={(e) => setFormDescription(e.target.value)}
                     placeholder="Sarıhan usulü geleneksel hazırlanış şeklini yazın..."
-                    className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 leading-relaxed focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                    className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 leading-relaxed focus:outline-none focus:ring-1 focus:ring-[#E2C569]"
                   />
                 </div>
 
@@ -1054,7 +1054,7 @@ export default function AdminPage() {
                     value={formDescriptionEn}
                     onChange={(e) => setFormDescriptionEn(e.target.value)}
                     placeholder="Describe the dish preparation and ingredients in English..."
-                    className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 leading-relaxed focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                    className="w-full bg-stone-950 border border-stone-850 rounded-xl py-3.5 px-4 text-xs font-bold text-stone-200 leading-relaxed focus:outline-none focus:ring-1 focus:ring-[#E2C569]"
                   />
                 </div>
 
@@ -1062,7 +1062,7 @@ export default function AdminPage() {
                 <div className="space-y-2.5">
                   <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#EDE8DF]/80">Gurme Yemek Görseli</label>
                   <div className="flex flex-col sm:flex-row gap-5 items-center bg-stone-950 p-5 border border-stone-850 rounded-2xl">
-                    <div className="w-28 h-20 rounded-xl overflow-hidden border border-stone-800 bg-[#1C1511] flex items-center justify-center relative shrink-0">
+                    <div className="w-28 h-20 rounded-xl overflow-hidden border border-stone-800 bg-[#381F1A] flex items-center justify-center relative shrink-0">
                       {formImage ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={formImage} alt="Önizleme" className="w-full h-full object-cover animate-fade-in" />
@@ -1084,10 +1084,10 @@ export default function AdminPage() {
                           type="button"
                           onClick={() => fileInputRef.current?.click()}
                           disabled={uploadingImage}
-                          className="px-5 py-3 border border-[#D4AF37]/35 rounded-xl text-xs font-bold uppercase tracking-wider text-[#D4AF37] hover:border-[#D4AF37]/65 hover:bg-[#D4AF37]/5 flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
+                          className="px-5 py-3 border border-[#E2C569]/35 rounded-xl text-xs font-bold uppercase tracking-wider text-[#E2C569] hover:border-[#E2C569]/65 hover:bg-[#E2C569]/5 flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
                         >
                           {uploadingImage ? (
-                            <Loader2 className="w-4.5 h-4.5 animate-spin text-[#D4AF37]" />
+                            <Loader2 className="w-4.5 h-4.5 animate-spin text-[#E2C569]" />
                           ) : (
                             <>
                               <Upload className="w-4.5 h-4.5" />
@@ -1168,7 +1168,7 @@ export default function AdminPage() {
                   <button
                     type="submit"
                     disabled={formLoading || uploadingImage}
-                    className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#D4AF37] to-[#B38F1E] text-[#0C0907] font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#D4AF37]/15 hover:shadow-[#D4AF37]/25 flex items-center justify-center space-x-1.5 cursor-pointer disabled:opacity-50"
+                    className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#E2C569] to-[#CBB057] text-[#1A0C0A] font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#E2C569]/15 hover:shadow-[#E2C569]/25 flex items-center justify-center space-x-1.5 cursor-pointer disabled:opacity-50"
                   >
                     {formLoading ? (
                       <Loader2 className="w-4.5 h-4.5 animate-spin text-stone-950" />
