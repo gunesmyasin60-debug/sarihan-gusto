@@ -504,9 +504,9 @@ export default function AdminPage() {
   // Yükleme Ekranı
   if (loading && menuItems.length === 0) {
     return (
-      <div className="min-h-screen bg-[#FAF5EC] flex flex-col items-center justify-center text-[#291F18] font-sans">
-        <Loader2 className="w-12 h-12 text-[#C75A47] animate-spin mb-4" />
-        <p className="text-[#291F18]/85 text-sm tracking-[0.25em] font-bold">SARIHAN GUSTO GURME PANELİ YÜKLENİYOR...</p>
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center text-foreground font-sans">
+        <Loader2 className="w-12 h-12 text-accent animate-spin mb-4" />
+        <p className="text-foreground/85 text-sm tracking-[0.25em] font-bold">SARIHAN GUSTO GURME PANELİ YÜKLENİYOR...</p>
       </div>
     );
   }
@@ -514,7 +514,7 @@ export default function AdminPage() {
   // 1. Giriş Ekranı (Login Screen)
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#FAF5EC] flex flex-col items-center justify-center px-4 font-sans relative overflow-hidden">
+      <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 font-sans relative overflow-hidden">
         {/* Dekoratif Arka Plan Işıkları */}
         <div className="absolute top-[-25%] left-[-25%] w-[70%] h-[70%] rounded-full bg-[#D99C3D]/10 blur-[150px] pointer-events-none" />
         <div className="absolute bottom-[-25%] right-[-25%] w-[70%] h-[70%] rounded-full bg-[#C75A47]/10 blur-[150px] pointer-events-none" />
@@ -523,16 +523,16 @@ export default function AdminPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full max-w-lg bg-[#FFFFFF]/95 backdrop-blur-2xl border border-[#EBE0CD] p-10 rounded-[2.5rem] shadow-2xl relative z-10 text-center"
+          className="w-full max-w-lg bg-card/95 backdrop-blur-2xl border border-card-border p-10 rounded-[2.5rem] shadow-2xl relative z-10 text-center"
         >
           {/* Logo / Başlık */}
-          <div className="space-y-3 mb-10 text-[#291F18]">
-            <div className="w-20 h-20 rounded-3xl bg-[#FAF5EC] border border-[#EBE0CD] flex items-center justify-center mx-auto text-[#C75A47] mb-3 shadow-inner">
+          <div className="space-y-3 mb-10 text-foreground">
+            <div className="w-20 h-20 rounded-3xl bg-background border border-card-border flex items-center justify-center mx-auto text-accent mb-3 shadow-inner">
               <ChefHat className="w-10 h-10 animate-pulse" />
             </div>
-            <span className="text-[11px] tracking-[0.4em] text-[#C75A47] font-extrabold uppercase block">Sarıhan Gusto</span>
+            <span className="text-[11px] tracking-[0.4em] text-accent font-extrabold uppercase block">Sarıhan Gusto</span>
             <h1 className="font-serif text-4xl font-extrabold tracking-wide">Yönetim Paneli</h1>
-            <p className="text-sm text-stone-600 max-w-sm mx-auto font-medium">
+            <p className="text-sm text-foreground/75 max-w-sm mx-auto font-medium">
               Geliştirici kontrolleri, gurme menü yönetimi ve dinamik veri yönetim merkezi.
             </p>
           </div>
@@ -540,20 +540,20 @@ export default function AdminPage() {
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-6 text-left">
             <div className="space-y-2.5">
-              <label className="text-[11px] font-bold uppercase tracking-widest text-[#291F18]/85">Yönetici Şifresi</label>
+              <label className="text-[11px] font-bold uppercase tracking-widest text-foreground/85">Yönetici Şifresi</label>
               <div className="relative">
-                <Lock className="w-5 h-5 text-[#C75A47]/60 absolute left-4 top-1/2 -translate-y-1/2" />
+                <Lock className="w-5 h-5 text-accent/60 absolute left-4 top-1/2 -translate-y-1/2" />
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Restoran ana şifresini girin..."
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-12 pr-12 py-4.5 bg-[#FAF5EC] border border-[#EBE0CD] rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C75A47]/40 focus:border-[#C75A47] transition-all text-[#291F18] placeholder-stone-400 font-bold"
+                  className="w-full pl-12 pr-12 py-4.5 bg-background border border-card-border rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-all text-foreground placeholder-stone-400 font-bold"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#291F18]/50 hover:text-[#C75A47] transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-foreground/50 hover:text-accent transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -568,13 +568,13 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full py-4.5 rounded-2xl bg-gradient-to-r from-[#D99C3D] to-[#C75A47] text-[#FFFFFF] font-bold text-xs uppercase tracking-widest shadow-lg shadow-[#C75A47]/15 hover:shadow-[#C75A47]/25 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center space-x-2"
+              className="w-full py-4.5 rounded-2xl bg-accent text-white hover:bg-accent/90 transition-colors shadow-sm text-[#FFFFFF] font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/10 hover:shadow-accent/10 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center space-x-2"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Panel Girişi Yap</span>}
             </button>
           </form>
 
-          <p className="text-center text-[10px] text-stone-500 mt-10 tracking-widest font-semibold uppercase">
+          <p className="text-center text-[10px] text-foreground/60 mt-10 tracking-widest font-semibold uppercase">
             Sarıhan Gusto Gastronomi A.Ş. — 2026
           </p>
         </motion.div>
@@ -584,7 +584,7 @@ export default function AdminPage() {
 
   // 2. Dashboard Arayüzü (Authenticated Admin Screen)
   return (
-    <div className="min-h-screen bg-[#FAF5EC] text-[#291F18] font-sans pb-28">
+    <div className="min-h-screen bg-background text-foreground font-sans pb-28">
       {/* Toast Bildirimleri */}
       <div className="fixed top-6 right-6 z-50 space-y-3 pointer-events-none max-w-md w-full">
         <AnimatePresence>
@@ -596,14 +596,14 @@ export default function AdminPage() {
               exit={{ opacity: 0, x: 50, scale: 0.9 }}
               className={`p-4.5 rounded-2xl flex items-center space-x-3.5 shadow-2xl backdrop-blur-md border ${
                 toast.type === "success"
-                  ? "bg-emerald-50 border-emerald-200 text-emerald-950"
+                  ? "bg-emerald-50/50 border-emerald-200 text-emerald-950"
                   : toast.type === "error"
-                  ? "bg-red-50 border-red-200 text-red-950"
-                  : "bg-white border-[#EBE0CD] text-[#291F18]"
+                  ? "bg-red-50/50 border-red-200 text-red-950"
+                  : "bg-white border-card-border text-foreground"
               }`}
             >
               <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 bg-white/45 shadow-sm">
-                {toast.type === "success" ? <Check className="w-4 h-4 text-emerald-700" /> : toast.type === "error" ? <X className="w-4 h-4 text-red-750" /> : <Sparkles className="w-4 h-4 text-[#C75A47]" />}
+                {toast.type === "success" ? <Check className="w-4 h-4 text-emerald-700" /> : toast.type === "error" ? <X className="w-4 h-4 text-red-700" /> : <Sparkles className="w-4 h-4 text-accent" />}
               </div>
               <span className="text-xs font-bold leading-normal">{toast.message}</span>
             </motion.div>
@@ -612,16 +612,16 @@ export default function AdminPage() {
       </div>
 
       {/* Navigasyon Bar */}
-      <nav className="bg-[#FFFFFF]/90 backdrop-blur-md border-b border-[#EBE0CD] sticky top-0 z-30 shadow-sm">
+      <nav className="bg-card/90 backdrop-blur-md border-b border-card-border sticky top-0 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
           <div className="flex items-center space-x-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAF5EC] border border-[#EBE0CD] flex items-center justify-center text-[#C75A47] shadow-inner">
+            <div className="w-12 h-12 rounded-2xl bg-background border border-card-border flex items-center justify-center text-accent shadow-inner">
               <ChefHat className="w-6 h-6 animate-pulse" />
             </div>
             <div>
-              <h2 className="font-serif text-xl font-extrabold tracking-wide text-[#291F18]">Sarıhan Gusto</h2>
+              <h2 className="font-serif text-xl font-extrabold tracking-wide text-foreground">Sarıhan Gusto</h2>
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] text-[#C75A47] uppercase tracking-widest font-bold">Yönetici Paneli</span>
+                <span className="text-[10px] text-accent uppercase tracking-widest font-bold">Yönetici Paneli</span>
                 {isVercelDemo && (
                   <span className="px-2 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/25 text-[8px] font-extrabold uppercase text-amber-600 tracking-wider">
                     DİNAMİK DEMO
@@ -637,7 +637,7 @@ export default function AdminPage() {
               href="/menu"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1.5 px-4 py-2.5 border border-[#C75A47]/30 text-[#C75A47] rounded-xl text-xs font-bold hover:bg-[#C75A47]/5 transition-all cursor-pointer bg-white active:scale-95 shadow-sm"
+              className="flex items-center space-x-1.5 px-4 py-2.5 border border-accent/30 text-accent rounded-xl text-xs font-bold hover:bg-accent/5 transition-all cursor-pointer bg-white active:scale-95 shadow-sm"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Müşteri Menüsü</span>
@@ -645,7 +645,7 @@ export default function AdminPage() {
 
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-1.5 px-4 py-2.5 border border-stone-250 rounded-xl text-xs font-bold text-stone-600 hover:border-red-500/30 hover:text-red-650 hover:bg-red-50/50 transition-all cursor-pointer bg-[#FFFFFF] shadow-sm"
+              className="flex items-center space-x-1.5 px-4 py-2.5 border border-stone-250 rounded-xl text-xs font-bold text-foreground/75 hover:border-red-500/30 hover:text-red-650 hover:bg-red-50/50/50 transition-all cursor-pointer bg-card shadow-sm"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Güvenli Çıkış</span>
@@ -662,20 +662,20 @@ export default function AdminPage() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-5.5 bg-[#FFFFFF] border border-[#EBE0CD] rounded-[2rem] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-md"
+            className="p-5.5 bg-card border border-card-border rounded-[2rem] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-md"
           >
-            <div className="flex items-start space-x-3 text-stone-700">
+            <div className="flex items-start space-x-3 text-foreground/80">
               <Sparkles className="w-6 h-6 text-[#D99C3D] shrink-0 mt-0.5" />
               <div className="space-y-1">
-                <h4 className="text-xs font-bold text-[#C75A47] uppercase tracking-wider">Müşteri Tanıtım ve Demo Modu Aktif</h4>
-                <p className="text-xs leading-relaxed max-w-4xl text-stone-600 font-medium">
+                <h4 className="text-xs font-bold text-accent uppercase tracking-wider">Müşteri Tanıtım ve Demo Modu Aktif</h4>
+                <p className="text-xs leading-relaxed max-w-4xl text-foreground/75 font-medium">
                   Vercel sunucusuz platformunda çalıştığınız için yaptığınız tüm ekleme, çıkarma, aktiflik kilitleme ve **hızlı fiyat değişiklikleri** tarayıcınızın yerel belleğine (localStorage) anında kaydedilir. Canlıdaki müşteri menüsü sayfasına geçtiğinizde eklediğiniz yeni yemekler ve değişiklikler anlık olarak render edilecektir!
                 </p>
               </div>
             </div>
             <button
               onClick={resetDemoData}
-              className="px-4 py-2 bg-[#FAF5EC] border border-[#EBE0CD] hover:bg-[#F3EAD9] text-[#C75A47] text-xs font-bold uppercase tracking-wider rounded-xl cursor-pointer transition-all shrink-0 active:scale-95 text-center shadow-inner"
+              className="px-4 py-2 bg-background border border-card-border hover:bg-stone-100 text-accent text-xs font-bold uppercase tracking-wider rounded-xl cursor-pointer transition-all shrink-0 active:scale-95 text-center shadow-inner"
             >
               Demo Veriyi Sıfırla
             </button>
@@ -686,36 +686,36 @@ export default function AdminPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <motion.div
             whileHover={{ y: -4 }}
-            className="p-6.5 bg-[#FFFFFF] border border-[#EBE0CD] rounded-[2rem] flex items-center justify-between shadow-sm"
+            className="p-6.5 bg-card border border-card-border rounded-[2rem] flex items-center justify-between shadow-sm"
           >
             <div className="space-y-1.5">
-              <span className="text-stone-500 text-[10px] uppercase font-extrabold tracking-widest block">Toplam Gurme Lezzet</span>
-              <h3 className="text-4xl font-serif font-extrabold text-[#291F18]">{totalCount}</h3>
+              <span className="text-foreground/60 text-[10px] uppercase font-extrabold tracking-widest block">Toplam Gurme Lezzet</span>
+              <h3 className="text-4xl font-serif font-extrabold text-foreground">{totalCount}</h3>
             </div>
-            <div className="w-14 h-14 rounded-2xl bg-[#FAF5EC] flex items-center justify-center text-[#C75A47] border border-[#EBE0CD] shadow-inner">
+            <div className="w-14 h-14 rounded-2xl bg-background flex items-center justify-center text-accent border border-card-border shadow-inner">
               <ChefHat className="w-7 h-7" />
             </div>
           </motion.div>
 
           <motion.div
             whileHover={{ y: -4 }}
-            className="p-6.5 bg-[#FFFFFF] border border-[#EBE0CD] rounded-[2rem] flex items-center justify-between shadow-sm"
+            className="p-6.5 bg-card border border-card-border rounded-[2rem] flex items-center justify-between shadow-sm"
           >
             <div className="space-y-1.5">
-              <span className="text-stone-500 text-[10px] uppercase font-extrabold tracking-widest block">Aktif Satışta Olan</span>
+              <span className="text-foreground/60 text-[10px] uppercase font-extrabold tracking-widest block">Aktif Satışta Olan</span>
               <h3 className="text-4xl font-serif font-extrabold text-emerald-600">{activeCount}</h3>
             </div>
-            <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shadow-inner">
+            <div className="w-14 h-14 rounded-2xl bg-emerald-50/50 border border-emerald-200 flex items-center justify-center text-emerald-600 shadow-inner">
               <Check className="w-7 h-7" />
             </div>
           </motion.div>
 
           <motion.div
             whileHover={{ y: -4 }}
-            className="p-6.5 bg-[#FFFFFF] border border-[#EBE0CD] rounded-[2rem] flex items-center justify-between shadow-sm"
+            className="p-6.5 bg-card border border-card-border rounded-[2rem] flex items-center justify-between shadow-sm"
           >
             <div className="space-y-1.5">
-              <span className="text-stone-500 text-[10px] uppercase font-extrabold tracking-widest block">Pasif (Gizlenmiş)</span>
+              <span className="text-foreground/60 text-[10px] uppercase font-extrabold tracking-widest block">Pasif (Gizlenmiş)</span>
               <h3 className="text-4xl font-serif font-extrabold text-amber-600">{inactiveCount}</h3>
             </div>
             <div className="w-14 h-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 shadow-inner">
@@ -725,17 +725,17 @@ export default function AdminPage() {
         </div>
 
         {/* Kontrol Alanı (Arama, Filtre, Ekle Butonu) */}
-        <div className="bg-[#FFFFFF] border border-[#EBE0CD] rounded-[2rem] p-6.5 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
+        <div className="bg-card border border-card-border rounded-[2rem] p-6.5 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
           <div className="flex flex-col sm:flex-row gap-4 flex-grow max-w-3xl">
             {/* Arama */}
             <div className="relative flex-grow">
-              <Search className="w-4.5 h-4.5 text-[#C75A47]/60 absolute left-4.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-4.5 h-4.5 text-accent/60 absolute left-4.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Yemek adı, ID veya açıklamaya göre ara..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#FAF5EC] border border-[#EBE0CD] rounded-2xl py-3.5 pl-12 pr-4 text-xs font-bold text-[#291F18] placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-[#C75A47] focus:border-[#C75A47]"
+                className="w-full bg-background border border-card-border rounded-2xl py-3.5 pl-12 pr-4 text-xs font-bold text-foreground placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent"
               />
             </div>
 
@@ -743,7 +743,7 @@ export default function AdminPage() {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="bg-[#FAF5EC] border border-[#EBE0CD] rounded-2xl py-3.5 px-4 text-xs font-extrabold text-[#291F18] focus:outline-none focus:ring-1 focus:ring-[#C75A47] cursor-pointer"
+              className="bg-background border border-card-border rounded-2xl py-3.5 px-4 text-xs font-extrabold text-foreground focus:outline-none focus:ring-1 focus:ring-accent cursor-pointer"
             >
               <option value="all">Tüm Kategoriler</option>
               {KATEGORILER.map((c) => (
@@ -756,7 +756,7 @@ export default function AdminPage() {
 
           <button
             onClick={() => openModal(null)}
-            className="bg-gradient-to-r from-[#D99C3D] to-[#C75A47] text-[#FFFFFF] px-7 py-3.5 rounded-2xl font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-[#C75A47]/10 hover:shadow-[#C75A47]/20 flex items-center justify-center space-x-2 cursor-pointer transition-all active:scale-95 shrink-0"
+            className="bg-accent text-white hover:bg-accent/90 transition-colors shadow-sm text-[#FFFFFF] px-7 py-3.5 rounded-2xl font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-accent/10 hover:shadow-accent/10 flex items-center justify-center space-x-2 cursor-pointer transition-all active:scale-95 shrink-0"
           >
             <Plus className="w-4.5 h-4.5" />
             <span>Yeni Lezzet Ekle</span>
@@ -764,11 +764,11 @@ export default function AdminPage() {
         </div>
 
         {/* Yemek Listesi Tablosu */}
-        <div className="bg-[#FFFFFF] border border-[#EBE0CD] rounded-[2.5rem] overflow-hidden shadow-sm">
+        <div className="bg-card border border-card-border rounded-[2.5rem] overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left">
               <thead>
-                <tr className="border-b border-[#EBE0CD] bg-[#FAF5EC]/40 text-[#291F18] uppercase text-[10px] font-extrabold tracking-widest">
+                <tr className="border-b border-card-border bg-background/40 text-foreground uppercase text-[10px] font-extrabold tracking-widest">
                   <th className="py-6 px-7 w-[18%]">Görsel / ID</th>
                   <th className="py-6 px-7 w-[28%]">Lezzet Adı & Açıklama</th>
                   <th className="py-6 px-7 w-[16%]">Kategori</th>
@@ -781,11 +781,11 @@ export default function AdminPage() {
               <tbody className="divide-y divide-stone-150 text-stone-800">
                 {filteredItems.length > 0 ? (
                   filteredItems.map((item) => (
-                    <tr key={item.id} className="hover:bg-[#FAF5EC]/20 transition-all">
+                    <tr key={item.id} className="hover:bg-background/20 transition-all">
                       {/* Görsel ve ID */}
                       <td className="py-6 px-7">
                         <div className="flex items-center space-x-4">
-                          <div className="w-16 h-12 rounded-xl overflow-hidden border border-[#EBE0CD] bg-[#FAF5EC] flex items-center justify-center relative shrink-0">
+                          <div className="w-16 h-12 rounded-xl overflow-hidden border border-card-border bg-background flex items-center justify-center relative shrink-0">
                             {item.image ? (
                               // eslint-disable-next-line @next/next/no-img-element
                               <img
@@ -797,24 +797,24 @@ export default function AdminPage() {
                                 }}
                               />
                             ) : null}
-                            <ChefHat className="w-5 h-5 text-[#C75A47]/30 absolute" />
+                            <ChefHat className="w-5 h-5 text-accent/30 absolute" />
                           </div>
-                          <span className="font-mono text-[11px] text-[#291F18]/50 font-bold">{item.id}</span>
+                          <span className="font-mono text-[11px] text-foreground/50 font-bold">{item.id}</span>
                         </div>
                       </td>
 
                       {/* Lezzet Adı & Açıklama */}
                       <td className="py-6 px-7">
                         <div className="space-y-1 max-w-sm text-left">
-                          <p className="font-serif text-[15px] font-extrabold text-[#291F18] leading-tight">{item.name}</p>
-                          <p className="text-[11px] text-[#C75A47] font-bold">{item.nameEn}</p>
-                          <p className="text-[11px] text-stone-500 leading-relaxed line-clamp-2 font-medium">{item.description}</p>
+                          <p className="font-serif text-[15px] font-extrabold text-foreground leading-tight">{item.name}</p>
+                          <p className="text-[11px] text-accent font-bold">{item.nameEn}</p>
+                          <p className="text-[11px] text-foreground/60 leading-relaxed line-clamp-2 font-medium">{item.description}</p>
                         </div>
                       </td>
 
                       {/* Kategori */}
                       <td className="py-6 px-7">
-                        <span className="px-3 py-1.5 bg-[#FAF5EC] border border-[#EBE0CD] rounded-full text-[10px] uppercase font-extrabold text-[#C75A47] tracking-wider">
+                        <span className="px-3 py-1.5 bg-background border border-card-border rounded-full text-[10px] uppercase font-extrabold text-accent tracking-wider">
                           {KATEGORILER.find((cat) => cat.id === item.category)?.label || item.category}
                         </span>
                       </td>
@@ -831,18 +831,18 @@ export default function AdminPage() {
                                 if (e.key === "Enter") handleInlinePriceSave(item, Number(inlinePriceVal));
                                 if (e.key === "Escape") setEditingPriceId(null);
                               }}
-                              className="w-20 bg-[#FAF5EC] border border-[#C75A47] rounded-lg py-1 px-1.5 text-xs text-right focus:outline-none text-[#291F18] font-bold"
+                              className="w-20 bg-background border border-accent rounded-lg py-1 px-1.5 text-xs text-right focus:outline-none text-foreground font-bold"
                               autoFocus
                             />
                             <button
                               onClick={() => handleInlinePriceSave(item, Number(inlinePriceVal))}
-                              className="p-1 text-emerald-600 hover:bg-emerald-50 rounded-md cursor-pointer"
+                              className="p-1 text-emerald-600 hover:bg-emerald-50/50 rounded-md cursor-pointer"
                             >
                               <Check className="w-3.5 h-3.5" />
                             </button>
                             <button
                               onClick={() => setEditingPriceId(null)}
-                              className="p-1 text-red-500 hover:bg-red-50 rounded-md cursor-pointer"
+                              className="p-1 text-red-500 hover:bg-red-50/50 rounded-md cursor-pointer"
                             >
                               <X className="w-3.5 h-3.5" />
                             </button>
@@ -853,13 +853,13 @@ export default function AdminPage() {
                               setEditingPriceId(item.id);
                               setInlinePriceVal(item.price.toString());
                             }}
-                            className="group flex items-center justify-end space-x-1.5 cursor-pointer hover:text-[#C75A47]"
+                            className="group flex items-center justify-end space-x-1.5 cursor-pointer hover:text-accent"
                             title="Hızlı Fiyat Güncelle"
                           >
-                            <span className="font-serif text-[15px] font-extrabold text-[#291F18] transition-all">
+                            <span className="font-serif text-[15px] font-extrabold text-foreground transition-all">
                               {item.price} ₺
                             </span>
-                            <Edit3 className="w-3.5 h-3.5 text-[#C75A47] opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                            <Edit3 className="w-3.5 h-3.5 text-accent opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                           </div>
                         )}
                       </td>
@@ -869,7 +869,7 @@ export default function AdminPage() {
                         <button
                           onClick={() => toggleItemActive(item)}
                           className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                            item.active ? "bg-emerald-500" : "bg-stone-200"
+                            item.active ? "bg-accent" : "bg-stone-200"
                           }`}
                         >
                           <span
@@ -885,16 +885,16 @@ export default function AdminPage() {
                         {item.allergens.length > 0 ? (
                           <div className="flex flex-wrap gap-1 justify-center max-w-[140px] mx-auto">
                             {item.allergens.slice(0, 3).map((a) => (
-                              <span key={a} className="px-2 py-0.5 bg-red-50 border border-red-200 text-red-650 rounded-md text-[9px] font-bold">
+                              <span key={a} className="px-2 py-0.5 bg-red-50/50 border border-red-200 text-red-650 rounded-md text-[9px] font-bold">
                                 {a}
                               </span>
                             ))}
                             {item.allergens.length > 3 && (
-                              <span className="text-[9px] text-stone-500 font-bold">+{item.allergens.length - 3}</span>
+                              <span className="text-[9px] text-foreground/60 font-bold">+{item.allergens.length - 3}</span>
                             )}
                           </div>
                         ) : (
-                          <span className="text-stone-400 font-bold">-</span>
+                          <span className="text-foreground/45 font-bold">-</span>
                         )}
                       </td>
 
@@ -903,14 +903,14 @@ export default function AdminPage() {
                         <div className="flex items-center justify-center space-x-2.5">
                           <button
                             onClick={() => openModal(item)}
-                            className="p-2.5 border border-stone-200 rounded-xl text-stone-600 hover:border-[#C75A47]/30 hover:text-[#C75A47] hover:bg-[#FAF5EC] bg-white cursor-pointer transition-all active:scale-95"
+                            className="p-2.5 border border-stone-200 rounded-xl text-foreground/75 hover:border-accent/30 hover:text-accent hover:bg-background bg-white cursor-pointer transition-all active:scale-95"
                             title="Yemek Bilgilerini Düzenle"
                           >
                             <Edit2 className="w-4 h-4" />
                           </button>
                           <button
                             onClick={() => deleteItem(item.id)}
-                            className="p-2.5 border border-stone-200 rounded-xl text-stone-600 hover:border-red-400 hover:text-red-600 hover:bg-red-50 bg-white cursor-pointer transition-all active:scale-95"
+                            className="p-2.5 border border-stone-200 rounded-xl text-foreground/75 hover:border-red-400 hover:text-red-600 hover:bg-red-50/50 bg-white cursor-pointer transition-all active:scale-95"
                             title="Yemeği Menüden Sil"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -921,7 +921,7 @@ export default function AdminPage() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={7} className="py-16 text-center text-stone-400 font-bold text-sm">
+                    <td colSpan={7} className="py-16 text-center text-foreground/45 font-bold text-sm">
                       Kriterlere uygun hiçbir gurme yemek bulunamadı.
                     </td>
                   </tr>
@@ -942,7 +942,7 @@ export default function AdminPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="absolute inset-0 bg-[#291F18]/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-foreground/40 backdrop-blur-sm"
             />
 
             {/* Modal Box */}
@@ -951,57 +951,57 @@ export default function AdminPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4 }}
-              className="w-full max-w-3xl bg-[#FFFFFF] border border-[#EBE0CD] rounded-[2.5rem] shadow-2xl relative z-10 overflow-hidden flex flex-col max-h-[90vh]"
+              className="w-full max-w-3xl bg-card border border-card-border rounded-[2.5rem] shadow-2xl relative z-10 overflow-hidden flex flex-col max-h-[90vh]"
             >
               {/* Modal Başlık */}
-              <div className="p-6 border-b border-[#EBE0CD] flex items-center justify-between bg-[#FAF5EC]/50">
+              <div className="p-6 border-b border-card-border flex items-center justify-between bg-background/50">
                 <div className="flex items-center space-x-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#FAF5EC] border border-[#EBE0CD] flex items-center justify-center text-[#C75A47]">
+                  <div className="w-9 h-9 rounded-xl bg-background border border-card-border flex items-center justify-center text-accent">
                     <ChefHat className="w-5 h-5" />
                   </div>
-                  <h3 className="font-serif text-xl font-extrabold text-[#291F18]">
+                  <h3 className="font-serif text-xl font-extrabold text-foreground">
                     {editingItem ? "Gurme Lezzeti Düzenle" : "Yeni Gurme Lezzet Ekle"}
                   </h3>
                 </div>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="p-2 border border-stone-200 rounded-xl text-stone-500 hover:text-foreground hover:border-stone-400 transition-all cursor-pointer bg-white"
+                  className="p-2 border border-stone-200 rounded-xl text-foreground/60 hover:text-foreground hover:border-stone-400 transition-all cursor-pointer bg-white"
                 >
                   <X className="w-4.5 h-4.5" />
                 </button>
               </div>
 
               {/* Modal Form Gövdesi */}
-              <form onSubmit={handleFormSubmit} className="p-6 overflow-y-auto space-y-6 flex-grow text-[#291F18] text-left">
+              <form onSubmit={handleFormSubmit} className="p-6 overflow-y-auto space-y-6 flex-grow text-foreground text-left">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {/* İsim TR */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#291F18]/80">Lezzet Adı (TR) *</label>
+                    <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Lezzet Adı (TR) *</label>
                     <input
                       type="text"
                       required
                       value={formName}
                       onChange={(e) => setFormName(e.target.value)}
                       placeholder="Örn: Kral Kuzu Kelle Paça"
-                      className="w-full bg-[#FAF5EC] border border-[#EBE0CD] rounded-xl py-3.5 px-4 text-xs font-bold text-[#291F18] focus:outline-none focus:ring-1 focus:ring-[#C75A47]"
+                      className="w-full bg-background border border-card-border rounded-xl py-3.5 px-4 text-xs font-bold text-foreground focus:outline-none focus:ring-1 focus:ring-accent"
                     />
                   </div>
 
                   {/* İsim EN */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#291F18]/80">Lezzet Adı (EN)</label>
+                    <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Lezzet Adı (EN)</label>
                     <input
                       type="text"
                       value={formNameEn}
                       onChange={(e) => setFormNameEn(e.target.value)}
                       placeholder="Örn: Royal LambTroter Soup"
-                      className="w-full bg-[#FAF5EC] border border-[#EBE0CD] rounded-xl py-3.5 px-4 text-xs font-bold text-[#291F18] focus:outline-none focus:ring-1 focus:ring-[#C75A47]"
+                      className="w-full bg-background border border-card-border rounded-xl py-3.5 px-4 text-xs font-bold text-foreground focus:outline-none focus:ring-1 focus:ring-accent"
                     />
                   </div>
 
                   {/* Fiyat */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#291F18]/80">Fiyat (TL) *</label>
+                    <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Fiyat (TL) *</label>
                     <input
                       type="number"
                       required
@@ -1009,17 +1009,17 @@ export default function AdminPage() {
                       value={formPrice}
                       onChange={(e) => setFormPrice(e.target.value)}
                       placeholder="Örn: 280"
-                      className="w-full bg-[#FAF5EC] border border-[#EBE0CD] rounded-xl py-3.5 px-4 text-xs font-bold text-[#291F18] focus:outline-none focus:ring-1 focus:ring-[#C75A47]"
+                      className="w-full bg-background border border-card-border rounded-xl py-3.5 px-4 text-xs font-bold text-foreground focus:outline-none focus:ring-1 focus:ring-accent"
                     />
                   </div>
 
                   {/* Kategori */}
                   <div className="space-y-2">
-                    <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#291F18]/80">Kategori *</label>
+                    <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Kategori *</label>
                     <select
                       value={formCategory}
                       onChange={(e) => setFormCategory(e.target.value)}
-                      className="w-full bg-[#FAF5EC] border border-[#EBE0CD] rounded-xl py-3.5 px-4 text-xs font-bold text-[#291F18] focus:outline-none focus:ring-1 focus:ring-[#C75A47] cursor-pointer"
+                      className="w-full bg-background border border-card-border rounded-xl py-3.5 px-4 text-xs font-bold text-foreground focus:outline-none focus:ring-1 focus:ring-accent cursor-pointer"
                     >
                       {KATEGORILER.map((c) => (
                         <option key={c.id} value={c.id}>
@@ -1032,33 +1032,33 @@ export default function AdminPage() {
 
                 {/* Açıklama TR */}
                 <div className="space-y-2">
-                  <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#291F18]/80">Açıklama (TR)</label>
+                  <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Açıklama (TR)</label>
                   <textarea
                     rows={3}
                     value={formDescription}
                     onChange={(e) => setFormDescription(e.target.value)}
                     placeholder="Sarıhan usulü geleneksel hazırlanış şeklini yazın..."
-                    className="w-full bg-[#FAF5EC] border border-[#EBE0CD] rounded-xl py-3.5 px-4 text-xs font-bold text-[#291F18] leading-relaxed focus:outline-none focus:ring-1 focus:ring-[#C75A47]"
+                    className="w-full bg-background border border-card-border rounded-xl py-3.5 px-4 text-xs font-bold text-foreground leading-relaxed focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
 
                 {/* Açıklama EN */}
                 <div className="space-y-2">
-                  <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#291F18]/80">Açıklama (EN)</label>
+                  <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Açıklama (EN)</label>
                   <textarea
                     rows={3}
                     value={formDescriptionEn}
                     onChange={(e) => setFormDescriptionEn(e.target.value)}
                     placeholder="Describe the dish preparation and ingredients in English..."
-                    className="w-full bg-[#FAF5EC] border border-[#EBE0CD] rounded-xl py-3.5 px-4 text-xs font-bold text-[#291F18] leading-relaxed focus:outline-none focus:ring-1 focus:ring-[#C75A47]"
+                    className="w-full bg-background border border-card-border rounded-xl py-3.5 px-4 text-xs font-bold text-foreground leading-relaxed focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                 </div>
 
                 {/* Görsel Yükleyici */}
                 <div className="space-y-2.5">
-                  <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#291F18]/80">Gurme Yemek Görseli</label>
-                  <div className="flex flex-col sm:flex-row gap-5 items-center bg-[#FAF5EC] p-5 border border-[#EBE0CD] rounded-2xl">
-                    <div className="w-28 h-20 rounded-xl overflow-hidden border border-[#EBE0CD] bg-white flex items-center justify-center relative shrink-0">
+                  <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Gurme Yemek Görseli</label>
+                  <div className="flex flex-col sm:flex-row gap-5 items-center bg-background p-5 border border-card-border rounded-2xl">
+                    <div className="w-28 h-20 rounded-xl overflow-hidden border border-card-border bg-white flex items-center justify-center relative shrink-0">
                       {formImage ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={formImage} alt="Önizleme" className="w-full h-full object-cover animate-fade-in" />
@@ -1080,10 +1080,10 @@ export default function AdminPage() {
                           type="button"
                           onClick={() => fileInputRef.current?.click()}
                           disabled={uploadingImage}
-                          className="px-5 py-3 border border-[#C75A47]/40 rounded-xl text-xs font-bold uppercase tracking-wider text-[#C75A47] hover:border-[#C75A47]/65 hover:bg-[#C75A47]/5 flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
+                          className="px-5 py-3 border border-accent/40 rounded-xl text-xs font-bold uppercase tracking-wider text-accent hover:border-accent/65 hover:bg-accent/5 flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
                         >
                           {uploadingImage ? (
-                            <Loader2 className="w-4.5 h-4.5 animate-spin text-[#C75A47]" />
+                            <Loader2 className="w-4.5 h-4.5 animate-spin text-accent" />
                           ) : (
                             <>
                               <Upload className="w-4.5 h-4.5" />
@@ -1097,10 +1097,10 @@ export default function AdminPage() {
                           value={formImage}
                           onChange={(e) => setFormImage(e.target.value)}
                           placeholder="Dosya yolu veya görsel URL (Örn: /images/menu/iskembe.webp)"
-                          className="bg-white border border-[#EBE0CD] rounded-xl py-2.5 px-3.5 text-xs text-stone-600 focus:outline-none flex-grow font-bold"
+                          className="bg-white border border-card-border rounded-xl py-2.5 px-3.5 text-xs text-foreground/75 focus:outline-none flex-grow font-bold"
                         />
                       </div>
-                      <p className="text-[10px] text-stone-500 font-bold">
+                      <p className="text-[10px] text-foreground/60 font-bold">
                         Lüks gurme yemek fotoğrafları için ideal çözünürlük 800x600 WebP formatıdır.
                       </p>
                     </div>
@@ -1109,7 +1109,7 @@ export default function AdminPage() {
 
                 {/* Alerjenler */}
                 <div className="space-y-2.5">
-                  <label className="text-[10px] font-extrabold uppercase tracking-widest text-[#291F18]/80">Alerjenler (Tüm Seçenekler)</label>
+                  <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Alerjenler (Tüm Seçenekler)</label>
                   <div className="flex flex-wrap gap-2">
                     {ALERJENLER.map((a) => {
                       const isSelected = formAllergens.includes(a);
@@ -1120,8 +1120,8 @@ export default function AdminPage() {
                           onClick={() => toggleAllergen(a)}
                           className={`px-3.5 py-2 rounded-xl border text-[11px] font-bold transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-red-50 border-red-300 text-red-700 shadow-sm animate-pulse"
-                              : "bg-white border-stone-200 text-stone-500 hover:border-stone-400"
+                              ? "bg-red-50/50 border-red-300 text-red-700 shadow-sm animate-pulse"
+                              : "bg-white border-stone-200 text-foreground/60 hover:border-stone-400"
                           }`}
                         >
                           {a}
@@ -1132,12 +1132,12 @@ export default function AdminPage() {
                 </div>
 
                 {/* Aktiflik Durumu */}
-                <div className="flex items-center space-x-3.5 p-4.5 bg-[#FAF5EC]/50 rounded-2xl border border-[#EBE0CD]">
+                <div className="flex items-center space-x-3.5 p-4.5 bg-background/50 rounded-2xl border border-card-border">
                   <button
                     type="button"
                     onClick={() => setFormActive(!formActive)}
                     className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                      formActive ? "bg-emerald-500" : "bg-stone-200"
+                      formActive ? "bg-accent" : "bg-stone-200"
                     }`}
                   >
                     <span
@@ -1147,24 +1147,24 @@ export default function AdminPage() {
                     />
                   </button>
                   <div>
-                    <p className="text-xs font-bold text-[#291F18]">Lezzet Satışta ve Menüde Gösteriliyor</p>
-                    <p className="text-[10px] text-stone-500 font-bold">Kapatıldığında müşterileriniz bu yemeği menüde göremez.</p>
+                    <p className="text-xs font-bold text-foreground">Lezzet Satışta ve Menüde Gösteriliyor</p>
+                    <p className="text-[10px] text-foreground/60 font-bold">Kapatıldığında müşterileriniz bu yemeği menüde göremez.</p>
                   </div>
                 </div>
 
                 {/* Kaydet Butonları */}
-                <div className="pt-4.5 border-t border-[#EBE0CD] flex justify-end space-x-3 bg-[#FAF5EC]/30 -mx-6 -mb-6 p-6">
+                <div className="pt-4.5 border-t border-card-border flex justify-end space-x-3 bg-background/30 -mx-6 -mb-6 p-6">
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="px-6 py-3.5 border border-stone-250 rounded-xl text-xs font-bold uppercase tracking-wider text-stone-500 hover:border-stone-400 hover:text-foreground cursor-pointer transition-all bg-white"
+                    className="px-6 py-3.5 border border-stone-250 rounded-xl text-xs font-bold uppercase tracking-wider text-foreground/60 hover:border-stone-400 hover:text-foreground cursor-pointer transition-all bg-white"
                   >
                     Kapat
                   </button>
                   <button
                     type="submit"
                     disabled={formLoading || uploadingImage}
-                    className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#D99C3D] to-[#C75A47] text-[#FFFFFF] font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#C75A47]/10 hover:shadow-[#C75A47]/25 flex items-center justify-center space-x-1.5 cursor-pointer disabled:opacity-50"
+                    className="px-7 py-3.5 rounded-xl bg-accent text-white hover:bg-accent/90 transition-colors shadow-sm text-[#FFFFFF] font-bold text-xs uppercase tracking-wider shadow-lg shadow-accent/10 hover:shadow-accent/10 flex items-center justify-center space-x-1.5 cursor-pointer disabled:opacity-50"
                   >
                     {formLoading ? (
                       <Loader2 className="w-4.5 h-4.5 animate-spin text-white" />

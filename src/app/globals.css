@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Renk Paleti - Saray Balı & Kızıl Toprak */
-  --color-brand-gold: #D99C3D;
-  --color-brand-gold-hover: #C28B32;
+  /* Renk Paleti - Ege Keteni & Adaçayı (Göz Dostu Açık Tema) */
+  --color-brand-gold: #5E7A68;
+  --color-brand-gold-hover: #4D6456;
   
-  --color-wood-dark: #291F18;
-  --color-wood-light: #3B2C22;
-  --color-wood-amber: #4D3A2D;
+  --color-wood-dark: #292C2A;
+  --color-wood-light: #3D423F;
+  --color-wood-amber: #505652;
   
-  --color-stone-light: #FAF5EC;
+  --color-stone-light: #F6F6F4;
   --color-stone-cream: #FFFFFF;
-  --color-stone-dark: #EBE0CD;
+  --color-stone-dark: #E1E4DF;
 
   /* Fontlar */
   --font-serif: var(--font-playfair), serif;
@@ -23,23 +23,23 @@
 
 /* Light / Dark Mode CSS Değişkenleri */
 :root {
-  --background: #FAF5EC;
-  --foreground: #291F18;
+  --background: #F4F5F4;
+  --foreground: #1E221F;
   --card-bg: #FFFFFF;
-  --card-border: #EBE0CD;
-  --accent: #C75A47;
-  --muted: #7E6F6B;
+  --card-border: #E2E5E2;
+  --accent: #4A6B56;
+  --muted: #606662;
   --input-bg: #FFFFFF;
 }
 
 .dark {
-  --background: #291F18;
-  --foreground: #FAF5EC;
-  --card-bg: #3B2C22;
-  --card-border: #4D3A2D;
-  --accent: #D99C3D;
-  --muted: #B5A59B;
-  --input-bg: #3B2C22;
+  --background: #292C2A;
+  --foreground: #F6F6F4;
+  --card-bg: #323633;
+  --card-border: #424844;
+  --accent: #8FAF6C;
+  --muted: #8F9692;
+  --input-bg: #323633;
 }
 
 @theme inline {
