@@ -19,9 +19,12 @@ const KATEGORILER = [
   { id: "all", label: "Tüm Lezzetler", labelEn: "All Flavors" },
   { id: "corbalar", label: "Çorbalar", labelEn: "Soups" },
   { id: "kebaplar", label: "Kebaplar & Izgaralar", labelEn: "Grills & Kebabs" },
+  { id: "firin", label: "Taş Fırın & Pide", labelEn: "Stone Oven & Pide" },
+  { id: "tencere", label: "Tencere Yemekleri", labelEn: "Traditional Stews" },
   { id: "baslangiclar", label: "Mezeler & Başlangıçlar", labelEn: "Appetizers" },
-  { id: "tatlilar", label: "Geleneksel Tatlılar", labelEn: "Desserts" },
-  { id: "icecekler", label: "İçecekler", labelEn: "Beverages" },
+  { id: "salatalar", label: "Gurme Salatalar", labelEn: "Gourmet Salads" },
+  { id: "tatlilar", label: "Geleneksel Tatlılar", labelEn: "Traditional Desserts" },
+  { id: "icecekler", label: "Özel İçecekler", labelEn: "Special Beverages" },
 ];
 
 export default function MenuPage() {
@@ -33,7 +36,13 @@ export default function MenuPage() {
   useEffect(() => {
     // Demo yüklenme illüzyonu (Skeleton testleri için)
     const timer = setTimeout(() => {
-      setItems(menuData as MenuItem[]);
+      // LocalStorage'da güncel veri var mı kontrol et
+      const localData = typeof window !== "undefined" ? localStorage.getItem("sarihan_menu_data") : null;
+      if (localData) {
+        setItems(JSON.parse(localData));
+      } else {
+        setItems(menuData as MenuItem[]);
+      }
       setLoading(false);
     }, 800);
     return () => clearTimeout(timer);
