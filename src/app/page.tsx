@@ -3,7 +3,6 @@
 // Hero alanı, "Anadolu Sıcaklığı" Bento Grid tasarımı, yerleşik Google Yorumları ve JSON-LD Yapılandırılmış Arama Şemalarını barındırır.
 
 import Link from "next/link";
-import Image from "next/image";
 import { Star, Clock, Phone, MapPin, ArrowUpRight, Award, Compass, HeartHandshake } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
@@ -69,38 +68,38 @@ export default function HomePage() {
       <main className="flex-grow pt-20">
         {/* 1. HERO BÖLÜMÜ */}
         <section 
-          className="relative min-h-[90vh] flex items-center bg-wood-dark overflow-hidden"
+          className="relative min-h-[90vh] flex items-center bg-background overflow-hidden"
           aria-label="Sarıhan Gusto Karşılama Alanı"
         >
-          {/* Soyut Anadolu Güneşi Desenli Arka Plan Katmanı */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(212,175,55,0.15),transparent_60%)] z-1" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(18,14,12,0.6),rgba(18,14,12,0.95))] z-1" />
+          {/* Soyut Anadolu Güneşi Desenli Arka Plan Katmanı (Adaçayı Rengi) */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(74,107,86,0.06),transparent_60%)] z-1" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(244,245,244,0.1),rgba(244,245,244,0.3))] z-1" />
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 md:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Sol: Metin İçeriği */}
-            <div className="space-y-6 text-stone-cream text-left">
+            <div className="space-y-6 text-foreground text-left">
               <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
                 <Award className="w-4 h-4" />
                 <span>Nisbetiye Caddesi'nin Klasik Lezzeti</span>
               </div>
-              <h1 className="font-serif text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-stone-light">
+              <h1 className="font-serif text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight">
                 Gelenekten Gelen <br />
                 <span className="text-accent">Premium Tatlar</span>
               </h1>
-              <p className="text-stone-cream/80 text-base md:text-lg leading-relaxed max-w-xl">
+              <p className="text-muted text-base md:text-lg leading-relaxed max-w-xl">
                 Çeyrek asırlık Sarıhan tecrübesiyle, zırhla kıyılmış geleneksel kebaplardan, saatlerce demlenmiş şifa kaynağı çorbalara kadar tüm gurme lezzetleri, Anadolu sıcaklığıyla harmanlayıp kusursuz şekilde sunuyoruz.
               </p>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
                 <Link
                   href="/rezervasyon"
-                  className="px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.02] shadow-lg shadow-accent/15 transition-all duration-300 text-center"
+                  className="px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover hover:scale-[1.02] shadow-lg shadow-accent/15 transition-all duration-300 text-center cursor-pointer"
                   aria-label="Hızlı rezervasyon yapın"
                 >
-                  Masa Rezerve Et
+                  Masa Ayır
                 </Link>
                 <Link
                   href="/menu"
-                  className="px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-transparent border border-stone-cream/40 text-stone-cream hover:bg-stone-cream/10 hover:border-stone-light transition-all duration-300 text-center"
+                  className="px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-transparent border border-card-border text-foreground hover:bg-card hover:border-accent transition-all duration-300 text-center cursor-pointer"
                   aria-label="Restoran menüsünü görüntüleyin"
                 >
                   Menüyü Keşfet
@@ -108,19 +107,26 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Sağ: İkonik Kahraman Görseli */}
-            <div className="relative aspect-square w-full max-w-[480px] mx-auto lg:max-w-none lg:h-[500px] rounded-3xl overflow-hidden border border-wood-amber shadow-2xl">
-              {/* Buraya placeholder yerine şık bir soyut renk/fotoğraf geçişi katmanı yerleştiriyoruz */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-wood-dark via-wood-amber to-accent/20 flex flex-col justify-end p-8 text-stone-cream">
-                <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-accent/25 backdrop-blur-sm border border-accent/40 flex items-center justify-center text-accent">
+            {/* Sağ: İkonik Kahraman Marka Görsel Alanı (Ayrı Çalışılmak Üzere Yemek Kartsız Premium Sunum) */}
+            <div className="relative aspect-square w-full max-w-[480px] mx-auto lg:max-w-none lg:h-[500px] rounded-3xl overflow-hidden border border-card-border bg-card shadow-xl p-8 flex flex-col justify-between text-left group premium-hover">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(74,107,86,0.03),transparent)]" />
+              <div className="flex justify-between items-start">
+                <div className="w-12 h-12 rounded-2xl bg-background border border-card-border flex items-center justify-center text-accent">
                   <Compass className="w-6 h-6 animate-pulse" />
                 </div>
-                <div className="bg-wood-dark/80 backdrop-blur-md p-6 rounded-2xl border border-wood-amber">
-                  <span className="text-[10px] uppercase tracking-widest text-accent font-bold">Özel Çorbalarımız</span>
-                  <h3 className="font-serif text-2xl font-bold mt-1 text-stone-light">Kelle Paça & Kral İşkembe</h3>
-                  <p className="text-xs text-stone-cream/70 mt-2">
-                    Geleneksel saray usulü baharatlar ve hakiki manda tereyağı eşliğinde hazırlanan eşsiz şifa kaynakları.
-                  </p>
+                <span className="text-[10px] uppercase tracking-widest text-accent font-bold">EST. 1999</span>
+              </div>
+              <div className="space-y-4 relative z-10">
+                <h3 className="font-serif text-3xl font-extrabold leading-tight text-foreground">
+                  Gastronomi & <br/>Kusursuz Hizmet Felsefesi
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  Her yörenin kendine has baharatları, taze demlenmiş et suları ve geleneksel pişirme yöntemlerimizle hazırlanan tabaklarımız, lüks Etiler şubemizin asil ve dinlendirici ambiyansında unutulmaz anlara dönüşüyor.
+                </p>
+                <div className="pt-2">
+                  <span className="text-[11px] font-bold text-accent uppercase tracking-wider">
+                    Sarıhan Gusto Gastronomi Deneyimi
+                  </span>
                 </div>
               </div>
             </div>
@@ -144,17 +150,17 @@ export default function HomePage() {
             {/* Bento Grid Yapısı */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
               
-              {/* Kart 1: Kebaplar (Büyük Kart) */}
+              {/* Kart 1: Kebaplar (Büyük Kart - Açık Renk ve Mükemmel Metin Kontrastı) */}
               <div className="md:col-span-2 md:row-span-2 rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between overflow-hidden relative group premium-hover">
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-wood-dark/40 group-hover:scale-105 transition-all duration-500" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(74,107,86,0.02),transparent)]" />
                 <div className="relative z-10 flex justify-between items-start">
                   <span className="text-xs uppercase tracking-wider font-bold text-accent">Geleneksel Kıyım</span>
                   <Award className="w-6 h-6 text-accent" />
                 </div>
                 <div className="relative z-10 space-y-2 text-left">
-                  <h3 className="font-serif text-3xl font-extrabold text-stone-light md:text-4xl">Zırh Kebabı & Kebaplar</h3>
-                  <p className="text-sm text-stone-cream/90 max-w-lg leading-relaxed">
-                    Eti hiçbir makine değdirmeden, sadece usta ellerde zırh ile kıyarak kömür ateşinde ağır ağır pişiriyoruz. Gerçek kebap deneyimi.
+                  <h3 className="font-serif text-3xl font-extrabold text-foreground md:text-4xl">Zırh Kebabı & Kebaplar</h3>
+                  <p className="text-sm text-muted max-w-lg leading-relaxed">
+                    Eti hiçbir makine değdirmeden, sadece usta ellerde zırh ile kıyarak kömür ateşinde ağır ağır pişiriyoruz. Gerçek kebap deneyimini, aydınlık ve ferah ambiyansımızda sunuyoruz.
                   </p>
                   <Link 
                     href="/menu" 
@@ -179,15 +185,15 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Kart 3: Telefon & WhatsApp İletişim */}
-              <div className="rounded-3xl bg-accent text-wood-dark p-6 flex flex-col justify-between text-left premium-hover relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.15),transparent)]" />
-                <div className="w-10 h-10 rounded-full bg-wood-dark/10 flex items-center justify-center text-wood-dark">
+              {/* Kart 3: Telefon & Rezervasyon İletişim (Adaçayı Yeşili ve Beyaz Yazı ile Premium Uyum) */}
+              <div className="rounded-3xl bg-accent text-white p-6 flex flex-col justify-between text-left premium-hover relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent)]" />
+                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="space-y-1 relative z-10">
-                  <span className="text-[9px] uppercase tracking-wider font-bold text-wood-dark/70">Tek Tıkla Ulaşın</span>
-                  <h3 className="font-serif text-lg font-bold">Rezervasyon & Sipariş</h3>
+                  <span className="text-[9px] uppercase tracking-wider font-bold text-white/80">Tek Tıkla Ulaşın</span>
+                  <h3 className="font-serif text-lg font-bold text-white">Masa Rezervasyonu</h3>
                   <a
                     href={`tel:${RESTORAN_BILGILERI.phoneRaw}`}
                     className="text-base font-extrabold block hover:underline"
@@ -209,7 +215,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="font-serif text-2xl font-bold">Misafirlerimizin Gözünden Biz</h3>
                   <p className="text-xs text-muted leading-relaxed">
-                    "Etiler'deki en iyi kelle paça çorbası ve zırh kebabı burada. Ortamın Anadolu esintili koyu şık ahşap konsepti ve personelin olağanüstü misafirperverliği premium düzeyde."
+                    "Etiler'deki en iyi kelle paça çorbası ve zırh kebabı burada. Ortamın Ege esintili aydınlık ve son derece şık konsepti ve personelin olağanüstü misafirperverliği premium düzeyde."
                   </p>
                 </div>
                 <div className="shrink-0 flex flex-col items-center md:items-end justify-center">
@@ -217,11 +223,11 @@ export default function HomePage() {
                     href={RESTORAN_BILGILERI.mapsLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-wood-dark text-stone-cream dark:bg-stone-cream dark:text-wood-dark px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:scale-105 transition-all duration-300 focus:outline-none"
+                    className="inline-flex items-center space-x-2 bg-accent text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover hover:scale-105 transition-all duration-300 focus:outline-none cursor-pointer"
                     aria-label="Google Haritalar'da tüm yorumları gör"
                   >
                     <span>Google'da İnceleyin</span>
-                    <ArrowUpRight className="w-4 h-4 text-accent" />
+                    <ArrowUpRight className="w-4 h-4 text-white" />
                   </a>
                   <span className="text-[10px] text-muted mt-2">1,250+ Google Değerlendirmesi</span>
                 </div>

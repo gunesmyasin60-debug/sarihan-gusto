@@ -106,7 +106,7 @@ export default function MenuPage() {
                       aria-selected={isActive}
                       className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${
                         isActive
-                          ? "bg-accent text-wood-dark shadow-lg shadow-accent/15"
+                          ? "bg-accent text-white shadow-lg shadow-accent/15"
                           : "bg-card border border-card-border text-foreground hover:border-accent hover:text-accent"
                       }`}
                     >
@@ -159,7 +159,7 @@ export default function MenuPage() {
                   >
                     {/* Alerjen Bildirimi Varsa Üstte Göster */}
                     {item.allergens.length > 0 && (
-                      <div className="absolute top-8 left-8 z-10 flex items-center space-x-1.5 bg-wood-dark/70 backdrop-blur-sm border border-accent/25 px-2.5 py-1 rounded-full text-[10px] font-bold text-accent">
+                      <div className="absolute top-8 left-8 z-10 flex items-center space-x-1.5 bg-background/95 border border-accent/20 px-2.5 py-1 rounded-full text-[10px] font-bold text-accent shadow-sm">
                         <ShieldAlert className="w-3.5 h-3.5" />
                         <span>{item.allergens.join(", ")}</span>
                       </div>
@@ -169,9 +169,9 @@ export default function MenuPage() {
                       {/* Kart Görseli Alanı */}
                       <div className="aspect-[4/3] w-full rounded-2xl overflow-hidden border border-card-border relative bg-[#1C1511]">
                         {/* Fallback/Açılış gradyanı ve alev ikonu */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center text-accent/20 p-6 text-center bg-gradient-to-tr from-wood-dark to-wood-amber">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-accent/30 p-6 text-center bg-gradient-to-tr from-background to-card-border/60">
                           <Flame className="w-12 h-12 mb-2 animate-pulse" />
-                          <span className="text-[10px] uppercase tracking-widest font-bold text-stone-cream/40">{item.nameEn}</span>
+                          <span className="text-[10px] uppercase tracking-widest font-bold text-muted/60">{item.nameEn}</span>
                         </div>
 
                         {item.image && (
@@ -209,7 +209,7 @@ export default function MenuPage() {
                       </span>
                       <Link
                         href="/rezervasyon"
-                        className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-accent/10 border border-accent/20 text-accent hover:bg-accent hover:text-wood-dark transition-all duration-300 focus:outline-none"
+                        className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover hover:scale-102 transition-all duration-300 focus:outline-none"
                       >
                         Masa Ayır
                       </Link>

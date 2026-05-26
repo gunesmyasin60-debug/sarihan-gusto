@@ -111,11 +111,10 @@ export default function ContactPage() {
               {/* GOOGLE MAPS FACADE (Performans Odaklı Harita Görseli) */}
               <div className="bg-card border border-card-border rounded-3xl overflow-hidden relative group shadow-lg">
                 {/* Soyut Harita Temsili Arka Planı */}
-                <div className="aspect-[16/9] w-full bg-gradient-to-tr from-wood-dark to-wood-amber flex flex-col items-center justify-center p-8 text-center relative group-hover:scale-[1.01] transition-transform duration-500">
-                  <div className="absolute inset-0 bg-wood-dark/40" />
+                <div className="aspect-[16/9] w-full bg-gradient-to-tr from-background to-card-border/60 flex flex-col items-center justify-center p-8 text-center relative group-hover:scale-[1.01] transition-transform duration-500">
                   <MapPin className="w-12 h-12 text-accent mb-3 relative z-10 animate-bounce" />
-                  <h3 className="font-serif text-xl font-bold text-stone-light relative z-10">Sarıhan Gusto Etiler</h3>
-                  <p className="text-xs text-stone-cream/70 mt-1 relative z-10">Nisbetiye Caddesi No:109</p>
+                  <h3 className="font-serif text-xl font-bold text-foreground relative z-10">Sarıhan Gusto Etiler</h3>
+                  <p className="text-xs text-muted mt-1 relative z-10">Nisbetiye Caddesi No:109</p>
                 </div>
                 
                 {/* Yol Tarifi Al Butonu (One-Tap Navigation Trigger) */}
@@ -125,10 +124,10 @@ export default function ContactPage() {
                     href={RESTORAN_BILGILERI.mapsLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-accent text-wood-dark px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover transition-all duration-300 focus:outline-none"
+                    className="inline-flex items-center space-x-2 bg-accent text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover transition-all duration-300 focus:outline-none"
                     aria-label="Google Haritalar'da yol tarifi alın"
                   >
-                    <Navigation className="w-3.5 h-3.5 fill-wood-dark" />
+                    <Navigation className="w-3.5 h-3.5 fill-white text-white" />
                     <span>Yol Tarifi Al</span>
                   </a>
                 </div>
@@ -155,7 +154,7 @@ export default function ContactPage() {
                     </p>
                     <button
                       onClick={() => setSubmitStatus("idle")}
-                      className="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover cursor-pointer"
+                      className="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover cursor-pointer"
                     >
                       Kapat
                     </button>
@@ -224,7 +223,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={submitStatus === "loading"}
-                  className="w-full py-3.5 bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.01] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md shadow-accent/10 flex items-center justify-center space-x-2 focus:outline-none"
+                  className="w-full py-3.5 bg-accent text-white hover:bg-brand-gold-hover hover:scale-[1.01] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md shadow-accent/10 flex items-center justify-center space-x-2 focus:outline-none"
                 >
                   {submitStatus === "loading" ? (
                     <>

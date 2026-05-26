@@ -218,26 +218,24 @@ export default function AdminPage() {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Vercel Demosunda Görsel Dosya Yüklemeyi Simüle Et
+    // Vercel Demosunda Gerçek Görsel Yüklemeyi FileReader ile Simüle Et (Base64)
     if (isVercelDemo) {
       setUploadingImage(true);
-      setTimeout(() => {
-        const demoImages = [
-          "/images/menu/iskembe.webp",
-          "/images/menu/kellepaca.webp",
-          "/images/menu/adana.webp",
-          "/images/menu/alinazik.webp",
-          "/images/menu/humus.webp",
-          "/images/menu/haydari.webp",
-          "/images/menu/katmer.webp",
-          "/images/menu/sutlac.webp",
-          "/images/menu/ayran.webp"
-        ];
-        const randomImage = demoImages[Math.floor(Math.random() * demoImages.length)];
-        setFormImage(randomImage);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (typeof reader.result === "string") {
+          setFormImage(reader.result);
+          showToast("Özel görseliniz başarıyla yüklenip belleğe kaydedildi! (Demo Modu)", "success");
+        } else {
+          showToast("Görsel okuma hatası.", "error");
+        }
         setUploadingImage(false);
-        showToast("Görsel başarıyla simüle edilerek yüklendi! (Demo Modu)", "success");
-      }, 1000);
+      };
+      reader.onerror = () => {
+        showToast("Dosya okunamadı.", "error");
+        setUploadingImage(false);
+      };
+      reader.readAsDataURL(file);
       return;
     }
 

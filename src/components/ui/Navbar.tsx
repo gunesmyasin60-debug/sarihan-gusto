@@ -111,7 +111,7 @@ export default function Navbar() {
 
             <Link
               href="/rezervasyon"
-              className="inline-flex items-center justify-center px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.02] shadow-md shadow-accent/10 transition-all duration-300 focus:outline-none"
+              className="inline-flex items-center justify-center px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover hover:scale-[1.02] shadow-md shadow-accent/10 transition-all duration-300 focus:outline-none"
             >
               {lang === "tr" ? "Masa Ayır" : "Book Table"}
             </Link>
@@ -171,7 +171,7 @@ export default function Navbar() {
                 <Link
                   href="/rezervasyon"
                   onClick={() => setIsOpen(false)}
-                  className="px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover transition-all duration-300"
+                  className="px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover transition-all duration-300"
                 >
                   {lang === "tr" ? "Masa Ayır" : "Book Table"}
                 </Link>

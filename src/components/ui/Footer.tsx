@@ -9,20 +9,20 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-wood-dark text-stone-cream border-t border-wood-amber pt-16 pb-8" aria-label="Sayfa Altlığı">
+    <footer className="bg-card text-foreground border-t border-card-border pt-16 pb-8" aria-label="Sayfa Altlığı">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Sütun 1: Marka Tanıtım */}
-          <div className="space-y-4">
+          <div className="space-y-4 text-left">
             <Link href="/" className="flex flex-col items-start focus:outline-none">
               <span className="font-serif text-2xl font-bold tracking-wider text-accent">
                 SARIHAN
               </span>
-              <span className="text-[10px] tracking-[0.25em] text-stone-cream/70 -mt-1 uppercase">
+              <span className="text-[10px] tracking-[0.25em] text-foreground/70 -mt-1 uppercase">
                 Gusto
               </span>
             </Link>
-            <p className="text-sm text-stone-cream/70 leading-relaxed">
+            <p className="text-sm text-muted leading-relaxed">
               Nisbetiye Caddesi'nde, çeyrek asırlık gelenek ve modern şef dokunuşlarıyla hazırlanan gurme lezzetleri, Anadolu sıcaklığıyla harmanlayıp premium standartlarda sunuyoruz.
             </p>
             <div className="flex items-center space-x-2 text-accent text-xs font-semibold uppercase tracking-wider">
@@ -32,9 +32,9 @@ export default function Footer() {
           </div>
 
           {/* Sütun 2: Gezinme (Linkler) */}
-          <div>
+          <div className="text-left">
             <h3 className="font-serif text-lg font-bold text-accent mb-4">Hızlı Menü</h3>
-            <ul className="space-y-2 text-sm text-stone-cream/80" aria-label="Alt Bilgi Gezinme Menüsü">
+            <ul className="space-y-2 text-sm text-foreground/80" aria-label="Alt Bilgi Gezinme Menüsü">
               <li>
                 <Link href="/" className="hover:text-accent transition-colors duration-300">Anasayfa</Link>
               </li>
@@ -54,9 +54,9 @@ export default function Footer() {
           </div>
 
           {/* Sütun 3: İletişim Bilgileri */}
-          <div>
-            <h3 className="font-serif text-lg font-bold text-accent mb-4">Rezervasyon & İletişim</h3>
-            <ul className="space-y-3 text-sm text-stone-cream/80" aria-label="İletişim ve Adres Bilgileri">
+          <div className="text-left">
+            <h3 className="font-serif text-lg font-bold text-accent mb-4">Masa Rezervasyonu</h3>
+            <ul className="space-y-3 text-sm text-foreground/80" aria-label="İletişim ve Adres Bilgileri">
               <li className="flex items-start space-x-2">
                 <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                 <a
@@ -93,10 +93,10 @@ export default function Footer() {
           </div>
 
           {/* Sütun 4: Çalışma Saatleri & Sosyal Medya */}
-          <div className="space-y-4">
+          <div className="space-y-4 text-left">
             <div>
               <h3 className="font-serif text-lg font-bold text-accent mb-2">Çalışma Saatleri</h3>
-              <p className="text-xs text-stone-cream/70 leading-relaxed">
+              <p className="text-xs text-muted leading-relaxed">
                 Hafta içi: 08:00 - 02:00<br/>
                 Hafta sonu (Cuma-Cmt): 08:00 - 04:00
               </p>
@@ -108,7 +108,7 @@ export default function Footer() {
                   href={RESTORAN_BILGILERI.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-wood-amber flex items-center justify-center text-stone-cream hover:bg-accent hover:text-wood-dark transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Sarıhan Gusto Instagram Sayfası"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -119,7 +119,7 @@ export default function Footer() {
                   href={RESTORAN_BILGILERI.socials.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-wood-amber flex items-center justify-center text-stone-cream hover:bg-accent hover:text-wood-dark transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Sarıhan Gusto Facebook Sayfası"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -130,7 +130,7 @@ export default function Footer() {
                   href={RESTORAN_BILGILERI.socials.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-wood-amber flex items-center justify-center text-stone-cream hover:bg-accent hover:text-wood-dark transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Sarıhan Gusto Twitter Sayfası"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -143,7 +143,7 @@ export default function Footer() {
         </div>
 
         {/* Alt Footer Bölümü */}
-        <div className="border-t border-wood-amber pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-stone-cream/60">
+        <div className="border-t border-card-border pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-muted">
           <p className="mb-4 md:mb-0">
             &copy; {currentYear} <strong>Sarıhan Gusto</strong>. Tüm Hakları Saklıdır.
           </p>

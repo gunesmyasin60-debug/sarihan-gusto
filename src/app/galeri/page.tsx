@@ -1,7 +1,7 @@
 "use client";
 
 // src/app/galeri/page.tsx
-// Galeri Sayfası — Restoranın ambiyansını ve yemeklerini gösteren şık görsel ızgara (Grid).
+// Galeri Sayfası — Restoranın ambiyansını ve yemeklerini gösteren şık editoryal ızgara (Grid).
 // Resimlere tıklandığında açılan, framer-motion ile kaydırma (swipe) destekli tam ekran modal içerir.
 
 import { useState } from "react";
@@ -16,42 +16,42 @@ const GALERI_GÖRSELLERİ = [
     id: "g-1",
     title: "Geleneksel Kelle Paça Demlenmesi",
     category: "lezzetler",
-    icon: <Flame className="w-8 h-8" />,
+    icon: <Flame className="w-6 h-6" />,
     desc: "24 saat kısık ateşte demlenen hakiki saray usulü çorbalarımız.",
   },
   {
     id: "g-2",
     title: "Zırh Kebabının Hazırlanışı",
     category: "mutfak",
-    icon: <Compass className="w-8 h-8" />,
+    icon: <Compass className="w-6 h-6" />,
     desc: "Usta ellerde sıfır metal temasıyla zırh ile kıyılan kuzu kıyması.",
   },
   {
     id: "g-3",
     title: "Doğal Başlangıçlar & Mezeler",
     category: "lezzetler",
-    icon: <Leaf className="w-8 h-8" />,
+    icon: <Leaf className="w-6 h-6" />,
     desc: "Hatay süzme yoğurdu ve yöresel sızma zeytinyağı ile hazırlanan mezelerimiz.",
   },
   {
     id: "g-4",
     title: "Şık ve Sıcak Ambiyansımız",
     category: "mekan",
-    icon: <Coffee className="w-8 h-8" />,
+    icon: <Coffee className="w-6 h-6" />,
     desc: "Anadolu Sıcaklığı konseptinde tasarlanmış şık Etiler şubemiz.",
   },
   {
     id: "g-5",
     title: "Çıtır Fıstıklı Katmer Fırınlanması",
     category: "lezzetler",
-    icon: <Flame className="w-8 h-8" />,
-    desc: "Antep fıstığı ve manda kaymağıyla el açması katmer şöleni.",
+    icon: <Flame className="w-6 h-6" />,
+    desc: "Antep fıstığı ve manda kaymağıyla el açması katmer fırın şöleni.",
   },
   {
     id: "g-6",
     title: "Özel VIP Yemek Odası",
     category: "mekan",
-    icon: <Coffee className="w-8 h-8" />,
+    icon: <Coffee className="w-6 h-6" />,
     desc: "İş toplantılarınız ve özel davetleriniz için tasarlanmış VIP odamız.",
   },
 ];
@@ -90,12 +90,12 @@ export default function GalleryPage() {
             <span className="text-xs uppercase tracking-[0.2em] text-accent font-bold">GÖRSEL ŞÖLEN</span>
             <h1 className="font-serif text-4xl md:text-6xl font-bold">Fotoğraf Galerisi</h1>
             <p className="text-sm text-muted">
-              Sarıhan Gusto Etiler şubemizin otantik tasarımını, mutfaktaki özenli hazırlık süreçlerimizi ve ödüllü lezzetlerimizi inceleyin.
+              Sarıhan Gusto Etiler şubemizin otantik tasarımını, mutfaktaki özenli hazırlık süreçlerimizi ve ödüllü lezzetlerimizi editoryal sunumumuzla inceleyin.
             </p>
           </div>
 
           {/* Kategori Filtresi */}
-          <div className="flex items-center justify-center space-x-2 mb-10 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 md:mx-0">
+          <div className="flex items-center justify-center space-x-2 mb-10 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 md:mx-0" role="tablist" aria-label="Galeri Filtreleri">
             {[
               { id: "all", label: "Tüm Görseller" },
               { id: "lezzetler", label: "Lezzetler" },
@@ -107,9 +107,11 @@ export default function GalleryPage() {
                 <button
                   key={cat.id}
                   onClick={() => setFilter(cat.id)}
-                  className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer focus:outline-none ${
                     isActive
-                      ? "bg-accent text-wood-dark"
+                      ? "bg-accent text-white shadow-lg shadow-accent/15"
                       : "bg-card border border-card-border text-foreground hover:border-accent hover:text-accent"
                   }`}
                 >
@@ -119,7 +121,7 @@ export default function GalleryPage() {
             })}
           </div>
 
-          {/* Görsel Izgarası (Grid) */}
+          {/* Görsel Izgarası (Grid - Premium Editoryal Kartlar) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
               {filteredImages.map((img, index) => (
@@ -131,33 +133,40 @@ export default function GalleryPage() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4 }}
                   onClick={() => setSelectedImageIndex(index)}
-                  className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-card-border bg-gradient-to-tr from-wood-dark to-wood-amber cursor-pointer premium-hover"
+                  className="group relative aspect-[4/3] rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between items-start transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/5 cursor-pointer premium-hover"
                   role="button"
-                  aria-label={`${img.title} görselini tam ekran görüntüleyin.`}
+                  aria-label={`${img.title} detaylarını görmek için tıklayın.`}
                 >
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-accent/30 p-8 text-center group-hover:scale-105 transition-all duration-500">
+                  {/* İkon Bölümü */}
+                  <div className="w-14 h-14 rounded-2xl bg-background border border-card-border flex items-center justify-center text-accent group-hover:scale-110 transition-transform duration-500">
                     {img.icon}
-                    <h3 className="font-serif text-xl font-bold mt-4 text-stone-light">{img.title}</h3>
-                    <p className="text-[10px] text-stone-cream/70 mt-1 uppercase tracking-widest">{img.category}</p>
                   </div>
-                  <div className="absolute inset-0 bg-wood-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-left">
-                    <span className="text-[9px] uppercase tracking-widest text-accent font-bold">{img.category}</span>
-                    <h4 className="font-serif text-lg font-bold text-stone-light mt-1">{img.title}</h4>
-                    <p className="text-xs text-stone-cream/70 mt-1">{img.desc}</p>
+
+                  {/* Metin İçeriği */}
+                  <div className="text-left w-full mt-4">
+                    <span className="text-[9px] uppercase tracking-widest text-accent font-bold">
+                      {img.category}
+                    </span>
+                    <h3 className="font-serif text-2xl font-bold text-foreground mt-1 leading-tight group-hover:text-accent transition-colors">
+                      {img.title}
+                    </h3>
+                    <p className="text-xs text-muted mt-2 leading-relaxed">
+                      {img.desc}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
           </div>
 
-          {/* Tam Ekran Swipeable Modal */}
+          {/* Tam Ekran Swipeable Modal (Lightbox) */}
           <AnimatePresence>
             {selectedImageIndex !== null && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-50 bg-wood-dark/95 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10"
+                className="fixed inset-0 z-50 bg-[#1E221F]/95 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10"
                 role="dialog"
                 aria-modal="true"
                 aria-label="Görsel Detay Ekranı"
@@ -165,7 +174,7 @@ export default function GalleryPage() {
                 {/* Kapat Butonu */}
                 <button
                   onClick={() => setSelectedImageIndex(null)}
-                  className="absolute top-6 right-6 w-12 h-12 rounded-full bg-wood-amber/55 border border-accent/25 flex items-center justify-center text-stone-cream hover:bg-accent hover:text-wood-dark cursor-pointer transition-all duration-300 z-50 focus:outline-none"
+                  className="absolute top-6 right-6 w-12 h-12 rounded-full bg-card border border-card-border flex items-center justify-center text-foreground hover:text-accent hover:border-accent cursor-pointer transition-all duration-300 z-50 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Galeriyi Kapat"
                 >
                   <X className="w-6 h-6" />
@@ -174,7 +183,7 @@ export default function GalleryPage() {
                 {/* Sol Ok Butonu */}
                 <button
                   onClick={handlePrev}
-                  className="absolute left-4 w-12 h-12 rounded-full bg-wood-amber/55 border border-accent/25 flex items-center justify-center text-stone-cream hover:bg-accent hover:text-wood-dark cursor-pointer transition-all duration-300 z-10 focus:outline-none"
+                  className="absolute left-4 w-12 h-12 rounded-full bg-card border border-card-border flex items-center justify-center text-foreground hover:text-accent hover:border-accent cursor-pointer transition-all duration-300 z-10 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Önceki Görsel"
                 >
                   <ChevronLeft className="w-6 h-6" />
@@ -183,13 +192,13 @@ export default function GalleryPage() {
                 {/* Sağ Ok Butonu */}
                 <button
                   onClick={handleNext}
-                  className="absolute right-4 w-12 h-12 rounded-full bg-wood-amber/55 border border-accent/25 flex items-center justify-center text-stone-cream hover:bg-accent hover:text-wood-dark cursor-pointer transition-all duration-300 z-10 focus:outline-none"
+                  className="absolute right-4 w-12 h-12 rounded-full bg-card border border-card-border flex items-center justify-center text-foreground hover:text-accent hover:border-accent cursor-pointer transition-all duration-300 z-10 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Sonraki Görsel"
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>
 
-                {/* Tam Ekran Kart / Görsel Detayı (Framer Motion Swipe Desteği) */}
+                {/* Tam Ekran Kart / Görsel Detayı */}
                 <motion.div
                   key={selectedImageIndex}
                   drag="x"
@@ -206,28 +215,31 @@ export default function GalleryPage() {
                   animate={{ x: 0, opacity: 1, scale: 1 }}
                   exit={{ x: -100, opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full max-w-3xl aspect-[4/3] rounded-3xl bg-gradient-to-tr from-wood-dark to-wood-amber border border-accent/25 flex flex-col justify-end p-8 text-left relative overflow-hidden select-none cursor-grab active:cursor-grabbing shadow-2xl"
+                  className="w-full max-w-3xl aspect-[4/3] rounded-3xl bg-card border border-card-border flex flex-col justify-end p-8 text-left relative overflow-hidden select-none cursor-grab active:cursor-grabbing shadow-2xl"
                 >
-                  {/* Büyük İkon */}
-                  <div className="absolute inset-0 flex items-center justify-center text-accent/5 opacity-40">
-                    {filteredImages[selectedImageIndex].icon}
+                  {/* Büyük İkon Arkaplanı */}
+                  <div className="absolute inset-0 flex items-center justify-center text-accent/5 opacity-30">
+                    <div className="scale-[4]">
+                      {filteredImages[selectedImageIndex].icon}
+                    </div>
                   </div>
 
-                  <div className="relative z-10 space-y-2 bg-wood-dark/80 backdrop-blur-md p-6 rounded-2xl border border-wood-amber">
+                  {/* Detay Paneli */}
+                  <div className="relative z-10 space-y-2 bg-background/90 backdrop-blur-md p-6 rounded-2xl border border-card-border shadow-lg">
                     <span className="text-xs uppercase tracking-widest text-accent font-bold">
                       {filteredImages[selectedImageIndex].category}
                     </span>
-                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-stone-light">
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground">
                       {filteredImages[selectedImageIndex].title}
                     </h3>
-                    <p className="text-sm text-stone-cream/80 leading-relaxed">
+                    <p className="text-sm text-muted leading-relaxed">
                       {filteredImages[selectedImageIndex].desc}
                     </p>
                   </div>
                 </motion.div>
 
                 {/* Swipe İpucu */}
-                <p className="text-stone-cream/50 text-[10px] uppercase tracking-widest mt-6 animate-pulse select-none">
+                <p className="text-muted text-[10px] uppercase tracking-widest mt-6 animate-pulse select-none font-semibold">
                   Mobilde kaydırarak (swipe) veya oklara tıklayarak gezinebilirsiniz.
                 </p>
 

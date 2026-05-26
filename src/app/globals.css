@@ -33,13 +33,13 @@
 }
 
 .dark {
-  --background: #292C2A;
-  --foreground: #F6F6F4;
-  --card-bg: #323633;
-  --card-border: #424844;
+  --background: #222623;
+  --foreground: #E4E7E4;
+  --card-bg: #2B302C;
+  --card-border: #3A403C;
   --accent: #8FAF6C;
-  --muted: #8F9692;
-  --input-bg: #323633;
+  --muted: #8A918C;
+  --input-bg: #2B302C;
 }
 
 @theme inline {

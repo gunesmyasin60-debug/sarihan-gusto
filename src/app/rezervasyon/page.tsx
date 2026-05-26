@@ -109,9 +109,9 @@ export default function ReservationPage() {
           {/* Rezervasyon Başlık */}
           <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
             <span className="text-xs uppercase tracking-[0.2em] text-accent font-bold">MASA REZERVASYONU</span>
-            <h1 className="font-serif text-4xl md:text-6xl font-bold">Rezervasyon Talebi</h1>
+            <h1 className="font-serif text-4xl md:text-6xl font-bold">Masa Ayırma Talebi</h1>
             <p className="text-sm text-muted">
-              Sarıhan Gusto Etiler şubemizde unutulmaz bir gurme deneyim yaşamak için masanızı anında ayırtın. (Otomatik onay sistemi aktiftir).
+              Sarıhan Gusto Etiler şubemizde unutulmaz bir gurme deneyim yaşamak için masanızı anında ayırtın. Sizin için en güzel masamızı hazırlıyoruz.
             </p>
           </div>
 
@@ -149,7 +149,7 @@ export default function ReservationPage() {
                     </button>
                     <a
                       href={`tel:${RESTORAN_BILGILERI.phoneRaw}`}
-                      className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover"
+                      className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover"
                     >
                       Bizi Arayın
                     </a>
@@ -357,7 +357,7 @@ export default function ReservationPage() {
                 <button
                   type="submit"
                   disabled={submitStatus.status === "loading"}
-                  className="w-full px-8 py-4 bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.01] rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-accent/15 cursor-pointer flex items-center justify-center space-x-2 focus:outline-none"
+                  className="w-full px-8 py-4 bg-accent text-white hover:bg-brand-gold-hover hover:scale-[1.01] rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-accent/15 cursor-pointer flex items-center justify-center space-x-2 focus:outline-none"
                 >
                   {submitStatus.status === "loading" ? (
                     <>
@@ -365,7 +365,7 @@ export default function ReservationPage() {
                       <span>Gönderiliyor...</span>
                     </>
                   ) : (
-                    <span>Rezervasyon Talebi Gönder</span>
+                    <span>Masamı Ayır</span>
                   )}
                 </button>
               </div>
