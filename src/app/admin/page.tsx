@@ -297,20 +297,30 @@ export default function AdminPage() {
 
     // 1. VERCEL DEMO MODU KAYDI
     if (isVercelDemo) {
-      let updatedMenu = [...menuItems];
-      if (editingItem) {
-        updatedMenu = updatedMenu.map(i => i.id === editingItem.id ? newItemPayload : i);
-      } else {
-        updatedMenu.push(newItemPayload);
+      try {
+        let updatedMenu = [...menuItems];
+        if (editingItem) {
+          updatedMenu = updatedMenu.map(i => i.id === editingItem.id ? newItemPayload : i);
+        } else {
+          updatedMenu.push(newItemPayload);
+        }
+        setMenuItems(updatedMenu);
+        localStorage.setItem("sarihan_menu_data", JSON.stringify(updatedMenu));
+        setIsModalOpen(false);
+        showToast(
+          editingItem ? "Yemek bilgileri başarıyla güncellendi (Demo Belleği)." : "Yeni yemek başarıyla menüye eklendi (Demo Belleği).",
+          "success"
+        );
+      } catch (err: any) {
+        console.error("Demo kaydetme hatası:", err);
+        if (err.name === "QuotaExceededError" || err.message?.includes("quota") || err.message?.includes("exceeded")) {
+          showToast("Görsel boyutu çok büyük olduğu için tarayıcı hafıza limitini (5MB) aştı. Lütfen daha küçük veya sıkıştırılmış bir görsel tercih edin.", "error");
+        } else {
+          showToast("Demo kaydı sırasında bir hata oluştu: " + err.message, "error");
+        }
+      } finally {
+        setFormLoading(false);
       }
-      setMenuItems(updatedMenu);
-      localStorage.setItem("sarihan_menu_data", JSON.stringify(updatedMenu));
-      setFormLoading(false);
-      setIsModalOpen(false);
-      showToast(
-        editingItem ? "Yemek bilgileri başarıyla güncellendi (Demo Belleği)." : "Yeni yemek başarıyla menüye eklendi (Demo Belleği).",
-        "success"
-      );
       return;
     }
 
