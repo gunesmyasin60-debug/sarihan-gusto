@@ -94,7 +94,7 @@ export default function AboutPage() {
               <div className="relative z-10 pt-2">
                 <Link
                   href="/rezervasyon"
-                  className="inline-flex items-center space-x-2 bg-wood-dark text-stone-light px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:scale-105 transition-all duration-300 shadow-xl shadow-wood-dark/25"
+                  className="inline-flex items-center space-x-2 bg-wood-dark text-foreground px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:scale-105 transition-all duration-300 shadow-xl shadow-wood-dark/25"
                 >
                   <span>Masa Ayır</span>
                   <ArrowRight className="w-4 h-4 text-accent" />

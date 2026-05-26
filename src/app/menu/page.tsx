@@ -106,7 +106,7 @@ export default function MenuPage() {
                       aria-selected={isActive}
                       className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${
                         isActive
-                          ? "bg-accent text-white shadow-lg shadow-accent/15"
+                          ? "bg-accent text-wood-dark shadow-lg shadow-accent/15"
                           : "bg-card border border-card-border text-foreground hover:border-accent hover:text-accent"
                       }`}
                     >
@@ -209,7 +209,7 @@ export default function MenuPage() {
                       </span>
                       <Link
                         href="/rezervasyon"
-                        className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover hover:scale-102 transition-all duration-300 focus:outline-none"
+                        className="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-102 transition-all duration-300 focus:outline-none"
                       >
                         Masa Ayır
                       </Link>

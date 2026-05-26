@@ -566,9 +566,9 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full py-4.5 rounded-2xl bg-accent text-white hover:bg-accent/90 transition-colors shadow-sm text-[#FFFFFF] font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/10 hover:shadow-accent/10 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center space-x-2"
+              className="w-full py-4.5 rounded-2xl bg-accent text-wood-dark hover:bg-brand-gold-hover transition-colors shadow-sm font-bold text-xs uppercase tracking-widest shadow-lg shadow-accent/10 hover:shadow-accent/10 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center space-x-2"
             >
-              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <span>Panel Girişi Yap</span>}
+              {loading ? <Loader2 className="w-4 h-4 animate-spin text-wood-dark" /> : <span>Panel Girişi Yap</span>}
             </button>
           </form>
 
@@ -594,10 +594,10 @@ export default function AdminPage() {
               exit={{ opacity: 0, x: 50, scale: 0.9 }}
               className={`p-4.5 rounded-2xl flex items-center space-x-3.5 shadow-2xl backdrop-blur-md border ${
                 toast.type === "success"
-                  ? "bg-emerald-50/50 border-emerald-200 text-emerald-950"
+                  ? "bg-emerald-900/20 border-emerald-500/30 text-emerald-200"
                   : toast.type === "error"
-                  ? "bg-red-50/50 border-red-200 text-red-950"
-                  : "bg-white border-card-border text-foreground"
+                  ? "bg-red-900/20 border-red-500/30 text-red-200"
+                  : "bg-card border-card-border text-foreground"
               }`}
             >
               <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 bg-white/45 shadow-sm">
@@ -635,7 +635,7 @@ export default function AdminPage() {
               href="/menu"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1.5 px-4 py-2.5 border border-accent/30 text-accent rounded-xl text-xs font-bold hover:bg-accent/5 transition-all cursor-pointer bg-white active:scale-95 shadow-sm"
+              className="flex items-center space-x-1.5 px-4 py-2.5 border border-accent/30 text-accent rounded-xl text-xs font-bold hover:bg-accent/5 transition-all cursor-pointer bg-background active:scale-95 shadow-sm"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               <span>Müşteri Menüsü</span>
@@ -643,7 +643,7 @@ export default function AdminPage() {
 
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-1.5 px-4 py-2.5 border border-stone-250 rounded-xl text-xs font-bold text-foreground/75 hover:border-red-500/30 hover:text-red-650 hover:bg-red-50/50/50 transition-all cursor-pointer bg-card shadow-sm"
+              className="flex items-center space-x-1.5 px-4 py-2.5 border border-card-border rounded-xl text-xs font-bold text-foreground/75 hover:border-red-550/30 hover:text-red-400 hover:bg-red-950/20 transition-all cursor-pointer bg-card shadow-sm"
             >
               <LogOut className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Güvenli Çıkış</span>
@@ -673,7 +673,7 @@ export default function AdminPage() {
             </div>
             <button
               onClick={resetDemoData}
-              className="px-4 py-2 bg-background border border-card-border hover:bg-stone-100 text-accent text-xs font-bold uppercase tracking-wider rounded-xl cursor-pointer transition-all shrink-0 active:scale-95 text-center shadow-inner"
+              className="px-4 py-2 bg-background border border-card-border hover:bg-card text-accent text-xs font-bold uppercase tracking-wider rounded-xl cursor-pointer transition-all shrink-0 active:scale-95 text-center shadow-inner"
             >
               Demo Veriyi Sıfırla
             </button>
@@ -754,9 +754,9 @@ export default function AdminPage() {
 
           <button
             onClick={() => openModal(null)}
-            className="bg-accent text-white hover:bg-accent/90 transition-colors shadow-sm text-[#FFFFFF] px-7 py-3.5 rounded-2xl font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-accent/10 hover:shadow-accent/10 flex items-center justify-center space-x-2 cursor-pointer transition-all active:scale-95 shrink-0"
+            className="bg-accent text-wood-dark hover:bg-brand-gold-hover transition-colors shadow-sm px-7 py-3.5 rounded-2xl font-extrabold text-xs uppercase tracking-widest shadow-lg shadow-accent/10 hover:shadow-accent/10 flex items-center justify-center space-x-2 cursor-pointer transition-all active:scale-95 shrink-0"
           >
-            <Plus className="w-4.5 h-4.5" />
+            <Plus className="w-4.5 h-4.5 text-wood-dark" />
             <span>Yeni Lezzet Ekle</span>
           </button>
         </div>
@@ -901,14 +901,14 @@ export default function AdminPage() {
                         <div className="flex items-center justify-center space-x-2.5">
                           <button
                             onClick={() => openModal(item)}
-                            className="p-2.5 border border-stone-200 rounded-xl text-foreground/75 hover:border-accent/30 hover:text-accent hover:bg-background bg-white cursor-pointer transition-all active:scale-95"
+                            className="p-2.5 border border-card-border rounded-xl text-foreground/75 hover:border-accent/30 hover:text-accent hover:bg-background bg-card cursor-pointer transition-all active:scale-95"
                             title="Yemek Bilgilerini Düzenle"
                           >
                             <Edit2 className="w-4 h-4" />
                           </button>
                           <button
                             onClick={() => deleteItem(item.id)}
-                            className="p-2.5 border border-stone-200 rounded-xl text-foreground/75 hover:border-red-400 hover:text-red-600 hover:bg-red-50/50 bg-white cursor-pointer transition-all active:scale-95"
+                            className="p-2.5 border border-card-border rounded-xl text-foreground/75 hover:border-red-400/40 hover:text-red-400 hover:bg-red-950/20 bg-card cursor-pointer transition-all active:scale-95"
                             title="Yemeği Menüden Sil"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -963,7 +963,7 @@ export default function AdminPage() {
                 </div>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="p-2 border border-stone-200 rounded-xl text-foreground/60 hover:text-foreground hover:border-stone-400 transition-all cursor-pointer bg-white"
+                  className="p-2 border border-card-border rounded-xl text-foreground/60 hover:text-foreground hover:border-accent transition-all cursor-pointer bg-background"
                 >
                   <X className="w-4.5 h-4.5" />
                 </button>
@@ -1056,12 +1056,12 @@ export default function AdminPage() {
                 <div className="space-y-2.5">
                   <label className="text-[10px] font-extrabold uppercase tracking-widest text-foreground/80">Gurme Yemek Görseli</label>
                   <div className="flex flex-col sm:flex-row gap-5 items-center bg-background p-5 border border-card-border rounded-2xl">
-                    <div className="w-28 h-20 rounded-xl overflow-hidden border border-card-border bg-white flex items-center justify-center relative shrink-0">
+                    <div className="w-28 h-20 rounded-xl overflow-hidden border border-card-border bg-card flex items-center justify-center relative shrink-0">
                       {formImage ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={formImage} alt="Önizleme" className="w-full h-full object-cover animate-fade-in" />
                       ) : (
-                        <ChefHat className="w-7 h-7 text-stone-300" />
+                        <ChefHat className="w-7 h-7 text-stone-655" />
                       )}
                     </div>
                     
@@ -1095,7 +1095,7 @@ export default function AdminPage() {
                           value={formImage}
                           onChange={(e) => setFormImage(e.target.value)}
                           placeholder="Dosya yolu veya görsel URL (Örn: /images/menu/iskembe.webp)"
-                          className="bg-white border border-card-border rounded-xl py-2.5 px-3.5 text-xs text-foreground/75 focus:outline-none flex-grow font-bold"
+                          className="bg-background border border-card-border rounded-xl py-2.5 px-3.5 text-xs text-foreground/75 focus:outline-none flex-grow font-bold"
                         />
                       </div>
                       <p className="text-[10px] text-foreground/60 font-bold">
@@ -1118,8 +1118,8 @@ export default function AdminPage() {
                           onClick={() => toggleAllergen(a)}
                           className={`px-3.5 py-2 rounded-xl border text-[11px] font-bold transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-red-50/50 border-red-300 text-red-700 shadow-sm animate-pulse"
-                              : "bg-white border-stone-200 text-foreground/60 hover:border-stone-400"
+                              ? "bg-red-950/20 border-red-500/30 text-red-400 shadow-sm animate-pulse"
+                              : "bg-background border-card-border text-foreground/60 hover:border-accent hover:text-accent"
                           }`}
                         >
                           {a}
@@ -1155,20 +1155,20 @@ export default function AdminPage() {
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="px-6 py-3.5 border border-stone-250 rounded-xl text-xs font-bold uppercase tracking-wider text-foreground/60 hover:border-stone-400 hover:text-foreground cursor-pointer transition-all bg-white"
+                    className="px-6 py-3.5 border border-card-border rounded-xl text-xs font-bold uppercase tracking-wider text-foreground/60 hover:border-accent hover:text-foreground cursor-pointer transition-all bg-background"
                   >
                     Kapat
                   </button>
                   <button
                     type="submit"
                     disabled={formLoading || uploadingImage}
-                    className="px-7 py-3.5 rounded-xl bg-accent text-white hover:bg-accent/90 transition-colors shadow-sm text-[#FFFFFF] font-bold text-xs uppercase tracking-wider shadow-lg shadow-accent/10 hover:shadow-accent/10 flex items-center justify-center space-x-1.5 cursor-pointer disabled:opacity-50"
+                    className="px-7 py-3.5 rounded-xl bg-accent text-wood-dark hover:bg-brand-gold-hover transition-colors shadow-sm font-bold text-xs uppercase tracking-wider shadow-lg shadow-accent/10 hover:shadow-accent/10 flex items-center justify-center space-x-1.5 cursor-pointer disabled:opacity-50"
                   >
                     {formLoading ? (
-                      <Loader2 className="w-4.5 h-4.5 animate-spin text-white" />
+                      <Loader2 className="w-4.5 h-4.5 animate-spin text-wood-dark" />
                     ) : (
                       <>
-                        <Check className="w-4.5 h-4.5" />
+                        <Check className="w-4.5 h-4.5 text-wood-dark" />
                         <span>Gurme Lezzeti Kaydet</span>
                       </>
                     )}

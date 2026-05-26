@@ -124,10 +124,10 @@ export default function ContactPage() {
                     href={RESTORAN_BILGILERI.mapsLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-accent text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover transition-all duration-300 focus:outline-none"
+                    className="inline-flex items-center space-x-2 bg-accent text-wood-dark px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover transition-all duration-300 focus:outline-none"
                     aria-label="Google Haritalar'da yol tarifi alın"
                   >
-                    <Navigation className="w-3.5 h-3.5 fill-white text-white" />
+                    <Navigation className="w-3.5 h-3.5 fill-wood-dark text-wood-dark" />
                     <span>Yol Tarifi Al</span>
                   </a>
                 </div>
@@ -154,7 +154,7 @@ export default function ContactPage() {
                     </p>
                     <button
                       onClick={() => setSubmitStatus("idle")}
-                      className="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover cursor-pointer"
+                      className="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover cursor-pointer"
                     >
                       Kapat
                     </button>
@@ -223,7 +223,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={submitStatus === "loading"}
-                  className="w-full py-3.5 bg-accent text-white hover:bg-brand-gold-hover hover:scale-[1.01] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md shadow-accent/10 flex items-center justify-center space-x-2 focus:outline-none"
+                  className="w-full py-3.5 bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.01] rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md shadow-accent/10 flex items-center justify-center space-x-2 focus:outline-none"
                 >
                   {submitStatus === "loading" ? (
                     <>

@@ -111,7 +111,7 @@ export default function GalleryPage() {
                   aria-selected={isActive}
                   className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer focus:outline-none ${
                     isActive
-                      ? "bg-accent text-white shadow-lg shadow-accent/15"
+                      ? "bg-accent text-wood-dark shadow-lg shadow-accent/15"
                       : "bg-card border border-card-border text-foreground hover:border-accent hover:text-accent"
                   }`}
                 >
@@ -166,7 +166,7 @@ export default function GalleryPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-50 bg-[#1E221F]/95 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10"
+                className="fixed inset-0 z-50 bg-[#181210]/95 backdrop-blur-md flex flex-col items-center justify-center p-4 md:p-10"
                 role="dialog"
                 aria-modal="true"
                 aria-label="Görsel Detay Ekranı"

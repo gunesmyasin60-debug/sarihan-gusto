@@ -71,9 +71,9 @@ export default function HomePage() {
           className="relative min-h-[90vh] flex items-center bg-background overflow-hidden"
           aria-label="Sarıhan Gusto Karşılama Alanı"
         >
-          {/* Soyut Anadolu Güneşi Desenli Arka Plan Katmanı (Adaçayı Rengi) */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(74,107,86,0.06),transparent_60%)] z-1" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(244,245,244,0.1),rgba(244,245,244,0.3))] z-1" />
+          {/* Soyut Anadolu Güneşi Desenli Arka Plan Katmanı (Bal Altını Rengi) */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(217,156,61,0.15),transparent_60%)] z-1" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(24,18,16,0.3),rgba(24,18,16,0.9))] z-1" />
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 md:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Sol: Metin İçeriği */}
@@ -92,7 +92,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
                 <Link
                   href="/rezervasyon"
-                  className="px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover hover:scale-[1.02] shadow-lg shadow-accent/15 transition-all duration-300 text-center cursor-pointer"
+                  className="px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.02] shadow-lg shadow-accent/15 transition-all duration-300 text-center cursor-pointer"
                   aria-label="Hızlı rezervasyon yapın"
                 >
                   Masa Ayır
@@ -186,14 +186,14 @@ export default function HomePage() {
               </div>
 
               {/* Kart 3: Telefon & Rezervasyon İletişim (Adaçayı Yeşili ve Beyaz Yazı ile Premium Uyum) */}
-              <div className="rounded-3xl bg-accent text-white p-6 flex flex-col justify-between text-left premium-hover relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent)]" />
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white">
+              <div className="rounded-3xl bg-accent text-wood-dark p-6 flex flex-col justify-between text-left premium-hover relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(24,18,16,0.08),transparent)]" />
+                <div className="w-10 h-10 rounded-full bg-wood-dark/10 flex items-center justify-center text-wood-dark">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="space-y-1 relative z-10">
-                  <span className="text-[9px] uppercase tracking-wider font-bold text-white/80">Tek Tıkla Ulaşın</span>
-                  <h3 className="font-serif text-lg font-bold text-white">Masa Rezervasyonu</h3>
+                  <span className="text-[9px] uppercase tracking-wider font-bold text-wood-dark/80">Tek Tıkla Ulaşın</span>
+                  <h3 className="font-serif text-lg font-bold text-wood-dark">Masa Rezervasyonu</h3>
                   <a
                     href={`tel:${RESTORAN_BILGILERI.phoneRaw}`}
                     className="text-base font-extrabold block hover:underline"
@@ -223,11 +223,11 @@ export default function HomePage() {
                     href={RESTORAN_BILGILERI.mapsLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-accent text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover hover:scale-105 transition-all duration-300 focus:outline-none cursor-pointer"
+                    className="inline-flex items-center space-x-2 bg-accent text-wood-dark px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover hover:scale-105 transition-all duration-300 focus:outline-none cursor-pointer"
                     aria-label="Google Haritalar'da tüm yorumları gör"
                   >
                     <span>Google'da İnceleyin</span>
-                    <ArrowUpRight className="w-4 h-4 text-white" />
+                    <ArrowUpRight className="w-4 h-4 text-wood-dark" />
                   </a>
                   <span className="text-[10px] text-muted mt-2">1,250+ Google Değerlendirmesi</span>
                 </div>

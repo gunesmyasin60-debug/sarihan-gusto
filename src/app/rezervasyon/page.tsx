@@ -149,7 +149,7 @@ export default function ReservationPage() {
                     </button>
                     <a
                       href={`tel:${RESTORAN_BILGILERI.phoneRaw}`}
-                      className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-white hover:bg-brand-gold-hover"
+                      className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover"
                     >
                       Bizi Arayın
                     </a>
@@ -357,7 +357,7 @@ export default function ReservationPage() {
                 <button
                   type="submit"
                   disabled={submitStatus.status === "loading"}
-                  className="w-full px-8 py-4 bg-accent text-white hover:bg-brand-gold-hover hover:scale-[1.01] rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-accent/15 cursor-pointer flex items-center justify-center space-x-2 focus:outline-none"
+                  className="w-full px-8 py-4 bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.01] rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-accent/15 cursor-pointer flex items-center justify-center space-x-2 focus:outline-none"
                 >
                   {submitStatus.status === "loading" ? (
                     <>

@@ -108,7 +108,7 @@ export default function Footer() {
                   href={RESTORAN_BILGILERI.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-wood-dark transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Sarıhan Gusto Instagram Sayfası"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -119,7 +119,7 @@ export default function Footer() {
                   href={RESTORAN_BILGILERI.socials.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-wood-dark transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Sarıhan Gusto Facebook Sayfası"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -130,7 +130,7 @@ export default function Footer() {
                   href={RESTORAN_BILGILERI.socials.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="w-9 h-9 rounded-full bg-background border border-card-border flex items-center justify-center text-foreground hover:bg-accent hover:text-wood-dark transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Sarıhan Gusto Twitter Sayfası"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
