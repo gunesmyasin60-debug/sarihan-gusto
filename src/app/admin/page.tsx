@@ -101,9 +101,27 @@ export default function AdminPage() {
         headers: { "x-admin-password": pwdToTest },
       });
       if (res.ok) {
+        const json = await res.json();
         setIsAuthenticated(true);
         localStorage.setItem("sarihan_admin_password", pwdToTest);
-        fetchMenu(pwdToTest);
+        
+        if (json.isVercel) {
+          setIsVercelDemo(true);
+        }
+        
+        if (json.success) {
+          const isDemo = window.location.hostname.includes("vercel.app") || window.location.search.includes("demo=true") || json.isVercel;
+          const localData = localStorage.getItem("sarihan_menu_data");
+          if (isDemo && localData) {
+            setMenuItems(JSON.parse(localData));
+          } else {
+            setMenuItems(json.data);
+            if (isDemo) {
+              localStorage.setItem("sarihan_menu_data", JSON.stringify(json.data));
+            }
+          }
+        }
+        setLoading(false);
       } else {
         localStorage.removeItem("sarihan_admin_password");
         setLoading(false);
@@ -157,9 +175,15 @@ export default function AdminPage() {
   const fetchMenu = async (pwd: string) => {
     setLoading(true);
     try {
-      // 1. ADIM: LocalStorage'da demo verisi varsa öncelikle onu yükle
+      const isDemoEnv = typeof window !== "undefined" && (
+        window.location.hostname.includes("vercel.app") || 
+        window.location.search.includes("demo=true") || 
+        isVercelDemo
+      );
+
+      // 1. ADIM: LocalStorage'da demo verisi varsa öncelikle onu yükle (Yalnızca Demo Modunda)
       const localData = localStorage.getItem("sarihan_menu_data");
-      if (localData) {
+      if (isDemoEnv && localData) {
         setMenuItems(JSON.parse(localData));
         setLoading(false);
         return;
@@ -172,7 +196,10 @@ export default function AdminPage() {
       const json = await res.json();
       if (json.success) {
         setMenuItems(json.data);
-        const isDemo = window.location.hostname.includes("vercel.app") || window.location.search.includes("demo=true");
+        if (json.isVercel) {
+          setIsVercelDemo(true);
+        }
+        const isDemo = window.location.hostname.includes("vercel.app") || window.location.search.includes("demo=true") || json.isVercel;
         if (isDemo) {
           localStorage.setItem("sarihan_menu_data", JSON.stringify(json.data));
         }
@@ -345,7 +372,25 @@ export default function AdminPage() {
         fetchMenu(password);
         setIsModalOpen(false);
       } else {
-        showToast("Kayıt işlemi başarısız: " + json.error, "error");
+        // Otomatik Vercel Demo Modu Yedeklemesi (Fallback to local storage if Vercel serverless error is returned)
+        if (json.error && (json.error.includes("Vercel") || json.error.includes("Serverless") || res.status === 403)) {
+          setIsVercelDemo(true);
+          let updatedMenu = [...menuItems];
+          if (editingItem) {
+            updatedMenu = updatedMenu.map(i => i.id === editingItem.id ? newItemPayload : i);
+          } else {
+            updatedMenu.push(newItemPayload);
+          }
+          setMenuItems(updatedMenu);
+          localStorage.setItem("sarihan_menu_data", JSON.stringify(updatedMenu));
+          setIsModalOpen(false);
+          showToast(
+            editingItem ? "Yemek bilgileri başarıyla güncellendi (Demo Belleği)." : "Yeni yemek başarıyla menüye eklendi (Demo Belleği).",
+            "success"
+          );
+        } else {
+          showToast("Kayıt işlemi başarısız: " + json.error, "error");
+        }
       }
     } catch (err) {
       showToast("Sunucuyla bağlantı kurulamadı.", "error");

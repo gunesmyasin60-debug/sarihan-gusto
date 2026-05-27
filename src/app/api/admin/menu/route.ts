@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
 
     const menu = await readMenu();
     return NextResponse.json(
-      { success: true, data: menu },
+      { success: true, data: menu, isVercel: process.env.VERCEL === "1" },
       {
         headers: {
           "Cache-Control": "no-store, max-age=0, must-revalidate",

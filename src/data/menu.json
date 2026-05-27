@@ -7,7 +7,10 @@
     "category": "corbalar",
     "description": "Özel tereyağlı, sarımsaklı ve sirkeli sos eşliğinde, geleneksel Sarıhan usulü işkembe.",
     "descriptionEn": "Traditional Sarihan style tripe soup served with a special butter, garlic and vinegar sauce.",
-    "allergens": ["Sarımsak", "Gluten"],
+    "allergens": [
+      "Sarımsak",
+      "Gluten"
+    ],
     "image": "/images/menu/iskembe.png",
     "active": true
   },
@@ -19,7 +22,9 @@
     "category": "corbalar",
     "description": "Uzun süre kısık ateşte demlenmiş, tereyağlı ve limonlu acı soslu saray usulü kelle paça.",
     "descriptionEn": "Palace style lamb head and trotter soup brewed over low heat, served with butter and lemon hot sauce.",
-    "allergens": ["Sarımsak"],
+    "allergens": [
+      "Sarımsak"
+    ],
     "image": "/images/menu/kellepaca.png",
     "active": true
   },
@@ -31,7 +36,9 @@
     "category": "kebaplar",
     "description": "Zırhla kıyılmış kuzu kıyması, pul biber, közlenmiş biber ve domates ile lavaş eşliğinde.",
     "descriptionEn": "Hand-minced lamb meat with red pepper flakes, served with grilled pepper, tomato and flatbread.",
-    "allergens": ["Gluten"],
+    "allergens": [
+      "Gluten"
+    ],
     "image": "/images/menu/adana.png",
     "active": true
   },
@@ -43,7 +50,10 @@
     "category": "kebaplar",
     "description": "Közlenmiş süzme yoğurtlu patlıcan yatağında, özel tereyağlı kuzu lokum dilimleri.",
     "descriptionEn": "Tender lamb medallions served on a bed of roasted eggplant purée mixed with strained yogurt.",
-    "allergens": ["Süt Ürünleri", "Sarımsak"],
+    "allergens": [
+      "Süt Ürünleri",
+      "Sarımsak"
+    ],
     "image": "/images/menu/alinazik.png",
     "active": true
   },
@@ -55,7 +65,10 @@
     "category": "baslangiclar",
     "description": "Tahin, sarımsak ve zeytinyağlı sıcak humus üzerinde fırınlanmış çemenli Kayseri pastırması.",
     "descriptionEn": "Warm hummus with tahini, garlic and olive oil, topped with baked spicy Kayseri pastrami.",
-    "allergens": ["Susam", "Sarımsak"],
+    "allergens": [
+      "Susam",
+      "Sarımsak"
+    ],
     "image": "/images/menu/humus.png",
     "active": true
   },
@@ -67,7 +80,10 @@
     "category": "baslangiclar",
     "description": "Süzme yoğurt, taze nane, sarımsak ve hakiki sızma zeytinyağı ile harmanlanmış geleneksel meze.",
     "descriptionEn": "Strained yogurt blended with fresh mint, garlic and genuine extra virgin olive oil.",
-    "allergens": ["Süt Ürünleri", "Sarımsak"],
+    "allergens": [
+      "Süt Ürünleri",
+      "Sarımsak"
+    ],
     "image": "/images/menu/haydari.png",
     "active": true
   },
@@ -79,7 +95,11 @@
     "category": "tatlilar",
     "description": "Çıtır el açması hamur arasında bol Antep fıstığı ve hakiki manda kaymağı fırınlanarak sıcak servis edilir.",
     "descriptionEn": "Crispy hand-rolled pastry filled with abundant pistachios and genuine buffalo clotted cream, served hot.",
-    "allergens": ["Kuruyemiş", "Süt Ürünleri", "Gluten"],
+    "allergens": [
+      "Kuruyemiş",
+      "Süt Ürünleri",
+      "Gluten"
+    ],
     "image": "/images/menu/katmer.png",
     "active": true
   },
@@ -91,7 +111,10 @@
     "category": "tatlilar",
     "description": "Taş fırında nar gibi kızarmış, üstü bol dövülmüş Karadeniz fındığı ile süslenmiş Hamsiköy usulü sütlaç.",
     "descriptionEn": "Hamsikoy style milk rice pudding baked in a stone oven, topped with abundant crushed Black Sea hazelnuts.",
-    "allergens": ["Süt Ürünleri", "Kuruyemiş"],
+    "allergens": [
+      "Süt Ürünleri",
+      "Kuruyemiş"
+    ],
     "image": "/images/menu/sutlac.png",
     "active": true
   },
@@ -103,7 +126,9 @@
     "category": "icecekler",
     "description": "Kendi imalatımız süzme yoğurttan yayıkta taze çekilmiş bol köpüklü soğuk ayran.",
     "descriptionEn": "Freshly churned frothy cold yogurt drink made from our homemade strained yogurt.",
-    "allergens": ["Süt Ürünleri"],
+    "allergens": [
+      "Süt Ürünleri"
+    ],
     "image": "/images/menu/ayran.png",
     "active": true
   }

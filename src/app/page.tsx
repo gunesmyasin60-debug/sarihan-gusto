@@ -436,6 +436,128 @@ export default function HomePage() {
               </div>
             </div>
 
+            {/* Alternatif Satır 4: Taş Fırın & Pide (Görsel Solda, Metin Sağda) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              {/* Sol Sütun: Görsel Alanı */}
+              <div className="lg:col-span-6 lg:order-first order-last relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#181210]/60 via-transparent to-transparent z-10" />
+                <img 
+                  src="/images/pide_oven.png" 
+                  alt="Taş Fırın & Pide Lezzetleri" 
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute bottom-6 left-6 z-20 bg-background/90 backdrop-blur-sm border border-card-border px-4 py-2 rounded-2xl">
+                  <span className="text-[10px] uppercase tracking-widest font-extrabold text-accent">Odun Ateşinde Taş Fırın</span>
+                </div>
+              </div>
+
+              {/* Sağ Sütun: Metin Bilgisi */}
+              <div className="lg:col-span-6 space-y-6 text-left">
+                <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
+                  <span>Geleneksel Odun Ateşi</span>
+                </div>
+                <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
+                  Taş Fırından Çıtır <br />
+                  <span className="text-accent">Pide & Lahmacunlar</span>
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  Sarıhan Gusto fırın ustaları, el açması incecik hamurları taş fırınımızın kızgın odun ateşinde pişirerek gerçek taş fırın lezzetini sofranıza getirir. Karadeniz köy tereyağı, özel kuzu kavurması ve eriyen kaşar peyniriyle hazırlanan çıtır pidelerimiz ve lahmacunlarımız, fırından yeni çıkmış sıcacık dumanıyla iştah kabartır.
+                </p>
+                
+                <ul className="space-y-3 pt-2">
+                  <li className="flex items-center space-x-3 text-sm text-muted">
+                    <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
+                      <Check className="w-3.5 h-3.5 text-accent" />
+                    </div>
+                    <span>Geleneksel Odun Ateşiyle Isıtılan Kubbeli Taş Fırın</span>
+                  </li>
+                  <li className="flex items-center space-x-3 text-sm text-muted">
+                    <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
+                      <Check className="w-3.5 h-3.5 text-accent" />
+                    </div>
+                    <span>Karadeniz'den Gelen Hakiki Yayla Köy Tereyağı</span>
+                  </li>
+                  <li className="flex items-center space-x-3 text-sm text-muted">
+                    <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
+                      <Check className="w-3.5 h-3.5 text-accent" />
+                    </div>
+                    <span>İncecik Çıtır Hamur ve Bol Taze Malzemeli İç Harç</span>
+                  </li>
+                </ul>
+
+                <div className="pt-4">
+                  <Link
+                    href="/menu"
+                    className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-accent border-b border-accent/30 pb-1 hover:border-accent transition-all duration-300"
+                  >
+                    <span>Pide Çeşitlerimizi İnceleyin</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Alternatif Satır 5: Geleneksel Tatlılar (Görsel Sağda, Metin Solda) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              {/* Sol Sütun: Metin Bilgisi */}
+              <div className="lg:col-span-6 space-y-6 text-left">
+                <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
+                  <span>Saray Usulü Tatlı Şöleni</span>
+                </div>
+                <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
+                  Fıstıklı Katmer & <br />
+                  <span className="text-accent">Geleneksel Tatlılar</span>
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  Yemek ziyafetini lüks bir şölenle sonlandırmak isteyen gurmeler için tatlılarımız birer başyapıttır. İncecik el açması hamurun arasına bolca serpiştirilen taze Antep fıstıkları ve hakiki manda kaymağıyla hazırlanan çıtır katmerimiz ile taş fırında nar gibi kızarmış Hamsiköy fırın sütlacımız, damaklarda unutulmaz izler bırakır.
+                </p>
+                
+                <ul className="space-y-3 pt-2">
+                  <li className="flex items-center space-x-3 text-sm text-muted">
+                    <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
+                      <Check className="w-3.5 h-3.5 text-accent" />
+                    </div>
+                    <span>Hakiki Manda Kaymağı ve Bol Coğrafi İşaretli Antep Fıstığı</span>
+                  </li>
+                  <li className="flex items-center space-x-3 text-sm text-muted">
+                    <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
+                      <Check className="w-3.5 h-3.5 text-accent" />
+                    </div>
+                    <span>Hamsiköy Usulü Taş Fırında Fırınlanmış Sütlaç</span>
+                  </li>
+                  <li className="flex items-center space-x-3 text-sm text-muted">
+                    <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0">
+                      <Check className="w-3.5 h-3.5 text-accent" />
+                    </div>
+                    <span>Her Gün Taze Hazırlanan ve Sıcak Sunulan Tatlı Seçenekleri</span>
+                  </li>
+                </ul>
+
+                <div className="pt-4">
+                  <Link
+                    href="/menu"
+                    className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-accent border-b border-accent/30 pb-1 hover:border-accent transition-all duration-300"
+                  >
+                    <span>Tatlı Çeşitlerimizi Keşfedin</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Sağ Sütun: Görsel Alanı */}
+              <div className="lg:col-span-6 relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#181210]/60 via-transparent to-transparent z-10" />
+                <img 
+                  src="/images/katmer_dessert.png" 
+                  alt="Geleneksel Katmer & Sütlaç Tatlıları" 
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute bottom-6 left-6 z-20 bg-background/90 backdrop-blur-sm border border-card-border px-4 py-2 rounded-2xl">
+                  <span className="text-[10px] uppercase tracking-widest font-extrabold text-accent">Taze & Eşsiz Malzemeler</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
