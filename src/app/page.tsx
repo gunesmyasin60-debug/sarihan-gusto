@@ -152,7 +152,7 @@ export default function HomePage() {
               
               {/* Kart 1: Kebaplar (Büyük Kart - Açık Renk ve Mükemmel Metin Kontrastı) */}
               <div className="md:col-span-2 md:row-span-2 rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between overflow-hidden relative group premium-hover ember-glow">
-                {/* Zırh Kebabı Arka Plan Resmi, Karartma Maskesi ve Canlı Duman Efekti */}
+                {/* Zırh Kebabı Arka Plan Resmi ve Karartma Maskesi */}
                 <div className="absolute inset-0 z-0">
                   <img
                     src="/images/kebab.png"
@@ -160,14 +160,6 @@ export default function HomePage() {
                     className="w-full h-full object-cover opacity-30 transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/55" />
-                  
-                  {/* Cızırdayan Kebap Duman Partikülleri */}
-                  <div className="smoke-container">
-                    <div className="smoke-particle smoke-particle-1" />
-                    <div className="smoke-particle smoke-particle-2" />
-                    <div className="smoke-particle smoke-particle-3" />
-                    <div className="smoke-particle smoke-particle-4" />
-                  </div>
                 </div>
                 <div className="relative z-10 flex justify-between items-start">
                   <span className="text-xs uppercase tracking-wider font-bold text-accent">Geleneksel Kıyım</span>
