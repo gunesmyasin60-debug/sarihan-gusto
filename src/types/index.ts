@@ -45,7 +45,6 @@ export type RestaurantDetails = {
   addressEn: string;
   mapsLink: string;
   socials: {
-    instagram: string;
     facebook: string;
     twitter: string;
   };

@@ -71,63 +71,59 @@ export default function HomePage() {
           className="relative min-h-[90vh] flex items-center bg-background overflow-hidden"
           aria-label="Sarıhan Gusto Karşılama Alanı"
         >
+          {/* Arka Plan Video Katmanı (PC'de Aktif, Mobilde Gizli) */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="hidden md:block absolute inset-0 w-full h-full object-cover z-0 opacity-30 pointer-events-none"
+            aria-hidden="true"
+          >
+            <source src="/videos/kebap_hero.mp4" type="video/mp4" />
+          </video>
+
+          {/* Arka Plan Statik Görsel Katmanı (Mobilde Aktif, PC'de Gizli) */}
+          <img
+            src="/images/kebap_hero_mobile.png"
+            alt="Sarıhan Gusto Kebap Ocakbaşı"
+            className="block md:hidden absolute inset-0 w-full h-full object-cover z-0 opacity-25 pointer-events-none"
+            aria-hidden="true"
+          />
+
           {/* Soyut Anadolu Güneşi Desenli Arka Plan Katmanı (Bal Altını Rengi) */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(217,156,61,0.15),transparent_60%)] z-1" />
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(24,18,16,0.3),rgba(24,18,16,0.9))] z-1" />
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 md:py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Sol: Metin İçeriği */}
-            <div className="space-y-6 text-foreground text-left">
-              <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24 md:py-36 text-center">
+            {/* Merkezileştirilmiş Metin İçeriği */}
+            <div className="space-y-8 text-foreground flex flex-col items-center">
+              <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-4 py-1.5 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
                 <Award className="w-4 h-4" />
                 <span>Nisbetiye Caddesi'nin Klasik Lezzeti</span>
               </div>
-              <h1 className="font-serif text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight">
+              <h1 className="font-serif text-5xl md:text-8xl font-extrabold leading-[1.1] tracking-tight">
                 Gelenekten Gelen <br />
                 <span className="text-accent">Premium Tatlar</span>
               </h1>
-              <p className="text-muted text-base md:text-lg leading-relaxed max-w-xl">
+              <p className="text-muted text-base md:text-xl leading-relaxed max-w-2xl mx-auto">
                 Çeyrek asırlık Sarıhan tecrübesiyle, zırhla kıyılmış geleneksel kebaplardan, saatlerce demlenmiş şifa kaynağı çorbalara kadar tüm gurme lezzetleri, Anadolu sıcaklığıyla harmanlayıp kusursuz şekilde sunuyoruz.
               </p>
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto">
                 <Link
                   href="/rezervasyon"
-                  className="px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.02] shadow-lg shadow-accent/15 transition-all duration-300 text-center cursor-pointer"
+                  className="px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-[1.02] shadow-lg shadow-accent/15 transition-all duration-300 text-center cursor-pointer w-full sm:w-auto"
                   aria-label="Hızlı rezervasyon yapın"
                 >
                   Masa Ayır
                 </Link>
                 <Link
                   href="/menu"
-                  className="px-8 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-transparent border border-card-border text-foreground hover:bg-card hover:border-accent transition-all duration-300 text-center cursor-pointer"
+                  className="px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-transparent border border-card-border text-foreground hover:bg-card hover:border-accent transition-all duration-300 text-center cursor-pointer w-full sm:w-auto"
                   aria-label="Restoran menüsünü görüntüleyin"
                 >
                   Menüyü Keşfet
                 </Link>
-              </div>
-            </div>
-
-            {/* Sağ: İkonik Kahraman Marka Görsel Alanı (Ayrı Çalışılmak Üzere Yemek Kartsız Premium Sunum) */}
-            <div className="relative aspect-square w-full max-w-[480px] mx-auto lg:max-w-none lg:h-[500px] rounded-3xl overflow-hidden border border-card-border bg-card shadow-xl p-8 flex flex-col justify-between text-left group premium-hover">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(74,107,86,0.03),transparent)]" />
-              <div className="flex justify-between items-start">
-                <div className="w-12 h-12 rounded-2xl bg-background border border-card-border flex items-center justify-center text-accent">
-                  <Compass className="w-6 h-6 animate-pulse" />
-                </div>
-                <span className="text-[10px] uppercase tracking-widest text-accent font-bold">EST. 1999</span>
-              </div>
-              <div className="space-y-4 relative z-10">
-                <h3 className="font-serif text-3xl font-extrabold leading-tight text-foreground">
-                  Gastronomi & <br/>Kusursuz Hizmet Felsefesi
-                </h3>
-                <p className="text-sm text-muted leading-relaxed">
-                  Her yörenin kendine has baharatları, taze demlenmiş et suları ve geleneksel pişirme yöntemlerimizle hazırlanan tabaklarımız, lüks Etiler şubemizin asil ve dinlendirici ambiyansında unutulmaz anlara dönüşüyor.
-                </p>
-                <div className="pt-2">
-                  <span className="text-[11px] font-bold text-accent uppercase tracking-wider">
-                    Sarıhan Gusto Gastronomi Deneyimi
-                  </span>
-                </div>
               </div>
             </div>
           </div>

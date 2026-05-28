@@ -12,7 +12,6 @@ export const RESTORAN_BILGILERI: RestaurantDetails = {
   addressEn: "109 Nisbetiye Cad., Etiler, Beşiktaş, Istanbul, Turkey",
   mapsLink: "https://maps.app.goo.gl/idnWNJ2kGWv4ZRih9",
   socials: {
-    instagram: "https://instagram.com/sarihangusto",
     facebook: "https://facebook.com/sarihangusto",
     twitter: "https://twitter.com/sarihangusto",
   },

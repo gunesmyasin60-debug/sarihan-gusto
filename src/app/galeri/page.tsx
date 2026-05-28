@@ -5,7 +5,7 @@
 // Resimlere tıklandığında açılan, framer-motion ile kaydırma (swipe) destekli tam ekran modal içerir.
 
 import { useState } from "react";
-import { X, ChevronLeft, ChevronRight, Compass, Flame, Leaf, Coffee } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Compass } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
@@ -14,66 +14,82 @@ import CookieBanner from "@/components/ui/CookieBanner";
 const GALERI_GÖRSELLERİ = [
   {
     id: "g-1",
-    title: "Geleneksel Kelle Paça Demlenmesi",
-    category: "lezzetler",
-    icon: <Flame className="w-6 h-6" />,
-    desc: "24 saat kısık ateşte demlenen hakiki saray usulü çorbalarımız.",
+    title: "Özel Tasarım Geleneksel Ocakbaşı Köşesi",
+    category: "Mutfak & Hazırlık",
+    image: "/images/interior_1.png",
+    desc: "Zırh kebaplarımızın ve geleneksel lezzetlerimizin meşe kömürü ateşinde ağır ağır piştiği imza ocakbaşı alanımız.",
   },
   {
     id: "g-2",
-    title: "Zırh Kebabının Hazırlanışı",
-    category: "mutfak",
-    icon: <Compass className="w-6 h-6" />,
-    desc: "Usta ellerde sıfır metal temasıyla zırh ile kıyılan kuzu kıyması.",
+    title: "Etiler Şubesi Lüks Giriş Lobisi",
+    category: "Mekan & Ambiyans",
+    image: "/images/interior_2.png",
+    desc: "Misafirlerimizi karşıladığımız; modern mermer yüzeyler, bronz detaylar ve asil Anadolu sıcaklığı ile bezenmiş lobimiz.",
   },
   {
     id: "g-3",
-    title: "Doğal Başlangıçlar & Mezeler",
-    category: "lezzetler",
-    icon: <Leaf className="w-6 h-6" />,
-    desc: "Hatay süzme yoğurdu ve yöresel sızma zeytinyağı ile hazırlanan mezelerimiz.",
+    title: "Geniş Aile ve Grup Yemek Salonu",
+    category: "Mekan & Ambiyans",
+    image: "/images/interior_3.png",
+    desc: "Kalabalık aile davetleriniz ve grup buluşmalarınız için özel olarak tasarlanmış ferah ve konforlu yemek salonumuz.",
   },
   {
     id: "g-4",
-    title: "Şık ve Sıcak Ambiyansımız",
-    category: "mekan",
-    icon: <Coffee className="w-6 h-6" />,
-    desc: "Anadolu Sıcaklığı konseptinde tasarlanmış şık Etiler şubemiz.",
+    title: "Premium Deri Localar ve Sıcak Işıklandırmalar",
+    category: "Mekan & Ambiyans",
+    image: "/images/interior_4.png",
+    desc: "Sevdiklerinizle baş başa, dinlendirici mum ışıkları ve loş aydınlatmalar eşliğinde yemek yiyebileceğiniz konforlu localarımız.",
   },
   {
     id: "g-5",
-    title: "Çıtır Fıstıklı Katmer Fırınlanması",
-    category: "lezzetler",
-    icon: <Flame className="w-6 h-6" />,
-    desc: "Antep fıstığı ve manda kaymağıyla el açması katmer fırın şöleni.",
+    title: "Özel VIP Salonu & Akustik Tasarım",
+    category: "Mekan & Ambiyans",
+    image: "/images/interior_5.png",
+    desc: "İş toplantılarınız ve özel sunumlarınız için ses akustiği ve donanımı özel olarak kurgulanmış lüks VIP salonumuz.",
   },
   {
     id: "g-6",
-    title: "Özel VIP Yemek Odası",
-    category: "mekan",
-    icon: <Coffee className="w-6 h-6" />,
-    desc: "İş toplantılarınız ve özel davetleriniz için tasarlanmış VIP odamız.",
+    title: "Ferah ve Bitkilerle Bezeli Teras Alanı",
+    category: "Mekan & Ambiyans",
+    image: "/images/interior_6.png",
+    desc: "Açık hava konforunu lüks detaylarla birleştiren, yeşilliklerle çevrili ve loş akşam aydınlatmalı keyifli terasımız.",
+  },
+  {
+    id: "g-7",
+    title: "Taş Fırın ve Pide Hazırlık İstasyonu",
+    category: "Mutfak & Hazırlık",
+    image: "/images/interior_7.png",
+    desc: "Taş fırınımızın kızgın odun ateşinde kabaran çıtır pidelerimizin ve sıcak lavaşlarımızın hazırlandığı fırın köşemiz.",
+  },
+  {
+    id: "g-8",
+    title: "Gurme Mutfak ve Şefin Sunum Alanı",
+    category: "Mutfak & Hazırlık",
+    image: "/images/interior_8.png",
+    desc: "Usta şeflerimizin tabaklarımızı son dokunuşlarla sanat eserine dönüştürdüğü, yüksek hijyen standartlarındaki mutfağımız.",
+  },
+  {
+    id: "g-9",
+    title: "Loş ve Asil Akşam Yemeği Ambiyansı",
+    category: "Mekan & Ambiyans",
+    image: "/images/interior_9.png",
+    desc: "Etiler'in elit atmosferine yakışır ahşap panel kaplamaları, özel tasarım şamdanlar ve dinlendirici akşam ambiyansımız.",
   },
 ];
 
 export default function GalleryPage() {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-  const [filter, setFilter] = useState("all");
-
-  const filteredImages = GALERI_GÖRSELLERİ.filter(
-    (img) => filter === "all" || img.category === filter
-  );
 
   const handleNext = () => {
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex + 1) % filteredImages.length);
+      setSelectedImageIndex((selectedImageIndex + 1) % GALERI_GÖRSELLERİ.length);
     }
   };
 
   const handlePrev = () => {
     if (selectedImageIndex !== null) {
       setSelectedImageIndex(
-        (selectedImageIndex - 1 + filteredImages.length) % filteredImages.length
+        (selectedImageIndex - 1 + GALERI_GÖRSELLERİ.length) % GALERI_GÖRSELLERİ.length
       );
     }
   };
@@ -86,7 +102,7 @@ export default function GalleryPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Galeri Başlık */}
-          <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
             <span className="text-xs uppercase tracking-[0.2em] text-accent font-bold">GÖRSEL ŞÖLEN</span>
             <h1 className="font-serif text-4xl md:text-6xl font-bold">Fotoğraf Galerisi</h1>
             <p className="text-sm text-muted">
@@ -94,69 +110,51 @@ export default function GalleryPage() {
             </p>
           </div>
 
-          {/* Kategori Filtresi */}
-          <div className="flex items-center justify-center space-x-2 mb-10 overflow-x-auto no-scrollbar py-2 -mx-4 px-4 md:mx-0" role="tablist" aria-label="Galeri Filtreleri">
-            {[
-              { id: "all", label: "Tüm Görseller" },
-              { id: "lezzetler", label: "Lezzetler" },
-              { id: "mutfak", label: "Mutfak & Hazırlık" },
-              { id: "mekan", label: "Ambiyans & Mekan" },
-            ].map((cat) => {
-              const isActive = filter === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => setFilter(cat.id)}
-                  role="tab"
-                  aria-selected={isActive}
-                  className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer focus:outline-none ${
-                    isActive
-                      ? "bg-accent text-wood-dark shadow-lg shadow-accent/15"
-                      : "bg-card border border-card-border text-foreground hover:border-accent hover:text-accent"
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              );
-            })}
-          </div>
+          {/* Görsel Izgarası (Grid - Premium Fotoğraflar) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {GALERI_GÖRSELLERİ.map((img, index) => (
+              <motion.div
+                key={img.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setSelectedImageIndex(index)}
+                className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-card-border cursor-pointer shadow-lg premium-hover"
+                role="button"
+                aria-label={`${img.title} görselini tam ekran görmek için tıklayın.`}
+              >
+                {/* Resim */}
+                <img
+                  src={img.image}
+                  alt={img.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                />
+                
+                {/* Overlay Açıklama ve Kategori */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-[10px] uppercase tracking-widest text-accent font-bold">
+                    {img.category}
+                  </span>
+                  <h3 className="font-serif text-xl font-bold text-foreground mt-1 leading-tight">
+                    {img.title}
+                  </h3>
+                  <p className="text-[11px] text-muted mt-1 leading-relaxed">
+                    {img.desc}
+                  </p>
+                </div>
 
-          {/* Görsel Izgarası (Grid - Premium Editoryal Kartlar) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filteredImages.map((img, index) => (
-                <motion.div
-                  layout
-                  key={img.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4 }}
-                  onClick={() => setSelectedImageIndex(index)}
-                  className="group relative aspect-[4/3] rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between items-start transition-all duration-300 hover:border-accent hover:shadow-lg hover:shadow-accent/5 cursor-pointer premium-hover"
-                  role="button"
-                  aria-label={`${img.title} detaylarını görmek için tıklayın.`}
-                >
-                  {/* İkon Bölümü */}
-                  <div className="w-14 h-14 rounded-2xl bg-background border border-card-border flex items-center justify-center text-accent group-hover:scale-110 transition-transform duration-500">
-                    {img.icon}
+                {/* Normal Durumda Başlık Barı (Loş/Zarif) */}
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-background/90 via-background/60 to-transparent p-4 flex items-center justify-between group-hover:opacity-0 transition-opacity duration-300">
+                  <div className="text-left">
+                    <span className="text-[8px] uppercase tracking-widest text-accent font-bold">{img.category}</span>
+                    <h4 className="font-serif text-sm font-bold text-foreground">{img.title}</h4>
                   </div>
-
-                  {/* Metin İçeriği */}
-                  <div className="text-left w-full mt-4">
-                    <span className="text-[9px] uppercase tracking-widest text-accent font-bold">
-                      {img.category}
-                    </span>
-                    <h3 className="font-serif text-2xl font-bold text-foreground mt-1 leading-tight group-hover:text-accent transition-colors">
-                      {img.title}
-                    </h3>
-                    <p className="text-xs text-muted mt-2 leading-relaxed">
-                      {img.desc}
-                    </p>
+                  <div className="w-6 h-6 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                    <Compass className="w-3.5 h-3.5" />
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
           {/* Tam Ekran Swipeable Modal (Lightbox) */}
@@ -215,25 +213,25 @@ export default function GalleryPage() {
                   animate={{ x: 0, opacity: 1, scale: 1 }}
                   exit={{ x: -100, opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full max-w-3xl aspect-[4/3] rounded-3xl bg-card border border-card-border flex flex-col justify-end p-8 text-left relative overflow-hidden select-none cursor-grab active:cursor-grabbing shadow-2xl"
+                  className="w-full max-w-4xl aspect-[16/10] rounded-3xl bg-card border border-card-border flex flex-col justify-end text-left relative overflow-hidden select-none cursor-grab active:cursor-grabbing shadow-2xl"
                 >
-                  {/* Büyük İkon Arkaplanı */}
-                  <div className="absolute inset-0 flex items-center justify-center text-accent/5 opacity-30">
-                    <div className="scale-[4]">
-                      {filteredImages[selectedImageIndex].icon}
-                    </div>
-                  </div>
+                  <img
+                    src={GALERI_GÖRSELLERİ[selectedImageIndex].image}
+                    alt={GALERI_GÖRSELLERİ[selectedImageIndex].title}
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-transparent to-transparent" />
 
                   {/* Detay Paneli */}
-                  <div className="relative z-10 space-y-2 bg-background/90 backdrop-blur-md p-6 rounded-2xl border border-card-border shadow-lg">
+                  <div className="relative z-10 space-y-2 bg-background/90 backdrop-blur-md p-6 md:p-8 rounded-t-3xl border-t border-card-border shadow-lg">
                     <span className="text-xs uppercase tracking-widest text-accent font-bold">
-                      {filteredImages[selectedImageIndex].category}
+                      {GALERI_GÖRSELLERİ[selectedImageIndex].category}
                     </span>
                     <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground">
-                      {filteredImages[selectedImageIndex].title}
+                      {GALERI_GÖRSELLERİ[selectedImageIndex].title}
                     </h3>
-                    <p className="text-sm text-muted leading-relaxed">
-                      {filteredImages[selectedImageIndex].desc}
+                    <p className="text-xs md:text-sm text-muted leading-relaxed">
+                      {GALERI_GÖRSELLERİ[selectedImageIndex].desc}
                     </p>
                   </div>
                 </motion.div>
@@ -255,3 +253,4 @@ export default function GalleryPage() {
     </>
   );
 }
+

@@ -110,11 +110,18 @@ export default function ContactPage() {
 
               {/* GOOGLE MAPS FACADE (Performans Odaklı Harita Görseli) */}
               <div className="bg-card border border-card-border rounded-3xl overflow-hidden relative group shadow-lg">
-                {/* Soyut Harita Temsili Arka Planı */}
-                <div className="aspect-[16/9] w-full bg-gradient-to-tr from-background to-card-border/60 flex flex-col items-center justify-center p-8 text-center relative group-hover:scale-[1.01] transition-transform duration-500">
-                  <MapPin className="w-12 h-12 text-accent mb-3 relative z-10 animate-bounce" />
-                  <h3 className="font-serif text-xl font-bold text-foreground relative z-10">Sarıhan Gusto Etiler</h3>
-                  <p className="text-xs text-muted mt-1 relative z-10">Nisbetiye Caddesi No:109</p>
+                {/* Harita Konumu Ekran Resmi Arka Planı */}
+                <div className="aspect-[16/9] w-full relative overflow-hidden group-hover:scale-[1.01] transition-transform duration-500">
+                  <img
+                    src="/images/map_location.png"
+                    alt="Sarıhan Gusto Etiler Harita Konumu"
+                    className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/25 to-transparent flex flex-col items-center justify-center p-8 text-center">
+                    <MapPin className="w-12 h-12 text-accent mb-2 relative z-10 animate-bounce" />
+                    <h3 className="font-serif text-lg font-bold text-foreground relative z-10 bg-background/95 backdrop-blur-sm px-4 py-1.5 rounded-full border border-card-border">Sarıhan Gusto Etiler</h3>
+                    <p className="text-[10px] text-muted mt-1 relative z-10 bg-background/95 backdrop-blur-sm px-3 py-1 rounded-full border border-card-border">Nisbetiye Caddesi No:109</p>
+                  </div>
                 </div>
                 
                 {/* Yol Tarifi Al Butonu (One-Tap Navigation Trigger) */}

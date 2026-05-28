@@ -2,7 +2,7 @@
 // Hakkımızda Sayfası — Sarıhan Gusto markasının tarihçesini, mutfak felsefesini ve kurumsal değerlerini sunar.
 
 import Link from "next/link";
-import { Award, ShieldCheck, Clock, Users, ArrowRight } from "lucide-react";
+import { Award, ShieldCheck, Clock, Users, ArrowRight, Compass, Target } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import CookieBanner from "@/components/ui/CookieBanner";
@@ -80,6 +80,136 @@ export default function AboutPage() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Misyonumuz & Vizyonumuz (Çift Sütun Premium Tasarım) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Misyonumuz */}
+              <div className="bg-card border border-card-border p-8 rounded-3xl text-left premium-hover space-y-4 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(217,156,61,0.03),transparent_40%)]" />
+                <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent relative z-10">
+                  <Target className="w-6 h-6 animate-pulse" />
+                </div>
+                <h2 className="font-serif text-2xl font-bold text-foreground relative z-10">Misyonumuz</h2>
+                <p className="text-xs text-muted leading-relaxed relative z-10">
+                  Geleneksel Türk ve Anadolu mutfağının asırlık lezzet miraslarını, özünü ve orijinal pişirme tekniklerini bozmadan sevgiyle korumak; bu şifalı tatları en seçkin yöresel malzemelerle ve yüksek hijyen standartlarıyla harmanlayıp, Etiler şubemizin elit ve konforlu ambiyansında eşsiz bir konukseverlikle misafirlerimize sunmaktır.
+                </p>
+              </div>
+
+              {/* Vizyonumuz */}
+              <div className="bg-card border border-card-border p-8 rounded-3xl text-left premium-hover space-y-4 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(217,156,61,0.03),transparent_40%)]" />
+                <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent relative z-10">
+                  <Compass className="w-6 h-6 animate-pulse" />
+                </div>
+                <h2 className="font-serif text-2xl font-bold text-foreground relative z-10">Vizyonumuz</h2>
+                <p className="text-xs text-muted leading-relaxed relative z-10">
+                  Çeyrek asırlık Sarıhan tecrübesini ve asil konseptimizi, Türk gastronomi kültürünün yerel ve uluslararası arenadaki en seçkin temsilcilerinden biri haline getirmek; modern çağın sunum estetiğini kadim pişirme teknikleriyle birleştirerek, premium restoran konseptinde öncü ve dünyada referans gösterilen bir marka olmaktır.
+                </p>
+              </div>
+            </div>
+
+            {/* Hizmet Seçenekleri & Ayrıcalıklar */}
+            <div className="bg-card border border-card-border p-8 md:p-12 rounded-3xl text-left relative overflow-hidden space-y-8 premium-hover">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(217,156,61,0.02),transparent_40%)]" />
+              
+              <div className="space-y-2 relative z-10">
+                <span className="text-xs uppercase tracking-[0.2em] text-accent font-bold">KONFORUNUZ İÇİN</span>
+                <h2 className="font-serif text-3xl font-bold text-foreground">Hizmet Seçenekleri & Kolaylıklar</h2>
+                <p className="text-xs text-muted max-w-xl">
+                  Sarıhan Gusto Etiler şubemizde, misafirlerimizin konforunu ve memnuniyetini en üst düzeye çıkarmak için sunulan ayrıcalıklar.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                {/* Grup 1: Servis & Düzen */}
+                <div className="space-y-4">
+                  <h3 className="text-xs font-bold text-accent uppercase tracking-wider border-b border-card-border pb-2">Servis & Düzen</h3>
+                  <ul className="space-y-3 text-xs text-muted">
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Açık Hava Bölümü</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Terasta Oturma Alanı</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>İçeride Servis</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Paket Servisi & Arabaya Servis</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Grup 2: Mutfak & Konsept */}
+                <div className="space-y-4">
+                  <h3 className="text-xs font-bold text-accent uppercase tracking-wider border-b border-card-border pb-2">Mutfak & Konsept</h3>
+                  <ul className="space-y-3 text-xs text-muted">
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Vejetaryen Seçenekler</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Zengin Kahve Seçkisi</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Geç Akşam Yemeği Servisi</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Konforlu Oturma Alanı</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Grup 3: Ödeme & Teknoloji */}
+                <div className="space-y-4">
+                  <h3 className="text-xs font-bold text-accent uppercase tracking-wider border-b border-card-border pb-2">Ödeme & Teknoloji</h3>
+                  <ul className="space-y-3 text-xs text-muted">
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Ücretsiz Yüksek Hızlı Wi-Fi</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Banka & Kredi Kartları Geçerlidir</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>NFC ile Mobil Ödeme</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Grup 4: Aile & Ulaşım */}
+                <div className="space-y-4">
+                  <h3 className="text-xs font-bold text-accent uppercase tracking-wider border-b border-card-border pb-2">Aile & Ulaşım</h3>
+                  <ul className="space-y-3 text-xs text-muted">
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Çocuklar için Uygun Atmosfer</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Mama & Bebek Sandalyesi</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Geniş Güvenli Otopark</span>
+                    </li>
+                    <li className="flex items-center space-x-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>Profesyonel Vale Park Hizmeti</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             {/* CTA Alnı */}
