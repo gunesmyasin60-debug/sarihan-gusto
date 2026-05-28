@@ -12,7 +12,13 @@
       "Gluten"
     ],
     "image": "/images/menu/iskembe.png",
-    "active": true
+    "active": true,
+    "healingIndex": {
+      "collagen": 85,
+      "brewTime": "8 Saat",
+      "immuneBoost": 4
+    },
+    "pairings": ["meze-haydari", "icecek-ayran"]
   },
   {
     "id": "corba-kelle-paca",
@@ -26,7 +32,13 @@
       "Sarımsak"
     ],
     "image": "/images/menu/kellepaca.png",
-    "active": true
+    "active": true,
+    "healingIndex": {
+      "collagen": 100,
+      "brewTime": "12 Saat",
+      "immuneBoost": 5
+    },
+    "pairings": ["meze-haydari", "icecek-ayran"]
   },
   {
     "id": "kebap-adana",
@@ -40,7 +52,8 @@
       "Gluten"
     ],
     "image": "/images/menu/adana.png",
-    "active": true
+    "active": true,
+    "pairings": ["meze-humus", "icecek-ayran", "meze-haydari"]
   },
   {
     "id": "kebap-ali-nazik",
@@ -55,7 +68,8 @@
       "Sarımsak"
     ],
     "image": "/images/menu/alinazik.png",
-    "active": true
+    "active": true,
+    "pairings": ["meze-haydari", "icecek-ayran"]
   },
   {
     "id": "meze-humus",
@@ -70,7 +84,8 @@
       "Sarımsak"
     ],
     "image": "/images/menu/humus.png",
-    "active": true
+    "active": true,
+    "pairings": ["kebap-adana", "icecek-ayran"]
   },
   {
     "id": "meze-haydari",
@@ -85,7 +100,8 @@
       "Sarımsak"
     ],
     "image": "/images/menu/haydari.png",
-    "active": true
+    "active": true,
+    "pairings": ["kebap-adana", "kebap-ali-nazik"]
   },
   {
     "id": "tatli-katmer",
@@ -101,7 +117,8 @@
       "Gluten"
     ],
     "image": "/images/menu/katmer.png",
-    "active": true
+    "active": true,
+    "pairings": ["icecek-ayran"]
   },
   {
     "id": "tatli-firin-sutlac",
@@ -116,7 +133,8 @@
       "Kuruyemiş"
     ],
     "image": "/images/menu/sutlac.png",
-    "active": true
+    "active": true,
+    "pairings": []
   },
   {
     "id": "icecek-ayran",
@@ -130,6 +148,7 @@
       "Süt Ürünleri"
     ],
     "image": "/images/menu/ayran.png",
-    "active": true
+    "active": true,
+    "pairings": ["kebap-adana", "kebap-ali-nazik", "meze-humus"]
   }
 ]

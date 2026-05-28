@@ -151,7 +151,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
               
               {/* Kart 1: Kebaplar (Büyük Kart - Açık Renk ve Mükemmel Metin Kontrastı) */}
-              <div className="md:col-span-2 md:row-span-2 rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between overflow-hidden relative group premium-hover">
+              <div className="md:col-span-2 md:row-span-2 rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between overflow-hidden relative group premium-hover ember-glow">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(74,107,86,0.02),transparent)]" />
                 <div className="relative z-10 flex justify-between items-start">
                   <span className="text-xs uppercase tracking-wider font-bold text-accent">Geleneksel Kıyım</span>
@@ -205,7 +205,7 @@ export default function HomePage() {
               </div>
 
               {/* Kart 4: Google Yorumları (GMB - Bento) */}
-              <div className="md:col-span-3 rounded-3xl bg-card border border-card-border p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-left premium-hover">
+              <div className="md:col-span-3 rounded-3xl bg-card border border-card-border p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-left premium-hover ember-glow">
                 <div className="space-y-3 max-w-xl">
                   <div className="flex items-center space-x-1">
                     {[1, 2, 3, 4, 5].map((i) => (

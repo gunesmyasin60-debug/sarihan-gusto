@@ -12,6 +12,12 @@ export type MenuItem = {
   allergens: string[];
   image: string;
   active: boolean;
+  healingIndex?: {
+    collagen: number;
+    brewTime: string;
+    immuneBoost: number;
+  };
+  pairings?: string[];
 };
 
 export type Reservation = {

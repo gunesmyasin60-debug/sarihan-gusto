@@ -73,6 +73,36 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
 }
 
+/* Kehribar rengi köz parıltısı efekti (Charcoal Amber Glow) */
+.ember-glow {
+  position: relative;
+  z-index: 10;
+}
+.ember-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--accent), transparent 70%);
+  opacity: 0.15;
+  transition: var(--transition-smooth);
+}
+.ember-glow {
+  animation: ember-glow-pulse 6s ease-in-out infinite;
+}
+
+@keyframes ember-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(24, 18, 16, 0.4), 0 0 8px rgba(217, 156, 61, 0.05);
+    border-color: var(--card-border);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(24, 18, 16, 0.5), 0 0 25px rgba(217, 156, 61, 0.25);
+    border-color: rgba(217, 156, 61, 0.6);
+  }
+}
+
 /* Mobilde Yatay Scrollbar Gizleme */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
