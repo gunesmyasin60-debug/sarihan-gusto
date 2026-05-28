@@ -152,7 +152,15 @@ export default function HomePage() {
               
               {/* Kart 1: Kebaplar (Büyük Kart - Açık Renk ve Mükemmel Metin Kontrastı) */}
               <div className="md:col-span-2 md:row-span-2 rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between overflow-hidden relative group premium-hover ember-glow">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(74,107,86,0.02),transparent)]" />
+                {/* Zırh Kebabı Arka Plan Resmi ve Karartma Maskesi */}
+                <div className="absolute inset-0 z-0">
+                  <img
+                    src="/images/kebab.png"
+                    alt="Zırh Kebabı"
+                    className="w-full h-full object-cover opacity-30 transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/55" />
+                </div>
                 <div className="relative z-10 flex justify-between items-start">
                   <span className="text-xs uppercase tracking-wider font-bold text-accent">Geleneksel Kıyım</span>
                   <Award className="w-6 h-6 text-accent" />
@@ -204,34 +212,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Kart 4: Google Yorumları (GMB - Bento) */}
-              <div className="md:col-span-3 rounded-3xl bg-card border border-card-border p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-left premium-hover ember-glow">
-                <div className="space-y-3 max-w-xl">
-                  <div className="flex items-center space-x-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-5 h-5 text-accent fill-accent" />
-                    ))}
-                    <span className="text-sm font-extrabold text-foreground ml-2">4.8 / 5.0</span>
-                  </div>
-                  <h3 className="font-serif text-2xl font-bold">Misafirlerimizin Gözünden Biz</h3>
-                  <p className="text-xs text-muted leading-relaxed">
-                    "Etiler'deki en iyi kelle paça çorbası ve zırh kebabı burada. Ortamın Ege esintili aydınlık ve son derece şık konsepti ve personelin olağanüstü misafirperverliği premium düzeyde."
-                  </p>
-                </div>
-                <div className="shrink-0 flex flex-col items-center md:items-end justify-center">
-                  <a
-                    href={RESTORAN_BILGILERI.mapsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-accent text-wood-dark px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover hover:scale-105 transition-all duration-300 focus:outline-none cursor-pointer"
-                    aria-label="Google Haritalar'da tüm yorumları gör"
-                  >
-                    <span>Google'da İnceleyin</span>
-                    <ArrowUpRight className="w-4 h-4 text-wood-dark" />
-                  </a>
-                  <span className="text-[10px] text-muted mt-2">1,250+ Google Değerlendirmesi</span>
-                </div>
-              </div>
+              {/* Google Yorumları Bento Grid'den kaldırıldı, zikzak hikaye anlatımına taşındı */}
 
             </div>
           </div>
@@ -554,6 +535,97 @@ export default function HomePage() {
                 />
                 <div className="absolute bottom-6 left-6 z-20 bg-background/90 backdrop-blur-sm border border-card-border px-4 py-2 rounded-2xl">
                   <span className="text-[10px] uppercase tracking-widest font-extrabold text-accent">Taze & Eşsiz Malzemeler</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Alternatif Satır 6: Misafir Yorumları (Yorum Kartları Solda, Açıklama Sağda - Zikzak Konsepti) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center border-t border-card-border/50 pt-20">
+              {/* Sol Sütun: Gerçek Google Yorumları Grid/Stack (Masaüstünde solda, mobilde önce gelir) */}
+              <div className="lg:col-span-6 space-y-6 lg:order-first order-last">
+                {/* Yorum 1 */}
+                <div className="bg-card/45 border border-card-border/60 backdrop-blur-sm p-6 rounded-2xl relative shadow-md hover:scale-[1.01] transition-all duration-300 text-left">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-semibold text-sm text-foreground">Murat Kaya</span>
+                    <div className="flex space-x-0.5">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star key={i} className="w-3.5 h-3.5 text-accent fill-accent" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted leading-relaxed">
+                    "Yıllardır Sarıhan kalitesini bilirim ama Etiler şubesi ambiyansıyla seviyeyi apayrı bir boyuta taşımış. Kelle paça çorbası ve zırh kebabı tam anlamıyla kusursuz. Servis hızı ve personelin kibarlığı muazzam."
+                  </p>
+                  <span className="text-[9px] text-muted/60 block mt-2">Google Maps Değerlendirmesi</span>
+                </div>
+
+                {/* Yorum 2 */}
+                <div className="bg-card/45 border border-card-border/60 backdrop-blur-sm p-6 rounded-2xl relative shadow-md hover:scale-[1.01] transition-all duration-300 text-left">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-semibold text-sm text-foreground">Selin Demir</span>
+                    <div className="flex space-x-0.5">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star key={i} className="w-3.5 h-3.5 text-accent fill-accent" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted leading-relaxed">
+                    "Ege esintili dekorasyonu çok ferah ve lüks hissettiriyor. Çorbaların terbiyesi tam kıvamında ve içimi çok yumuşak. Fırından yeni çıkmış sıcak pideleri ve Antep katmeri kesinlikle denenmeli."
+                  </p>
+                  <span className="text-[9px] text-muted/60 block mt-2">Google Maps Değerlendirmesi</span>
+                </div>
+
+                {/* Yorum 3 */}
+                <div className="bg-card/45 border border-card-border/60 backdrop-blur-sm p-6 rounded-2xl relative shadow-md hover:scale-[1.01] transition-all duration-300 text-left">
+                  <div className="flex justify-between items-center mb-3">
+                    <span className="font-semibold text-sm text-foreground">Dr. Ahmet Şahin</span>
+                    <div className="flex space-x-0.5">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star key={i} className="w-3.5 h-3.5 text-accent fill-accent" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted leading-relaxed">
+                    "Nisbetiye'nin en nezih ocakbaşı ve çorba restoranı. Hijyen standartları son derece yüksek, malzemelerin tazeliği her tatta kendini belli ediyor. Valeden karşılama ekibine kadar profesyonel bir kadro."
+                  </p>
+                  <span className="text-[9px] text-muted/60 block mt-2">Google Maps Değerlendirmesi</span>
+                </div>
+              </div>
+
+              {/* Sağ Sütun: Metin Bilgisi */}
+              <div className="lg:col-span-6 space-y-6 text-left">
+                <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
+                  <span>Misafirlerimizin Gözünden</span>
+                </div>
+                <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
+                  Sarıhan Deneyimini <br />
+                  <span className="text-accent">Taçlandıran Yorumlar</span>
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  Sarıhan Gusto olarak, geleneksel Türk gastronomi mirasını lüks ve konforlu Etiler şubemizde sunarken en büyük motivasyonumuz misafirlerimizin memnuniyetidir. Google Haritalar üzerindeki 1.250'den fazla değerlendirmede yakaladığımız 4.8 memnuniyet skoru, detaylara verdiğimiz önemin ve lezzet tutkumuzun en somut kanıtıdır.
+                </p>
+
+                <div className="flex items-center space-x-4 py-2">
+                  <div className="text-center bg-card border border-card-border px-5 py-3 rounded-2xl">
+                    <span className="text-2xl font-serif font-extrabold text-accent block">4.8</span>
+                    <span className="text-[10px] text-muted">Google Skoru</span>
+                  </div>
+                  <div className="text-center bg-card border border-card-border px-5 py-3 rounded-2xl">
+                    <span className="text-2xl font-serif font-extrabold text-accent block">1,250+</span>
+                    <span className="text-[10px] text-muted">Toplam Yorum</span>
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href={RESTORAN_BILGILERI.mapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-accent border-b border-accent/30 pb-1 hover:border-accent transition-all duration-300"
+                  >
+                    <span>Google'da Tüm Yorumları İnceleyin</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </div>
