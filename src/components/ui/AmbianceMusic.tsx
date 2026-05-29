@@ -16,8 +16,8 @@ export default function AmbianceMusic() {
 
   // Audio Nesnesini İlklendir (Yalnızca Client Side)
   useEffect(() => {
-    // Telifsiz, son derece nezih ve dinlendirici bir lüks lounge/jazzchillout eseri
-    const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3");
+    // Telifsiz, son derece nezih ve dinlendirici lüks restoran lounge/ambient eseri
+    const audio = new Audio("https://assets.mixkit.co/music/preview/mixkit-lounge-ambience-2253.mp3");
     audio.loop = true;
     audio.volume = volume;
     audioRef.current = audio;
