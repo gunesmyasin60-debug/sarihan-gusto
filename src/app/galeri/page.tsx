@@ -49,10 +49,10 @@ const GALERI_GÖRSELLERİ = [
   },
   {
     id: "g-6",
-    title: "Ferah ve Bitkilerle Bezeli Teras Alanı",
+    title: "Boğaz Manzaralı Muhteşem Teras Alanı",
     category: "Mekan & Ambiyans",
-    image: "/images/interior_6.png",
-    desc: "Açık hava konforunu lüks detaylarla birleştiren, yeşilliklerle çevrili ve loş akşam aydınlatmalı keyifli terasımız.",
+    image: "/images/interior_terrace.png",
+    desc: "İstanbul Boğazı ve Fatih Sultan Mehmet Köprüsü'nün eşsiz gün batımı manzarası eşliğinde açık havada akşam yemeği keyfi.",
   },
   {
     id: "g-7",
@@ -63,10 +63,10 @@ const GALERI_GÖRSELLERİ = [
   },
   {
     id: "g-8",
-    title: "Gurme Mutfak ve Şefin Sunum Alanı",
+    title: "Geleneksel Odun Ateşinde Taş Fırın",
     category: "Mutfak & Hazırlık",
-    image: "/images/interior_8.png",
-    desc: "Usta şeflerimizin tabaklarımızı son dokunuşlarla sanat eserine dönüştürdüğü, yüksek hijyen standartlarındaki mutfağımız.",
+    image: "/images/interior_oven_bar.png",
+    desc: "Çıtır lahmacun ve özel pidelerimizin geleneksel taş fırında, meşe odunu ateşinde usta ellerce pişirilme anı.",
   },
   {
     id: "g-9",
