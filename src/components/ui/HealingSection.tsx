@@ -57,6 +57,13 @@ export default function HealingSection() {
         
         if (healingItems.length > 0) {
           setActiveSoup(healingItems[0]);
+        } else if (items.length > 0) {
+          // Eğer şifa çorbası yoksa ilk çorbayı göster
+          const fallback = items.filter(item => item.category === "corbalar");
+          if (fallback.length > 0) {
+            setSoups(fallback);
+            setActiveSoup(fallback[0]);
+          }
         }
       } catch (err) {
         console.error("Şifa çorbaları yüklenemedi:", err);
@@ -74,10 +81,6 @@ export default function HealingSection() {
         ŞİFA ANALİZLERİ HAZIRLANIYOR...
       </div>
     );
-  }
-
-  if (soups.length === 0) {
-    return null; // Eğer şifa işaretli çorba yoksa bu bölümü hiç gösterme
   }
 
   return (
