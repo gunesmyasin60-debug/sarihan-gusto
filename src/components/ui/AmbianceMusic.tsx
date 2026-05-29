@@ -10,14 +10,14 @@ export default function AmbianceMusic() {
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.4);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [trackName, setTrackName] = useState("Ambiance Lounge");
+  const [trackName, setTrackName] = useState("Huzur Frekansı");
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Audio Nesnesini İlklendir (Yalnızca Client Side)
   useEffect(() => {
-    // Telifsiz, son derece nezih ve dinlendirici lüks restoran lounge/ambient eseri
-    const audio = new Audio("https://assets.mixkit.co/music/preview/mixkit-lounge-ambience-2253.mp3");
+    // Telifsiz, derin ve son derece dinlendirici pürüzsüz huzur/şifa frekansı eseri
+    const audio = new Audio("https://assets.mixkit.co/music/preview/mixkit-meditation-mind-2195.mp3");
     audio.loop = true;
     audio.volume = volume;
     audioRef.current = audio;
@@ -89,7 +89,7 @@ export default function AmbianceMusic() {
               ? "bg-accent/15 border-accent text-accent animate-pulse-light" 
               : "bg-card border-card-border text-foreground hover:border-accent hover:text-accent"
           }`}
-          title="Ambiance Lounge Müzik Deneyimi"
+          title="Huzur Frekansı Müzik Deneyimi"
         >
           {isPlaying ? (
             /* CSS Ses Dalgası Barları (Çalarken hareketli, durduğunda sabit) */
@@ -129,7 +129,7 @@ export default function AmbianceMusic() {
 
               {/* Müzik İsmi & Durumu */}
               <div className="min-w-[100px] space-y-0.5 pr-2.5">
-                <p className="text-[10px] text-accent uppercase tracking-widest font-extrabold block">Ambiance Lounge</p>
+                <p className="text-[10px] text-accent uppercase tracking-widest font-extrabold block">Huzur Frekansı</p>
                 <p className="text-[9px] text-foreground/50 font-bold block truncate">
                   {isPlaying ? "Şu an Çalıyor..." : "Sessiz Dinlenme"}
                 </p>
