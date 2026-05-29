@@ -16,8 +16,8 @@ export default function AmbianceMusic() {
 
   // Audio Nesnesini İlklendir (Yalnızca Client Side)
   useEffect(() => {
-    // Telifsiz, derin ve son derece dinlendirici pürüzsüz huzur/şifa frekansı eseri (CORS-enabled CDN)
-    const audio = new Audio("https://ia800204.us.archive.org/21/items/meditationmusicroyaltyfree/Meditation%20Music.mp3");
+    // Yerel olarak barındırılan telifsiz, pürüzsüz huzur/şifa frekansı eseri (100% CORS ve BTK Engellere Karşı Güvenli)
+    const audio = new Audio("/audio/meditation_frequency.mp3");
     audio.loop = true;
     audio.volume = volume;
     audioRef.current = audio;
