@@ -58,31 +58,31 @@ export default function EventsPage() {
           </div>
 
           {/* Etkinlik Grid (Zigzag Layout) */}
-          <div className="grid grid-cols-1 gap-12">
+          <div className="space-y-16">
             {ETKINLIKLER.map((evt, idx) => (
               <div
                 key={evt.id}
-                className={`bg-card border border-card-border rounded-3xl overflow-hidden flex flex-col lg:flex-row gap-8 premium-hover p-4 lg:p-6 text-left ${
+                className={`flex flex-col lg:flex-row gap-12 lg:gap-16 items-center text-left py-12 border-b border-card-border/30 last:border-b-0 ${
                   idx % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
                 {/* Görsel */}
-                <div className="lg:w-1/2 aspect-[16/10] w-full rounded-2xl overflow-hidden relative group">
+                <div className="lg:w-1/2 aspect-[16/10] w-full rounded-3xl overflow-hidden relative group border border-card-border shadow-2xl premium-hover">
                   <img
                     src={evt.image}
                     alt={evt.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
                   />
-                  <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm border border-card-border px-3 py-1 rounded-full flex items-center space-x-1.5 text-accent shadow-md">
+                  <div className="absolute top-4 left-4 bg-background/95 backdrop-blur-sm border border-card-border px-3 py-1 rounded-full flex items-center space-x-1.5 text-accent shadow-md z-10">
                     {evt.icon}
                     <span className="text-[10px] font-bold uppercase tracking-wider">{evt.tag}</span>
                   </div>
                 </div>
 
                 {/* Açıklama */}
-                <div className="lg:w-1/2 flex flex-col justify-between py-2 px-2 lg:px-4">
+                <div className="lg:w-1/2 flex flex-col justify-between space-y-6">
                   <div className="space-y-4">
-                    <h3 className="font-serif text-2xl lg:text-3xl font-bold text-foreground leading-tight">
+                    <h3 className="font-serif text-3xl lg:text-4xl font-bold text-foreground leading-tight">
                       {evt.title}
                     </h3>
                     <p className="text-xs text-muted leading-relaxed">
@@ -90,10 +90,10 @@ export default function EventsPage() {
                     </p>
                     
                     {/* Öne Çıkanlar (Highlights) */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-4 border-t border-card-border/50">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-card-border/40">
                       {evt.highlights.map((highlight, hIdx) => (
-                        <div key={hIdx} className="flex items-center space-x-2 text-xs text-muted">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                        <div key={hIdx} className="flex items-center space-x-2.5 text-xs text-muted">
+                          <span className="w-1 h-1 rounded-full bg-accent shrink-0" />
                           <span>{highlight}</span>
                         </div>
                       ))}
@@ -101,13 +101,13 @@ export default function EventsPage() {
                   </div>
 
                   {/* Alt Kısım Rezervasyon Butonu */}
-                  <div className="pt-6 flex items-center justify-between border-t border-card-border/30 mt-6 lg:mt-0">
-                    <span className="text-[10px] font-bold text-accent uppercase tracking-wider bg-accent/5 px-3 py-1.5 rounded-lg border border-accent/10">
+                  <div className="pt-6 flex items-center justify-between border-t border-card-border/30">
+                    <span className="text-[9px] font-bold text-accent uppercase tracking-wider bg-accent/10 px-3 py-1.5 rounded-lg border border-accent/20">
                       {evt.note}
                     </span>
                     <Link
                       href="/rezervasyon"
-                      className="inline-flex items-center space-x-2 bg-accent text-wood-dark px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover transition-all duration-300 shadow-md shadow-accent/15 focus:outline-none"
+                      className="inline-flex items-center space-x-2 bg-accent text-wood-dark px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold-hover hover:scale-[1.02] transition-all duration-300 shadow-md shadow-accent/10 focus:outline-none"
                     >
                       <span>Masa Rezervasyonu</span>
                       <ArrowRight className="w-4 h-4" />
