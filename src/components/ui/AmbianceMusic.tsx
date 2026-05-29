@@ -11,35 +11,58 @@ export default function AmbianceMusic() {
   const [volume, setVolume] = useState(0.4);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Web Audio API Referansları (Gerçek Zamanlı 432 Hz Frekans Sentezi İçin)
+  // Web Audio API Referansları (Gerçek Zamanlı Kozmik 432 Hz Sentezleyici İçin)
   const audioContextRef = useRef<AudioContext | null>(null);
-  const oscNodeRef = useRef<OscillatorNode | null>(null);
+  const oscsRef = useRef<OscillatorNode[]>([]);
+  const lfoNodeRef = useRef<OscillatorNode | null>(null);
   const oscGainNodeRef = useRef<GainNode | null>(null);
 
   // Tarayıcı kapatılırken veya unmount durumunda temizle
   useEffect(() => {
     return () => {
-      if (audioContextRef.current) {
-        audioContextRef.current.close().catch(() => {});
-      }
+      cleanAudioPipeline();
     };
   }, []);
 
-  // Ses Seviyesi veya Çalma Durumu Değiştiğinde
+  // Ses Seviyesi veya Mute Durumu Değiştiğinde master gain'i güncelle
   useEffect(() => {
     if (oscGainNodeRef.current) {
-      if (isPlaying) {
-        oscGainNodeRef.current.gain.setValueAtTime(
-          isMuted ? 0 : volume * 0.12,
-          audioContextRef.current?.currentTime || 0
-        );
-      } else {
-        oscGainNodeRef.current.gain.setValueAtTime(0, audioContextRef.current?.currentTime || 0);
-      }
+      oscGainNodeRef.current.gain.setValueAtTime(
+        isMuted ? 0 : volume * 0.12,
+        audioContextRef.current?.currentTime || 0
+      );
     }
-  }, [volume, isMuted, isPlaying]);
+  }, [volume, isMuted]);
 
-  // Web Audio API Hattını Kur (Gerçek Zamanlı 432 Hz Osilatör Sentezleyici)
+  // Audio Pipeline Temizleyici (Kaynakları serbest bırakmak için)
+  const cleanAudioPipeline = () => {
+    try {
+      if (lfoNodeRef.current) {
+        lfoNodeRef.current.stop();
+        lfoNodeRef.current.disconnect();
+        lfoNodeRef.current = null;
+      }
+      oscsRef.current.forEach((osc) => {
+        try {
+          osc.stop();
+          osc.disconnect();
+        } catch (_) {}
+      });
+      oscsRef.current = [];
+      if (oscGainNodeRef.current) {
+        oscGainNodeRef.current.disconnect();
+        oscGainNodeRef.current = null;
+      }
+      if (audioContextRef.current) {
+        audioContextRef.current.close().catch(() => {});
+        audioContextRef.current = null;
+      }
+    } catch (e) {
+      console.warn("Audio hattı temizlenirken hata:", e);
+    }
+  };
+
+  // Web Audio API Hattını Kur (Gerçek Zamanlı Çok Sesli Kozmik Akort Sentezleyici)
   const initAudioPipeline = () => {
     if (audioContextRef.current) return;
 
@@ -48,34 +71,93 @@ export default function AmbianceMusic() {
       const ctx = new AudioContextClass();
       audioContextRef.current = ctx;
 
-      // Osilatör Jeneratörü (Oscillator) - 432 Hz Saf Sinüs Şifa Dalgası
-      const osc = ctx.createOscillator();
-      osc.type = "sine";
-      osc.frequency.value = 432; // Sabit ve net 432 Hz Evrensel Akort
+      // 1. Ana Master Gain (Tüm ses seviyesini kontrol eden çıkış düğümü)
+      const masterGain = ctx.createGain();
+      masterGain.gain.value = isMuted ? 0 : volume * 0.12; // Yumuşak ve rahatlatıcı ambient seviyesi
+      oscGainNodeRef.current = masterGain;
+      masterGain.connect(ctx.destination);
+
+      // --- 🎼 ARMONİK KATMANLARIN SENTEZLENMESİ ---
+
+      // KATMAN A: Temel Frekans (432 Hz) - Saf Dinginlik
+      const osc1 = ctx.createOscillator();
+      osc1.type = "sine";
+      osc1.frequency.value = 432;
+      const gain1 = ctx.createGain();
+      gain1.gain.value = 0.50; // Toplam gücün %50'si temel frekanstan gelir
+      osc1.connect(gain1);
+      gain1.connect(masterGain);
+      osc1.start();
+      oscsRef.current.push(osc1);
+
+      // KATMAN B: Binaural Korosu (432.5 Hz) - Genişlik ve Boyut
+      // Temel sesten 0.5 Hz detune edilerek stereo koro derinliği kazandırır
+      const osc2 = ctx.createOscillator();
+      osc2.type = "sine";
+      osc2.frequency.value = 432.5; 
+      const gain2 = ctx.createGain();
+      gain2.gain.value = 0.25; 
+      osc2.connect(gain2);
+      gain2.connect(masterGain);
+      osc2.start();
+      oscsRef.current.push(osc2);
+
+      // KATMAN C: Topraklama ve Derin Bas (216 Hz) - Tapınak Çanağı Tınısı
+      // Frekansın 1 oktav altı (432 / 2). Sıcaklık ve derin bir mistik uğultu sağlar
+      const osc3 = ctx.createOscillator();
+      osc3.type = "sine";
+      osc3.frequency.value = 216; 
+      const gain3 = ctx.createGain();
+      gain3.gain.value = 0.35; 
+      osc3.connect(gain3);
+      gain3.connect(masterGain);
+      osc3.start();
+      oscsRef.current.push(osc3);
+
+      // KATMAN D: Mistik Beşli Akor (648 Hz) - Celestial Heaven
+      // Frekansın kusursuz beşlisi (432 * 1.5). Zihni dinlendiren ince, göksel bir esinti
+      const osc4 = ctx.createOscillator();
+      osc4.type = "sine";
+      osc4.frequency.value = 648; 
+      const gain4 = ctx.createGain();
+      gain4.gain.value = 0.12; 
+      osc4.connect(gain4);
+      gain4.connect(masterGain);
+      osc4.start();
+      oscsRef.current.push(osc4);
+
+      // --- 🌊 KOZMİK NEFES EFEKTİ (LFO MODÜLASYONU) ---
+      // Sesin dümdüz ve mekanik tınlamasını önlemek için yavaşça nefes alan dalga LFO'su
+      const lfo = ctx.createOscillator();
+      lfo.type = "sine";
+      lfo.frequency.value = 0.15; // 6-7 saniyede bir yavaş nefes döngüsü
       
-      const oscGain = ctx.createGain();
-      oscGain.gain.value = isMuted || !isPlaying ? 0 : volume * 0.12; 
+      const lfoGain = ctx.createGain();
+      lfoGain.gain.value = 0.22; // Ses seviyesini %22 oranında dalgalandıracak yavaş nefes
       
-      osc.connect(oscGain);
-      oscGain.connect(ctx.destination);
-      osc.start();
+      lfo.connect(lfoGain);
+      lfoGain.connect(masterGain.gain); // Master gain düğümünü doğrudan modüle ediyoruz
+      lfo.start();
       
-      oscNodeRef.current = osc;
-      oscGainNodeRef.current = oscGain;
+      lfoNodeRef.current = lfo;
+
     } catch (e) {
-      console.warn("Web Audio API hattı kurulamadı (Kullanıcı etkileşimi bekleniyor):", e);
+      console.warn("Kozmik Web Audio API sentezleyici hattı kurulamadı:", e);
     }
   };
 
   // Çalma / Duraklatma Tetikleyicisi
   const togglePlay = () => {
-    initAudioPipeline();
-
-    if (audioContextRef.current && audioContextRef.current.state === "suspended") {
-      audioContextRef.current.resume();
+    if (isPlaying) {
+      setIsPlaying(false);
+      cleanAudioPipeline();
+    } else {
+      initAudioPipeline();
+      if (audioContextRef.current && audioContextRef.current.state === "suspended") {
+        audioContextRef.current.resume();
+      }
+      setIsPlaying(true);
     }
-
-    setIsPlaying(!isPlaying);
   };
 
   // Sessize Alma / Sesi Açma
@@ -111,7 +193,7 @@ export default function AmbianceMusic() {
               ? "bg-accent/15 border-accent text-accent animate-pulse-light" 
               : "bg-card border-card-border text-foreground hover:border-accent hover:text-accent"
           }`}
-          title="432 Hz Evrensel Şifa Frekansı"
+          title="432 Hz Kozmik Şifa Frekansı"
         >
           {isPlaying ? (
             /* CSS Ses Dalgası Barları */
@@ -153,7 +235,7 @@ export default function AmbianceMusic() {
               <div className="flex-grow space-y-0.5">
                 <span className="text-[10px] text-accent uppercase tracking-widest font-extrabold block">Şifa Frekansı</span>
                 <span className="text-[9px] text-foreground/50 font-bold block truncate">
-                  {isPlaying ? "432 Hz - Evrensel Dinginlik" : "Zihin Dinlenmede"}
+                  {isPlaying ? "432 Hz - Kozmik Akort Pedi" : "Zihin Dinlenmede"}
                 </span>
               </div>
 
