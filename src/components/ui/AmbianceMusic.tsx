@@ -10,76 +10,53 @@ export default function AmbianceMusic() {
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.4);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [selectedHz, setSelectedHz] = useState<number>(528);
-  const [trackName, setTrackName] = useState("528 Hz - Mucize & Şifa");
+  const [selectedHz, setSelectedHz] = useState<number>(432);
+  const [trackName, setTrackName] = useState("432 Hz - Evrensel Dinginlik");
   
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // Web Audio API Referansları (Gerçek Zamanlı Frekans Sentezi İçin)
+  // Web Audio API Referansları (Gerçek Zamanlı Saf Frekans Sentezi İçin)
   const audioContextRef = useRef<AudioContext | null>(null);
-  const filterNodeRef = useRef<BiquadFilterNode | null>(null);
   const oscNodeRef = useRef<OscillatorNode | null>(null);
   const oscGainNodeRef = useRef<GainNode | null>(null);
-  const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
 
-  // Audio Nesnesini İlklendir (Yalnızca Client Side)
+  // Tarayıcı kapatılırken veya unmount durumunda temizle
   useEffect(() => {
-    // Yerel olarak barındırılan telifsiz, pürüzsüz huzur/şifa frekansı eseri
-    const audio = new Audio("/audio/meditation_frequency.mp3");
-    audio.loop = true;
-    audio.volume = volume;
-    audioRef.current = audio;
-
-    // Tarayıcı kapatılırken veya unmount durumunda temizle
     return () => {
-      audio.pause();
       if (audioContextRef.current) {
         audioContextRef.current.close().catch(() => {});
       }
-      audioRef.current = null;
     };
   }, []);
 
-  // Ses Seviyesi Değiştiğinde
+  // Ses Seviyesi veya Çalma Durumu Değiştiğinde
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
-      audioRef.current.muted = isMuted;
-    }
-    // Osilatör sesini de müzik sesine orantılı şekilde ayarla
     if (oscGainNodeRef.current) {
-      oscGainNodeRef.current.gain.value = isMuted ? 0 : volume * 0.03; 
+      if (isPlaying) {
+        oscGainNodeRef.current.gain.setValueAtTime(
+          isMuted ? 0 : volume * 0.12,
+          audioContextRef.current?.currentTime || 0
+        );
+      } else {
+        oscGainNodeRef.current.gain.setValueAtTime(0, audioContextRef.current?.currentTime || 0);
+      }
     }
-  }, [volume, isMuted]);
+  }, [volume, isMuted, isPlaying]);
 
-  // Web Audio API Hattını Kur (Gerçek Zamanlı Filtre ve Osilatör Jeneratörü)
+  // Web Audio API Hattını Kur (Gerçek Zamanlı Osilatör Sentezleyici)
   const initAudioPipeline = () => {
-    if (audioContextRef.current || !audioRef.current) return;
+    if (audioContextRef.current) return;
 
     try {
       const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
       const ctx = new AudioContextClass();
       audioContextRef.current = ctx;
 
-      // 1. Kaynak Düğümü (Source Node) - Yerel MP3 çaları bağla
-      const source = ctx.createMediaElementSource(audioRef.current);
-      sourceNodeRef.current = source;
-
-      // 2. Filtre Düğümü (BiquadFilter) - Seçilen frekansı canlandırmak için peaking filtre
-      const filter = ctx.createBiquadFilter();
-      filter.type = "peaking";
-      filter.frequency.value = selectedHz;
-      filter.Q.value = 4.5;       // Rezonans (Frekansın keskinliği)
-      filter.gain.value = 14.0;    // Seçilen frekansa kazanç uygula (+14dB)
-      filterNodeRef.current = filter;
-
-      // 3. Osilatör Jeneratörü (Oscillator) - Tam frekansta saf sinüs şifa dalgası fısıltısı
+      // Osilatör Jeneratörü (Oscillator) - Saf sinüs şifa dalgası
       const osc = ctx.createOscillator();
       osc.type = "sine";
       osc.frequency.value = selectedHz;
       
       const oscGain = ctx.createGain();
-      oscGain.gain.value = isMuted ? 0 : volume * 0.035; // Kulak tırmalamayacak kadar derinden çok kısık ses
+      oscGain.gain.value = isMuted || !isPlaying ? 0 : volume * 0.12; 
       
       osc.connect(oscGain);
       oscGain.connect(ctx.destination);
@@ -87,10 +64,6 @@ export default function AmbianceMusic() {
       
       oscNodeRef.current = osc;
       oscGainNodeRef.current = oscGain;
-
-      // Bağlantıları birleştir: source -> filter -> destination
-      source.connect(filter);
-      filter.connect(ctx.destination);
     } catch (e) {
       console.warn("Web Audio API hattı kurulamadı (Kullanıcı etkileşimi bekleniyor):", e);
     }
@@ -98,8 +71,6 @@ export default function AmbianceMusic() {
 
   // Çalma / Duraklatma Tetikleyicisi
   const togglePlay = () => {
-    if (!audioRef.current) return;
-
     // Web Audio API'yi başlat
     initAudioPipeline();
 
@@ -107,41 +78,19 @@ export default function AmbianceMusic() {
       audioContextRef.current.resume();
     }
 
-    if (isPlaying) {
-      audioRef.current.pause();
-      if (oscGainNodeRef.current) {
-        oscGainNodeRef.current.gain.value = 0; // Osilatörü sustur
-      }
-      setIsPlaying(false);
-    } else {
-      audioRef.current.play()
-        .then(() => {
-          setIsPlaying(true);
-          if (oscGainNodeRef.current) {
-            oscGainNodeRef.current.gain.value = isMuted ? 0 : volume * 0.035; // Osilatörü aç
-          }
-        })
-        .catch((err) => {
-          console.warn("Autoplay politikası nedeniyle müzik tetiklenemedi:", err);
-        });
-    }
+    setIsPlaying(!isPlaying);
   };
 
   // Dinamik Olarak Solfeggio Frekansını Değiştir (396Hz / 432Hz / 528Hz)
   const handleHzChange = (hz: number) => {
     setSelectedHz(hz);
 
-    // 1. Yazılımsal peaking filtresini seçilen frekansa odakla
-    if (filterNodeRef.current) {
-      filterNodeRef.current.frequency.setValueAtTime(hz, audioContextRef.current?.currentTime || 0);
-    }
-
-    // 2. Osilatörün sentezlediği saf sinüs dalgasını anında bu frekansa akort et
+    // Osilatörün sentezlediği saf sinüs dalgasını anında bu frekansa akort et
     if (oscNodeRef.current) {
       oscNodeRef.current.frequency.setValueAtTime(hz, audioContextRef.current?.currentTime || 0);
     }
 
-    // 3. UI etiketlerini ve parça adını güncelle
+    // UI etiketlerini ve parça adını güncelle
     let label = "528 Hz - Şifa & Mucize";
     if (hz === 432) label = "432 Hz - Evrensel Dinginlik";
     if (hz === 396) label = "396 Hz - Zihinsel Arınma";
@@ -260,7 +209,7 @@ export default function AmbianceMusic() {
                     onClick={() => handleHzChange(396)}
                     className={`py-1.5 rounded-xl border text-[9px] font-extrabold transition-all cursor-pointer ${
                       selectedHz === 396
-                        ? "bg-accent/15 border-accent text-accent shadow-sm"
+                        ? "bg-accent text-wood-dark border-accent shadow-sm"
                         : "bg-background border-card-border text-foreground/60 hover:border-accent hover:text-accent"
                     }`}
                     title="396 Hz - Korku ve Suçluluktan Arınma / Zihinsel Temizlik"
@@ -273,7 +222,7 @@ export default function AmbianceMusic() {
                     onClick={() => handleHzChange(432)}
                     className={`py-1.5 rounded-xl border text-[9px] font-extrabold transition-all cursor-pointer ${
                       selectedHz === 432
-                        ? "bg-accent/15 border-accent text-accent shadow-sm"
+                        ? "bg-accent text-wood-dark border-accent shadow-sm"
                         : "bg-background border-card-border text-foreground/60 hover:border-accent hover:text-accent"
                     }`}
                     title="432 Hz - Doğal Evrensel Akort / Kalp Ritmi Uyumlandırma"
@@ -286,8 +235,8 @@ export default function AmbianceMusic() {
                     onClick={() => handleHzChange(528)}
                     className={`py-1.5 rounded-xl border text-[9px] font-extrabold transition-all cursor-pointer ${
                       selectedHz === 528
-                        ? "bg-accent/15 border-accent text-accent shadow-sm"
-                        : "bg-background border-card-border text-wood-dark bg-accent border-accent" // 528 varsayılan şifa rengi
+                        ? "bg-accent text-wood-dark border-accent shadow-sm"
+                        : "bg-background border-card-border text-foreground/60 hover:border-accent hover:text-accent"
                     }`}
                     title="528 Hz - Hücre Yenileme / DNA Dönüşümü / Mucize & Şifa"
                   >
