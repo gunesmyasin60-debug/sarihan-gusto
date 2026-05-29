@@ -16,8 +16,8 @@ export default function AmbianceMusic() {
 
   // Audio Nesnesini İlklendir (Yalnızca Client Side)
   useEffect(() => {
-    // Telifsiz, derin ve son derece dinlendirici pürüzsüz huzur/şifa frekansı eseri
-    const audio = new Audio("https://assets.mixkit.co/music/preview/mixkit-meditation-mind-2195.mp3");
+    // Telifsiz, derin ve son derece dinlendirici pürüzsüz huzur/şifa frekansı eseri (CORS-enabled CDN)
+    const audio = new Audio("https://ia800204.us.archive.org/21/items/meditationmusicroyaltyfree/Meditation%20Music.mp3");
     audio.loop = true;
     audio.volume = volume;
     audioRef.current = audio;
