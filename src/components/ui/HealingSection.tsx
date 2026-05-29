@@ -2,9 +2,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Sparkles, Flame, Clock, Award, Activity, Heart } from "lucide-react";
+import { Flame } from "lucide-react";
 import { MenuItem } from "@/types";
+import menuData from "@/data/menu.json";
 
 export default function HealingSection() {
   const [soups, setSoups] = useState<MenuItem[]>([]);
@@ -32,11 +34,19 @@ export default function HealingSection() {
         }
 
         if (items.length === 0) {
-          const res = await fetch("/api/admin/menu");
-          const json = await res.json();
-          if (json.success) {
-            items = json.data;
+          try {
+            const res = await fetch("/api/admin/menu");
+            const json = await res.json();
+            if (json.success && json.data && json.data.length > 0) {
+              items = json.data;
+            }
+          } catch (e) {
+            console.warn("Dynamic API fetch failed or empty, falling back to static menu.json", e);
           }
+        }
+
+        if (items.length === 0) {
+          items = menuData as MenuItem[];
         }
 
         // isHealing ve active olanları filtrele
@@ -109,36 +119,29 @@ export default function HealingSection() {
                   <motion.div
                     key={soup.id}
                     onClick={() => setActiveSoup(soup)}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer relative overflow-hidden ${
+                    className={`py-6 border-b border-card-border/50 transition-all duration-300 cursor-pointer relative ${
                       isActive 
-                        ? "bg-card border-accent shadow-lg shadow-accent/5 text-foreground" 
-                        : "bg-card/30 border-card-border/60 text-foreground/80 hover:border-accent/40"
+                        ? "text-accent" 
+                        : "text-foreground/80 hover:text-accent"
                     }`}
                   >
-                    {/* Aktiflik Durumu Altın Çizgi */}
-                    {isActive && (
-                      <div className="absolute top-0 bottom-0 left-0 w-1 bg-accent" />
-                    )}
-
                     <div className="flex justify-between items-start gap-4">
-                      <div>
-                        <h3 className="font-serif text-lg font-bold leading-tight text-foreground">
+                      <div className="text-left">
+                        <h3 className={`font-serif text-xl font-bold leading-tight transition-colors ${isActive ? "text-accent" : "text-foreground"}`}>
                           {soup.name}
                         </h3>
                         <p className="text-[10px] text-accent uppercase tracking-wider font-extrabold mt-1">
                           {soup.nameEn}
                         </p>
-                        <p className="text-xs text-foreground/60 leading-relaxed mt-2.5 line-clamp-2">
+                        <p className="text-xs text-muted leading-relaxed mt-2.5">
                           {soup.description}
                         </p>
                       </div>
 
                       {/* İksir Demleme Hızlı İstatistik */}
                       {soup.healingIndex && (
-                        <div className="shrink-0 text-right space-y-1 bg-background/50 border border-card-border px-3 py-2 rounded-xl">
-                          <span className="text-[9px] uppercase tracking-widest text-accent font-extrabold block">KOLAJEN</span>
+                        <div className="shrink-0 text-right space-y-0.5">
+                          <span className="text-[8px] uppercase tracking-widest text-muted font-extrabold block">KOLAJEN</span>
                           <span className="font-serif text-sm font-extrabold text-foreground block">
                             %{soup.healingIndex.collagen}
                           </span>
@@ -151,121 +154,54 @@ export default function HealingSection() {
             </div>
           </div>
 
-          {/* Sağ Kolon: Aktif Çorba Şifa Laboratuvarı Detayları */}
-          <div className="lg:col-span-7">
+                    <div className="lg:col-span-7">
             <AnimatePresence mode="wait">
               {activeSoup && (
                 <motion.div
                   key={activeSoup.id}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.4 }}
-                  className="bg-card border border-card-border p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-left"
+                  className="text-left space-y-8 lg:pl-8"
                 >
-                  {/* Dekoratif Işık */}
-                  <div className="absolute -right-20 -top-20 w-60 h-60 rounded-full bg-accent/5 blur-[50px] pointer-events-none" />
-
-                  {/* Üst Kart Bilgisi */}
-                  <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between border-b border-card-border/60 pb-8">
-                    <div>
-                      <span className="text-[10px] text-accent uppercase tracking-[0.25em] font-extrabold block mb-1">
-                        Şifa Analizi
-                      </span>
-                      <h3 className="font-serif text-3xl font-extrabold text-foreground">
-                        {activeSoup.name}
-                      </h3>
-                      <p className="text-xs text-foreground/50 mt-1 font-semibold">
-                        Geleneksel Reçete / Doğal İlik Suyu Matrisi
-                      </p>
-                    </div>
-                    
-                    <div className="text-right">
-                      <span className="text-[11px] text-foreground/50 font-bold uppercase tracking-wider block">KASE FİYATI</span>
-                      <span className="font-serif text-2xl font-extrabold text-accent block mt-0.5">
-                        {activeSoup.price} ₺
-                      </span>
-                    </div>
+                  {/* Üst Kısım Bilgisi - Temiz Editoryal Hiyerarşi */}
+                  <div className="space-y-2">
+                    <span className="text-xs text-accent uppercase tracking-[0.25em] font-extrabold block">
+                      Şifa Analizi
+                    </span>
+                    <h3 className="font-serif text-4xl md:text-5xl font-extrabold text-foreground leading-tight">
+                      {activeSoup.name}
+                    </h3>
+                    <p className="text-xs text-accent uppercase tracking-wider font-extrabold">
+                      {activeSoup.nameEn}
+                    </p>
                   </div>
 
                   {/* Şifa Faydaları Gösterimi */}
-                  <div className="py-8 space-y-2">
-                    <span className="text-[10px] text-accent uppercase tracking-widest font-extrabold block">
-                      Tıbbi ve Gastronomik Faydaları
+                  <div className="space-y-3 py-2">
+                    <span className="text-xs text-muted uppercase tracking-widest font-extrabold block">
+                      Usta Şeflerin Şifa Reçetesi
                     </span>
-                    <p className="font-serif text-xl font-bold text-foreground leading-relaxed">
+                    <p className="font-serif text-2xl md:text-3xl font-medium text-foreground leading-relaxed italic">
                       "{activeSoup.benefits || "Hücre yenileyici, yüksek kolajen ve protein deposu şifa iksiri."}"
                     </p>
                     {activeSoup.benefitsEn && (
-                      <p className="text-xs text-foreground/55 font-medium italic">
+                      <p className="text-xs text-muted leading-relaxed italic">
                         "{activeSoup.benefitsEn}"
                       </p>
                     )}
                   </div>
 
-                  {/* Laboratuvar Göstergeleri (Kolajen, Demleme Saati, Bağışıklık) */}
-                  {activeSoup.healingIndex && (
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-card-border/60">
-                      
-                      {/* Kolajen Gauge */}
-                      <div className="bg-background/40 border border-card-border/60 p-5 rounded-2xl flex flex-col items-center justify-center text-center space-y-3 relative group overflow-hidden">
-                        <div className="w-16 h-16 rounded-full border-4 border-card-border flex items-center justify-center relative">
-                          {/* Dairesel gauge efekti */}
-                          <div className="absolute inset-0 rounded-full border-4 border-accent border-t-transparent animate-spin-slow opacity-25" />
-                          <span className="font-serif text-lg font-extrabold text-accent">
-                            %{activeSoup.healingIndex.collagen}
-                          </span>
-                        </div>
-                        <div className="space-y-0.5">
-                          <span className="text-[10px] text-foreground/50 font-extrabold uppercase tracking-widest block">Kolajen Oranı</span>
-                          <span className="text-[9px] text-accent font-bold uppercase block">Hücre Yenileme</span>
-                        </div>
-                      </div>
-
-                      {/* Demleme Saati */}
-                      <div className="bg-background/40 border border-card-border/60 p-5 rounded-2xl flex flex-col items-center justify-center text-center space-y-3 relative group overflow-hidden">
-                        <div className="w-16 h-16 rounded-full bg-accent/5 border border-accent/20 flex items-center justify-center text-accent">
-                          <Clock className="w-7 h-7" />
-                        </div>
-                        <div className="space-y-0.5">
-                          <span className="text-[10px] text-foreground/50 font-extrabold uppercase tracking-widest block">Kaynama Süresi</span>
-                          <span className="text-xs font-serif font-extrabold text-foreground block">
-                            {activeSoup.healingIndex.brewTime}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Bağışıklık Gücü (Hearts) */}
-                      <div className="bg-background/40 border border-card-border/60 p-5 rounded-2xl flex flex-col items-center justify-center text-center space-y-3 relative group overflow-hidden">
-                        <div className="w-16 h-16 rounded-full bg-accent/5 border border-accent/20 flex items-center justify-center text-accent">
-                          <Shield className="w-7 h-7 text-accent" />
-                        </div>
-                        <div className="space-y-1">
-                          <span className="text-[10px] text-foreground/50 font-extrabold uppercase tracking-widest block">Bağışıklık Gücü</span>
-                          <div className="flex items-center space-x-0.5">
-                            {Array.from({ length: 5 }).map((_, i) => {
-                              const boost = activeSoup.healingIndex?.immuneBoost || 1;
-                              return (
-                                <Heart 
-                                  key={i} 
-                                  className={`w-3 h-3 ${
-                                    i < boost 
-                                      ? "text-accent fill-accent" 
-                                      : "text-foreground/20"
-                                  }`} 
-                                />
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
-                  )}
+                  {/* Gastronomik Açıklama */}
+                  <div className="space-y-2 border-t border-card-border/30 pt-6">
+                    <span className="text-xs text-muted uppercase tracking-wider font-extrabold block">Gastronomik Ustalık</span>
+                    <p className="text-sm text-muted leading-relaxed">{activeSoup.description}</p>
+                  </div>
 
                   {/* Şefin Sırrı pairings */}
                   {activeSoup.pairings && activeSoup.pairings.length > 0 && (
-                    <div className="mt-8 flex flex-wrap items-center gap-3 bg-background/50 border border-card-border/40 p-4.5 rounded-2xl">
+                    <div className="flex flex-wrap items-center gap-3 bg-card/45 border border-card-border/50 p-4.5 rounded-2xl">
                       <span className="text-[9px] text-accent font-extrabold uppercase tracking-widest shrink-0">
                         Şefin Eşleştirme Önerisi:
                       </span>
@@ -279,7 +215,7 @@ export default function HealingSection() {
                             ? "Sıcak Humus"
                             : "Geleneksel Meze";
                           return (
-                            <span key={pId} className="px-2.5 py-1 bg-card border border-card-border rounded-lg text-[9px] font-bold text-foreground/75 uppercase tracking-wide">
+                            <span key={pId} className="px-2.5 py-1 bg-background/60 border border-card-border rounded-lg text-[9px] font-bold text-foreground/75 uppercase tracking-wide">
                               {pairLabel}
                             </span>
                           );
@@ -288,6 +224,21 @@ export default function HealingSection() {
                     </div>
                   )}
 
+                  {/* Fiyat ve Masa Ayır Butonu */}
+                  <div className="flex items-center justify-between border-t border-card-border/30 pt-8 mt-6">
+                    <div className="space-y-1">
+                      <span className="text-[10px] text-muted font-bold uppercase tracking-wider block">KASE FİYATI</span>
+                      <span className="font-serif text-3xl font-extrabold text-accent block">
+                        {activeSoup.price} ₺
+                      </span>
+                    </div>
+                    <Link
+                      href="/rezervasyon"
+                      className="px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider bg-accent text-wood-dark hover:bg-brand-gold-hover hover:scale-102 transition-all duration-300 focus:outline-none"
+                    >
+                      Masa Ayır
+                    </Link>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

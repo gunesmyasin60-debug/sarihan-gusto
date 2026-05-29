@@ -223,9 +223,9 @@ export default function MenuPage() {
             </div>
 
             {/* Yatay Kaydırılabilir Kategori Filtresi (Mobile Swipe) */}
-            <div className="relative">
+            <div className="relative w-full">
               <div 
-                className="flex items-center space-x-3 overflow-x-auto no-scrollbar py-2 px-2 -mx-4 md:mx-0 justify-start md:justify-center"
+                className="flex items-center space-x-3 overflow-x-auto no-scrollbar py-2.5 px-4 md:px-0 justify-start md:justify-center scroll-smooth w-full pr-12 md:pr-0"
                 role="tablist"
                 aria-label="Menü Kategorileri"
               >
@@ -237,7 +237,7 @@ export default function MenuPage() {
                       onClick={() => setActiveCategory(category.id)}
                       role="tab"
                       aria-selected={isActive}
-                      className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                      className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer shrink-0 ${
                         isActive
                           ? "bg-accent text-wood-dark shadow-lg shadow-accent/15"
                           : "bg-card border border-card-border text-foreground hover:border-accent hover:text-accent"
@@ -249,7 +249,7 @@ export default function MenuPage() {
                 })}
               </div>
               {/* Sağ tarafta mobil için küçük bir kaydırma ipucu */}
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-to-l from-background to-transparent pointer-events-none md:hidden flex items-center justify-end pr-1 text-accent">
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background via-background/60 to-transparent pointer-events-none md:hidden flex items-center justify-end pr-2 text-accent">
                 <ChevronRight className="w-4 h-4 animate-bounce-horizontal" />
               </div>
             </div>

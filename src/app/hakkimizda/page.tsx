@@ -2,7 +2,7 @@
 // Hakkımızda Sayfası — Sarıhan Gusto markasının tarihçesini, mutfak felsefesini ve kurumsal değerlerini sunar.
 
 import Link from "next/link";
-import { Award, ShieldCheck, Clock, Users, ArrowRight, Compass, Target } from "lucide-react";
+import { Award, ShieldCheck, Clock, ArrowRight, Compass, Target } from "lucide-react";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import CookieBanner from "@/components/ui/CookieBanner";
@@ -47,9 +47,7 @@ export default function AboutPage() {
               
               {/* Prensip 1 */}
               <div className="space-y-4">
-                <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/25 flex items-center justify-center text-accent">
-                  <Award className="w-5 h-5" />
-                </div>
+                <Award className="w-8 h-8 text-accent" />
                 <h3 className="font-serif text-xl font-bold text-foreground">Seçkin Malzeme</h3>
                 <p className="text-xs text-muted leading-relaxed">
                   Kullandığımız tüm etler, baharatlar ve sebzeler yöresinden mevsiminde taze olarak tedarik edilmektedir.
@@ -58,9 +56,7 @@ export default function AboutPage() {
 
               {/* Prensip 2 */}
               <div className="space-y-4 md:border-l md:border-card-border/50 md:pl-12">
-                <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/25 flex items-center justify-center text-accent">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
+                <ShieldCheck className="w-8 h-8 text-accent" />
                 <h3 className="font-serif text-xl font-bold text-foreground">%100 Doğallık</h3>
                 <p className="text-xs text-muted leading-relaxed">
                   Çorbalarımızda ve kebaplarımızda hiçbir yapay tatlandırıcı veya koruyucu kimyasal kullanılmamaktadır.
@@ -69,9 +65,7 @@ export default function AboutPage() {
 
               {/* Prensip 3 */}
               <div className="space-y-4 md:border-l md:border-card-border/50 md:pl-12">
-                <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/25 flex items-center justify-center text-accent">
-                  <Clock className="w-5 h-5" />
-                </div>
+                <Clock className="w-8 h-8 text-accent" />
                 <h3 className="font-serif text-xl font-bold text-foreground">Ağır Ağır Pişirme</h3>
                 <p className="text-xs text-muted leading-relaxed">
                   Suyu ve lezzeti hapsetmek için kemik sularımızı ve çorbalarımızı 24 saat kısık taş fırın ateşinde demliyoruz.
@@ -87,9 +81,7 @@ export default function AboutPage() {
 
               {/* Misyonumuz */}
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent">
-                  <Target className="w-6 h-6 animate-pulse" />
-                </div>
+                <Target className="w-10 h-10 text-accent animate-pulse" />
                 <h2 className="font-serif text-3xl font-bold text-foreground">Misyonumuz</h2>
                 <p className="text-xs text-muted leading-relaxed">
                   Geleneksel Türk ve Anadolu mutfağının asırlık lezzet miraslarını, özünü ve orijinal pişirme tekniklerini bozmadan sevgiyle korumak; bu şifalı tatları en seçkin yöresel malzemelerle ve yüksek hijyen standartlarıyla harmanlayıp, Etiler şubemizin elit ve konforlu ambiyansında eşsiz bir konukseverlikle misafirlerimize sunmaktır.
@@ -98,9 +90,7 @@ export default function AboutPage() {
 
               {/* Vizyonumuz */}
               <div className="space-y-4 md:pl-8">
-                <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent">
-                  <Compass className="w-6 h-6 animate-pulse" />
-                </div>
+                <Compass className="w-10 h-10 text-accent animate-pulse" />
                 <h2 className="font-serif text-3xl font-bold text-foreground">Vizyonumuz</h2>
                 <p className="text-xs text-muted leading-relaxed">
                   Çeyrek asırlık Sarıhan tecrübesini ve asil konseptimizi, Türk gastronomi kültürünün yerel ve uluslararası arenadaki en seçkin temsilcilerinden biri haline getirmek; modern çağın sunum estetiğini kadim pişirme teknikleriyle birleştirerek, premium restoran konseptinde öncü ve dünyada referans gösterilen bir marka olmaktır.

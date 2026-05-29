@@ -3,12 +3,186 @@
 // Hero alanı, "Anadolu Sıcaklığı" Bento Grid tasarımı, yerleşik Google Yorumları ve JSON-LD Yapılandırılmış Arama Şemalarını barındırır.
 
 import Link from "next/link";
-import { Star, Clock, Phone, MapPin, ArrowUpRight, Award, Compass, HeartHandshake, Check } from "lucide-react";
+// Handcrafted, premium gold SVG Icons to replace generic Lucide icons
+const Star = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    stroke="currentColor"
+    strokeWidth="1"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    <path d="M12 7.5L13.5 12L12 16.5L10.5 12Z" className="text-[#181210]" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+const Clock = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="8.5" strokeDasharray="1 3" opacity="0.5" />
+    <path d="M12 6v6l4 2.5" />
+    <circle cx="12" cy="12" r="0.8" fill="currentColor" />
+  </svg>
+);
+
+const Phone = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M3 8c0-1.5 3-4 9-4s9 2.5 9 4c0 0.8-1 1.5-2.5 1.5S16 9 12 9s-4 .5-6.5.5S3 8.8 3 8z" />
+    <path d="M9 7.5v3.5M15 7.5v3.5" />
+    <path d="M5 18a1 1 0 001 1h12a1 1 0 001-1v-5H5v5z" />
+    <path d="M5 13c0-2 2-3 7-3s7 1 7 3" />
+    <circle cx="12" cy="15" r="3" />
+    <circle cx="12" cy="13.5" r="0.5" fill="currentColor" />
+    <circle cx="13.5" cy="15" r="0.5" fill="currentColor" />
+    <circle cx="12" cy="16.5" r="0.5" fill="currentColor" />
+    <circle cx="10.5" cy="15" r="0.5" fill="currentColor" />
+  </svg>
+);
+
+const MapPin = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 21.5c-1-1-7.5-6.8-7.5-11.5a7.5 7.5 0 1115 0c0 4.7-6.5 10.5-7.5 11.5z" />
+    <path d="M12 7.5L14 10l-2 2.5-2-2.5z" fill="currentColor" />
+  </svg>
+);
+
+const ArrowUpRight = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M6.5 17.5L17.5 6.5M10 6.5h7.5V14" />
+    <circle cx="5" cy="19" r="0.75" fill="currentColor" />
+  </svg>
+);
+
+const Award = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="11" r="5" />
+    <circle cx="12" cy="11" r="3.5" strokeDasharray="1 1.5" />
+    <path d="M10 15.5l-1.5 5.5 3.5-1.5 3.5 1.5-1.5-5.5" />
+    <path d="M6 14a6.5 6.5 0 010-6M18 14a6.5 6.5 0 000-6" />
+    <path d="M6 11c-.5-.3-1.2-.3-1.5.2M6 9c-.5-.3-1.2-.3-1.5.2" />
+    <path d="M18 11c.5-.3 1.2-.3 1.5.2M18 9c.5-.3 1.2-.3 1.5.2" />
+  </svg>
+);
+
+const HeartHandshake = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M3 14l3.5-3.5a1.5 1.5 0 012.1 0l1.4 1.4" />
+    <path d="M21 10l-3.5 3.5a1.5 1.5 0 01-2.1 0l-2.9-2.9" />
+    <path d="M10 11.9c.3-.3.8-.3 1.1 0l1 1c.3.3.3.8 0 1.1l-1 1" />
+    <path d="M11.5 10.4c.3-.3.8-.3 1.1 0l1 1c.3.3.3.8 0 1.1" />
+    <path d="M12 5c-1.5-2.5-5.5-2.5-7 0-1.5 2.5 1.5 7 7 11.5 5.5-4.5 8.5-9 7-11.5-1.5-2.5-5.5-2.5-7 0z" strokeDasharray="1.5 2" opacity="0.4" />
+  </svg>
+);
+
+const Check = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M7.5 12.5l3 3 6.5-6.5" />
+    <circle cx="6.5" cy="11.5" r="0.5" fill="currentColor" />
+  </svg>
+);
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import CookieBanner from "@/components/ui/CookieBanner";
 import HealingSection from "@/components/ui/HealingSection";
 import { RESTORAN_BILGILERI } from "@/constants/restaurant";
+
+// Handcrafted minimal gold ornament separator
+const GoldOrnament = () => (
+  <div className="flex items-center justify-center space-x-4 py-3 select-none" aria-hidden="true">
+    <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-accent/40" />
+    <svg className="w-3.5 h-3.5 text-accent/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+      <path d="M12 2L2 12l10 10 10-10L12 2z" fill="currentColor" fillOpacity="0.1" />
+      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+    </svg>
+    <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-accent/40" />
+  </div>
+);
+
+// Handdrawn-style gold flourish ornament for overlapping corners
+const GoldFlourish = ({ className }: { className?: string }) => (
+  <svg 
+    className={`w-16 h-16 text-accent/25 pointer-events-none select-none ${className}`} 
+    viewBox="0 0 100 100" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="0.75"
+    aria-hidden="true"
+  >
+    <path d="M10 90 C 25 80, 50 55, 60 20" strokeDasharray="2 2" />
+    <path d="M60 20 C 56 28, 44 36, 28 40 C 40 32, 52 24, 60 20 Z" fill="currentColor" fillOpacity="0.08" />
+    <path d="M60 20 C 64 28, 76 36, 92 40 C 80 32, 68 24, 60 20 Z" fill="currentColor" fillOpacity="0.08" />
+    <path d="M44 50 C 40 54, 28 58, 16 60 C 26 56, 38 52, 44 50 Z" fill="currentColor" fillOpacity="0.08" />
+    <path d="M52 36 C 54 42, 60 48, 72 52 C 62 48, 56 42, 52 36 Z" fill="currentColor" fillOpacity="0.08" />
+    <circle cx="60" cy="20" r="1.5" fill="currentColor" />
+  </svg>
+);
 
 export default function HomePage() {
   // Google Arama Sonuçları İçin Yapılandırılmış Veri Şeması (JSON-LD)
@@ -72,6 +246,11 @@ export default function HomePage() {
           className="relative min-h-[90vh] flex items-center bg-background overflow-hidden"
           aria-label="Sarıhan Gusto Karşılama Alanı"
         >
+          {/* Elegant Background Watermark for Hero */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[26rem] md:text-[40rem] font-serif font-extralight text-accent/[0.015] select-none pointer-events-none leading-none z-0 hidden md:block">
+            S
+          </div>
+
           {/* Arka Plan Video Katmanı (PC'de Aktif, Mobilde Gizli) */}
           <video
             autoPlay
@@ -104,9 +283,10 @@ export default function HomePage() {
                 <span>Nisbetiye Caddesi'nin Klasik Lezzeti</span>
               </div>
               <h1 className="font-serif text-5xl md:text-8xl font-extrabold leading-[1.1] tracking-tight">
-                Gelenekten Gelen <br />
-                <span className="text-accent">Premium Tatlar</span>
+                Ateşten ve Demden <br />
+                <span className="font-serif italic font-normal tracking-wide text-accent/90">Asil</span> Gastronomi
               </h1>
+              <GoldOrnament />
               <p className="text-muted text-base md:text-xl leading-relaxed max-w-2xl mx-auto">
                 Çeyrek asırlık Sarıhan tecrübesiyle, zırhla kıyılmış geleneksel kebaplardan, saatlerce demlenmiş şifa kaynağı çorbalara kadar tüm gurme lezzetleri, Anadolu sıcaklığıyla harmanlayıp kusursuz şekilde sunuyoruz.
               </p>
@@ -132,13 +312,21 @@ export default function HomePage() {
 
         {/* 2. ANADOLU SICAKLIĞI DENEYİMİ ALANI */}
         <section 
-          className="py-24 bg-background border-t border-card-border"
+          className="py-24 bg-background border-t border-card-border relative overflow-hidden"
           aria-label="Sarıhan Gusto Deneyimi"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Massive artistic background watermark */}
+          <div className="absolute -right-24 top-1/2 -translate-y-1/2 text-[26rem] font-serif font-extralight text-accent/[0.015] select-none pointer-events-none z-0 hidden lg:block leading-none">
+            G
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-              <span className="text-xs uppercase tracking-[0.2em] text-accent font-bold">Lezzet & Konsept</span>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold">Anadolu Sıcaklığı Etiler'de</h2>
+              <span className="text-xs uppercase tracking-[0.2em] text-accent/80 font-bold block mb-1">Lezzet & Konsept</span>
+              <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight">
+                Anadolu <span className="font-serif italic font-normal text-accent/90">Sıcaklığı</span> Etiler&apos;de
+              </h2>
+              <GoldOrnament />
               <p className="text-sm text-muted">
                 Her bir detayını premium konseptimizle ilmek ilmek dokuduğumuz modern editoryal yerleşiminde gastronomik felsefemizi keşfedin.
               </p>
@@ -147,8 +335,12 @@ export default function HomePage() {
             {/* Kebaplar Showcase ve Bilgiler (Bespoke Tasarım) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
               
-              {/* Sol taraf: Kebaplar Showcase Kartı */}
-              <div className="lg:col-span-8 rounded-3xl bg-card border border-card-border p-8 md:p-12 flex flex-col justify-between overflow-hidden relative group premium-hover ember-glow min-h-[350px]">
+              {/* Sol taraf: Kebaplar Showcase Kartı - Asymmetric Shift and Overlap */}
+              <div className="lg:col-span-8 rounded-3xl bg-card border border-card-border p-8 md:p-12 flex flex-col justify-between overflow-hidden relative group premium-hover ember-glow min-h-[350px] lg:-translate-y-4 lg:hover:-translate-y-6 transition-all duration-500 z-10 shadow-2xl">
+                {/* Gold Laurel corner flourishes */}
+                <GoldFlourish className="absolute -top-4 -left-4 rotate-90 opacity-40 group-hover:opacity-75 transition-opacity duration-300" />
+                <GoldFlourish className="absolute -bottom-4 -right-4 -rotate-90 opacity-40 group-hover:opacity-75 transition-opacity duration-300" />
+                
                 {/* Zırh Kebabı Arka Plan Resmi ve Karartma Maskesi */}
                 <div className="absolute inset-0 z-0">
                   <img
@@ -179,8 +371,8 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Sağ taraf: Çalışma Saatleri & Masa Rezervasyon (Clean, Cardless Typography) */}
-              <div className="lg:col-span-4 flex flex-col justify-between gap-8 py-4 text-left">
+              {/* Sağ taraf: Çalışma Saatleri & Masa Rezervasyon (Clean, Cardless Typography) - Offset and elegant margins */}
+              <div className="lg:col-span-4 flex flex-col justify-between gap-8 py-4 lg:pl-6 text-left relative z-10">
                 
                 {/* Çalışma Saatleri (Bespoke Typography) */}
                 <div className="space-y-3">
@@ -225,30 +417,38 @@ export default function HomePage() {
 
         {/* 3. HİKAYEMİZ & LEZZET YOLCULUĞU (Alternating Split / Zikzak Düzen) */}
         <section 
-          className="py-24 bg-background border-t border-card-border overflow-hidden"
+          className="py-24 bg-background border-t border-card-border overflow-hidden relative"
           aria-label="Sarıhan Gusto Lezzet Hikayesi"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 relative z-10">
             
             {/* Bölüm Başlığı */}
-            <div className="text-center max-w-2xl mx-auto space-y-3">
-              <span className="text-xs uppercase tracking-[0.2em] text-accent font-bold">Bir Sarıhan Geleneği</span>
-              <h2 className="font-serif text-3xl md:text-5xl font-bold">Lezzetimizin Asırlık Sırrı</h2>
+            <div className="text-center max-w-2xl mx-auto space-y-3 relative z-10">
+              <span className="text-xs uppercase tracking-[0.2em] text-accent/80 font-bold block mb-1">Bir Sarıhan Geleneği</span>
+              <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight">
+                Lezzetimizin <span className="font-serif italic font-normal text-accent/90">Asırlık</span> Sırrı
+              </h2>
+              <GoldOrnament />
               <p className="text-sm text-muted">
                 Her tabağın arkasında yatan deneyim, sabır ve tutkuyla örülmüş özgün hikayemiz.
               </p>
             </div>
 
             {/* Alternatif Satır 1: Kebabın Ustalığı (Görsel Sağda, Metin Solda) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              {/* Massive background watermark letter */}
+              <div className="absolute -left-16 top-1/2 -translate-y-1/2 text-[22rem] font-serif font-extralight text-accent/[0.015] select-none pointer-events-none z-0 hidden lg:block leading-none">
+                S
+              </div>
+              
               {/* Sol Sütun: Metin Bilgisi */}
-              <div className="lg:col-span-6 space-y-6 text-left">
+              <div className="lg:col-span-6 space-y-6 text-left relative z-10">
                 <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
                   <span>Usta Ellerin Sanatı</span>
                 </div>
                 <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
                   Zırh ile Kıyılan <br />
-                  <span className="text-accent">Eşsiz Kebaplar</span>
+                  <span className="font-serif italic font-normal text-accent/90">Eşsiz</span> Kebaplar
                 </h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Gerçek bir Adana kebabı yüksek ustalık ve sadakat gerektirir. Etlerimiz, hiçbir metal makine teması olmaksızın, tamamen geleneksel yöntemlerle usta ellerde masif zırh bıçakları kullanılarak kıyılır. Özel baharat formülümüz ve taze kuyruk yağıyla harmanlanan harç, meşe odunu kömürünün asil kor ateşinde yavaş yavaş demlenerek pişirilir.
@@ -287,7 +487,11 @@ export default function HomePage() {
               </div>
 
               {/* Sağ Sütun: Görsel Alanı */}
-              <div className="lg:col-span-6 relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover">
+              <div className="lg:col-span-6 relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover lg:translate-x-6 lg:-translate-y-4 transition-all duration-500 z-10">
+                {/* Gold Laurel flourishes absolute inside the image card */}
+                <GoldFlourish className="absolute -top-4 -left-4 rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+                <GoldFlourish className="absolute -bottom-4 -right-4 -rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-[#181210]/60 via-transparent to-transparent z-10" />
                 <img 
                   src="/images/kebab.png" 
@@ -301,9 +505,18 @@ export default function HomePage() {
             </div>
 
             {/* Alternatif Satır 2: Ağır Ateş Çorbaları (Görsel Solda, Metin Sağda) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              {/* Massive background watermark letter */}
+              <div className="absolute -right-16 top-1/2 -translate-y-1/2 text-[22rem] font-serif font-extralight text-accent/[0.015] select-none pointer-events-none z-0 hidden lg:block leading-none">
+                G
+              </div>
+
               {/* Sol Sütun: Görsel Alanı (Masaüstünde solda olması için order-last lg:order-first olarak ayarlandı, mobilde önce görsel gelir) */}
-              <div className="lg:col-span-6 lg:order-first order-last relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover">
+              <div className="lg:col-span-6 lg:order-first order-last relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover lg:-translate-x-6 lg:-translate-y-4 transition-all duration-500 z-10">
+                {/* Gold Laurel flourishes absolute inside the image card */}
+                <GoldFlourish className="absolute -top-4 -left-4 rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+                <GoldFlourish className="absolute -bottom-4 -right-4 -rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-[#181210]/60 via-transparent to-transparent z-10" />
                 <img 
                   src="/images/soup.png" 
@@ -316,13 +529,13 @@ export default function HomePage() {
               </div>
 
               {/* Sağ Sütun: Metin Bilgisi */}
-              <div className="lg:col-span-6 space-y-6 text-left">
+              <div className="lg:col-span-6 space-y-6 text-left relative z-10">
                 <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
                   <span>Asırlık Şifa Geleneği</span>
                 </div>
                 <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
                   Ağır Ateşte Demlenen <br />
-                  <span className="text-accent">Şifa Kaynağı Çorbalar</span>
+                  <span className="font-serif italic font-normal text-accent/90">Şifa Kaynağı</span> Çorbalar
                 </h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Gurme lezzet yolculuğumuzun en narin parçası çorbalarımızdır. Özenle seçilmiş kelle, paça ve ilikli kemik suları, usta şeflerimizin gözetiminde tam 8 saat boyunca en kısık ateşte demlenerek kaynatılır. Restoranımızın asil ortamında, dumanı tüten bir şifa kasesiyle güne başlamanın veya geceyi sonlandırmanın tadı başkadır.
@@ -362,15 +575,20 @@ export default function HomePage() {
             </div>
 
             {/* Alternatif Satır 3: Seçkin Ambiyans (Görsel Sağda, Metin Solda) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              {/* Massive background watermark letter */}
+              <div className="absolute -left-16 top-1/2 -translate-y-1/2 text-[22rem] font-serif font-extralight text-accent/[0.015] select-none pointer-events-none z-0 hidden lg:block leading-none">
+                A
+              </div>
+
               {/* Sol Sütun: Metin Bilgisi */}
-              <div className="lg:col-span-6 space-y-6 text-left">
+              <div className="lg:col-span-6 space-y-6 text-left relative z-10">
                 <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
                   <span>Nisbetiye'nin Asil Ambiyansı</span>
                 </div>
                 <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
                   Mum Işığında Lüks ve <br />
-                  <span className="text-accent">Konforlu Akşamlar</span>
+                  <span className="font-serif italic font-normal text-accent/90">Konforlu</span> Akşamlar
                 </h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Sarıhan Gusto Etiler, sadece gastronomik bir ziyafet değil, aynı zamanda gözlerinizi ve ruhunuzu dinlendiren lüks bir kaçış noktasıdır. Premium maun ahşap kaplamalarımız, dinlendirici mum ışıkları ve usta mimari dokunuşlarımız, size ve sevdiklerinize unutulmaz ve seçkin bir akşam yemeği atmosferi hazırlar.
@@ -409,7 +627,11 @@ export default function HomePage() {
               </div>
 
               {/* Sağ Sütun: Görsel Alanı */}
-              <div className="lg:col-span-6 relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover">
+              <div className="lg:col-span-6 relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover lg:translate-x-6 lg:-translate-y-4 transition-all duration-500 z-10">
+                {/* Gold Laurel flourishes absolute inside the image card */}
+                <GoldFlourish className="absolute -top-4 -left-4 rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+                <GoldFlourish className="absolute -bottom-4 -right-4 -rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-[#181210]/60 via-transparent to-transparent z-10" />
                 <img 
                   src="/images/ambiance.png" 
@@ -423,9 +645,18 @@ export default function HomePage() {
             </div>
 
             {/* Alternatif Satır 4: Taş Fırın & Pide (Görsel Solda, Metin Sağda) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              {/* Massive background watermark letter */}
+              <div className="absolute -right-16 top-1/2 -translate-y-1/2 text-[22rem] font-serif font-extralight text-accent/[0.015] select-none pointer-events-none z-0 hidden lg:block leading-none">
+                F
+              </div>
+
               {/* Sol Sütun: Görsel Alanı */}
-              <div className="lg:col-span-6 lg:order-first order-last relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover">
+              <div className="lg:col-span-6 lg:order-first order-last relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover lg:-translate-x-6 lg:-translate-y-4 transition-all duration-500 z-10">
+                {/* Gold Laurel flourishes absolute inside the image card */}
+                <GoldFlourish className="absolute -top-4 -left-4 rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+                <GoldFlourish className="absolute -bottom-4 -right-4 -rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-[#181210]/60 via-transparent to-transparent z-10" />
                 <img 
                   src="/images/pide_oven.png" 
@@ -438,13 +669,13 @@ export default function HomePage() {
               </div>
 
               {/* Sağ Sütun: Metin Bilgisi */}
-              <div className="lg:col-span-6 space-y-6 text-left">
+              <div className="lg:col-span-6 space-y-6 text-left relative z-10">
                 <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
                   <span>Geleneksel Odun Ateşi</span>
                 </div>
                 <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
                   Taş Fırından Çıtır <br />
-                  <span className="text-accent">Pide & Lahmacunlar</span>
+                  <span className="font-serif italic font-normal text-accent/90">Pide &amp; Lahmacunlar</span>
                 </h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Sarıhan Gusto fırın ustaları, el açması incecik hamurları taş fırınımızın kızgın odun ateşinde pişirerek gerçek taş fırın lezzetini sofranıza getirir. Karadeniz köy tereyağı, özel kuzu kavurması ve eriyen kaşar peyniriyle hazırlanan çıtır pidelerimiz ve lahmacunlarımız, fırından yeni çıkmış sıcacık dumanıyla iştah kabartır.
@@ -484,15 +715,20 @@ export default function HomePage() {
             </div>
 
             {/* Alternatif Satır 5: Geleneksel Tatlılar (Görsel Sağda, Metin Solda) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              {/* Massive background watermark letter */}
+              <div className="absolute -left-16 top-1/2 -translate-y-1/2 text-[22rem] font-serif font-extralight text-accent/[0.015] select-none pointer-events-none z-0 hidden lg:block leading-none">
+                T
+              </div>
+
               {/* Sol Sütun: Metin Bilgisi */}
-              <div className="lg:col-span-6 space-y-6 text-left">
+              <div className="lg:col-span-6 space-y-6 text-left relative z-10">
                 <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
                   <span>Saray Usulü Tatlı Şöleni</span>
                 </div>
                 <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
-                  Fıstıklı Katmer & <br />
-                  <span className="text-accent">Geleneksel Tatlılar</span>
+                  Fıstıklı Katmer &amp; <br />
+                  <span className="font-serif italic font-normal text-accent/90">Geleneksel</span> Tatlılar
                 </h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Yemek ziyafetini lüks bir şölenle sonlandırmak isteyen gurmeler için tatlılarımız birer başyapıttır. İncecik el açması hamurun arasına bolca serpiştirilen taze Antep fıstıkları ve hakiki manda kaymağıyla hazırlanan çıtır katmerimiz ile taş fırında nar gibi kızarmış Hamsiköy fırın sütlacımız, damaklarda unutulmaz izler bırakır.
@@ -531,7 +767,11 @@ export default function HomePage() {
               </div>
 
               {/* Sağ Sütun: Görsel Alanı */}
-              <div className="lg:col-span-6 relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover">
+              <div className="lg:col-span-6 relative h-[320px] md:h-[420px] w-full rounded-3xl overflow-hidden border border-card-border shadow-2xl group premium-hover lg:translate-x-6 lg:-translate-y-4 transition-all duration-500 z-10">
+                {/* Gold Laurel flourishes absolute inside the image card */}
+                <GoldFlourish className="absolute -top-4 -left-4 rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+                <GoldFlourish className="absolute -bottom-4 -right-4 -rotate-90 opacity-30 group-hover:opacity-75 transition-opacity duration-300" />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-[#181210]/60 via-transparent to-transparent z-10" />
                 <img 
                   src="/images/katmer_dessert.png" 
@@ -545,10 +785,15 @@ export default function HomePage() {
             </div>
 
             {/* Alternatif Satır 6: Misafir Yorumları (Yorum Kartları Solda, Açıklama Sağda - Zikzak Konsepti) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center border-t border-card-border/50 pt-20">
-              {/* Sol Sütun: Gerçek Google Yorumları Grid/Stack (Masaüstünde solda, mobilde önce gelir) */}
-              <div className="lg:col-span-6 space-y-6 lg:order-first order-last">
-                {/* Yorum 1 */}
+            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center border-t border-card-border/50 pt-20">
+              {/* Massive background watermark letter */}
+              <div className="absolute -right-16 top-1/2 -translate-y-1/2 text-[22rem] font-serif font-extralight text-accent/[0.015] select-none pointer-events-none z-0 hidden lg:block leading-none">
+                Y
+              </div>
+
+              {/* Sol Sütun: Gerçek Google Yorumları Grid/Stack (Masaüstünde solda, mobilde önce gelir) - Asymmetric off-grid card displacements */}
+              <div className="lg:col-span-6 space-y-6 lg:order-first order-last relative z-10">
+                {/* Yorum 1 - Normal layout */}
                 <div className="bg-card/45 border border-card-border/60 backdrop-blur-sm p-6 rounded-2xl relative shadow-md hover:scale-[1.01] transition-all duration-300 text-left">
                   <div className="flex justify-between items-center mb-3">
                     <span className="font-semibold text-sm text-foreground">Murat Kaya</span>
@@ -564,8 +809,8 @@ export default function HomePage() {
                   <span className="text-[9px] text-muted/60 block mt-2">Google Maps Değerlendirmesi</span>
                 </div>
 
-                {/* Yorum 2 */}
-                <div className="bg-card/45 border border-card-border/60 backdrop-blur-sm p-6 rounded-2xl relative shadow-md hover:scale-[1.01] transition-all duration-300 text-left">
+                {/* Yorum 2 - Offset to the right */}
+                <div className="bg-card/45 border border-card-border/60 backdrop-blur-sm p-6 rounded-2xl relative shadow-md lg:translate-x-10 hover:scale-[1.01] lg:hover:translate-x-12 transition-all duration-500 text-left">
                   <div className="flex justify-between items-center mb-3">
                     <span className="font-semibold text-sm text-foreground">Selin Demir</span>
                     <div className="flex space-x-0.5">
@@ -580,8 +825,8 @@ export default function HomePage() {
                   <span className="text-[9px] text-muted/60 block mt-2">Google Maps Değerlendirmesi</span>
                 </div>
 
-                {/* Yorum 3 */}
-                <div className="bg-card/45 border border-card-border/60 backdrop-blur-sm p-6 rounded-2xl relative shadow-md hover:scale-[1.01] transition-all duration-300 text-left">
+                {/* Yorum 3 - Offset slightly to the left */}
+                <div className="bg-card/45 border border-card-border/60 backdrop-blur-sm p-6 rounded-2xl relative shadow-md lg:-translate-x-6 hover:scale-[1.01] lg:hover:-translate-x-8 transition-all duration-500 text-left">
                   <div className="flex justify-between items-center mb-3">
                     <span className="font-semibold text-sm text-foreground">Dr. Ahmet Şahin</span>
                     <div className="flex space-x-0.5">
@@ -598,13 +843,13 @@ export default function HomePage() {
               </div>
 
               {/* Sağ Sütun: Metin Bilgisi */}
-              <div className="lg:col-span-6 space-y-6 text-left">
+              <div className="lg:col-span-6 space-y-6 text-left relative z-10">
                 <div className="inline-flex items-center space-x-2 bg-accent/10 border border-accent/20 px-3 py-1 rounded-full text-accent text-xs font-semibold uppercase tracking-wider">
                   <span>Misafirlerimizin Gözünden</span>
                 </div>
                 <h3 className="font-serif text-3xl md:text-4xl font-extrabold text-foreground leading-tight">
                   Sarıhan Deneyimini <br />
-                  <span className="text-accent">Taçlandıran Yorumlar</span>
+                  <span className="font-serif italic font-normal text-accent/90">Taçlandıran</span> Yorumlar
                 </h3>
                 <p className="text-sm text-muted leading-relaxed">
                   Sarıhan Gusto olarak, geleneksel Türk gastronomi mirasını lüks ve konforlu Etiler şubemizde sunarken en büyük motivasyonumuz misafirlerimizin memnuniyetidir. Google Haritalar üzerindeki 1.250'den fazla değerlendirmede yakaladığımız 4.8 memnuniyet skoru, detaylara verdiğimiz önemin ve lezzet tutkumuzun en somut kanıtıdır.
@@ -639,25 +884,39 @@ export default function HomePage() {
         </section>
 
         {/* 4. TAAHHÜDÜMÜZ - PREMIUM GARANTİ */}
-        <section className="py-20 bg-card border-t border-b border-card-border" aria-label="Hizmet Taahhüdümüz">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center p-4">
+        <section className="py-20 bg-card border-t border-b border-card-border relative overflow-hidden" aria-label="Hizmet Taahhüdümüz">
+          {/* Subtle background graphic line */}
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[1px] bg-gradient-to-r from-transparent via-card-border/40 to-transparent pointer-events-none" />
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+            {/* Card 1 - Slightly shifted up */}
+            <div className="flex flex-col items-center text-center p-6 bg-background/30 border border-card-border/40 rounded-2xl backdrop-blur-sm lg:-translate-y-3 hover:-translate-y-4 transition-all duration-300">
               <MapPin className="w-8 h-8 text-accent mb-4" />
-              <h3 className="font-serif text-lg font-bold mb-2">Merkezi Konum</h3>
+              <h3 className="font-serif text-lg font-bold mb-2 tracking-wide text-foreground">
+                Merkezi <span className="font-serif italic font-normal text-accent/90">Konum</span>
+              </h3>
               <p className="text-xs text-muted leading-relaxed">
                 Beşiktaş Etiler Nisbetiye Caddesi üzerinde, rahatça ulaşabileceğiniz ve valemizin bulunduğu kolay konum.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center p-4">
+            
+            {/* Card 2 - Slightly shifted down */}
+            <div className="flex flex-col items-center text-center p-6 bg-background/30 border border-card-border/40 rounded-2xl backdrop-blur-sm lg:translate-y-3 hover:translate-y-2 transition-all duration-300">
               <HeartHandshake className="w-8 h-8 text-accent mb-4" />
-              <h3 className="font-serif text-lg font-bold mb-2">Misafirperverlik</h3>
+              <h3 className="font-serif text-lg font-bold mb-2 tracking-wide text-foreground">
+                Asil <span className="font-serif italic font-normal text-accent/90">Misafirperverlik</span>
+              </h3>
               <p className="text-xs text-muted leading-relaxed">
                 Geleneksel Türk misafirperverliğini şık, lüks ve konforlu premium hizmet standartlarıyla sunuyoruz.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center p-4">
+            
+            {/* Card 3 - Slightly shifted up */}
+            <div className="flex flex-col items-center text-center p-6 bg-background/30 border border-card-border/40 rounded-2xl backdrop-blur-sm lg:-translate-y-3 hover:-translate-y-4 transition-all duration-300">
               <Award className="w-8 h-8 text-accent mb-4" />
-              <h3 className="font-serif text-lg font-bold mb-2">Ödüllü Lezzet</h3>
+              <h3 className="font-serif text-lg font-bold mb-2 tracking-wide text-foreground">
+                Seçkin <span className="font-serif italic font-normal text-accent/90">Lezzetler</span>
+              </h3>
               <p className="text-xs text-muted leading-relaxed">
                 Her malzeme yöresinden taze gelir. Çorbalarımız ve etlerimiz hijyenik ve geleneksel koşullarda demlenir.
               </p>
