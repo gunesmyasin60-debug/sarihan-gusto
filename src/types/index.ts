@@ -12,6 +12,12 @@ export type MenuItem = {
   allergens: string[];
   image: string;
   active: boolean;
+  isSignature?: boolean;
+  isHealing?: boolean;
+  story?: string;
+  storyEn?: string;
+  benefits?: string;
+  benefitsEn?: string;
   healingIndex?: {
     collagen: number;
     brewTime: string;

@@ -7,6 +7,7 @@ import { Star, Clock, Phone, MapPin, ArrowUpRight, Award, Compass, HeartHandshak
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import CookieBanner from "@/components/ui/CookieBanner";
+import HealingSection from "@/components/ui/HealingSection";
 import { RESTORAN_BILGILERI } from "@/constants/restaurant";
 
 export default function HomePage() {
@@ -219,6 +220,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <HealingSection />
 
         {/* 3. HİKAYEMİZ & LEZZET YOLCULUĞU (Alternating Split / Zikzak Düzen) */}
         <section 

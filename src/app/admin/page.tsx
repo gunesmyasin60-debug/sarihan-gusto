@@ -63,6 +63,17 @@ export default function AdminPage() {
   const [formImage, setFormImage] = useState("");
   const [formAllergens, setFormAllergens] = useState<string[]>([]);
   const [formActive, setFormActive] = useState(true);
+  
+  // Şefin Hikayesi & Şifa Felsefesi Form Stateleri
+  const [formIsSignature, setFormIsSignature] = useState(false);
+  const [formIsHealing, setFormIsHealing] = useState(false);
+  const [formStory, setFormStory] = useState("");
+  const [formStoryEn, setFormStoryEn] = useState("");
+  const [formBenefits, setFormBenefits] = useState("");
+  const [formBenefitsEn, setFormBenefitsEn] = useState("");
+  const [formCollagen, setFormCollagen] = useState("");
+  const [formBrewTime, setFormBrewTime] = useState("");
+  const [formImmuneBoost, setFormImmuneBoost] = useState("1");
 
   // Toast Bildirimleri
   const [toasts, setToasts] = useState<{ id: number; message: string; type: "success" | "error" | "info" }[]>([]);
@@ -226,6 +237,15 @@ export default function AdminPage() {
       setFormImage(item.image);
       setFormAllergens(item.allergens);
       setFormActive(item.active);
+      setFormIsSignature(item.isSignature || false);
+      setFormIsHealing(item.isHealing || false);
+      setFormStory(item.story || "");
+      setFormStoryEn(item.storyEn || "");
+      setFormBenefits(item.benefits || "");
+      setFormBenefitsEn(item.benefitsEn || "");
+      setFormCollagen(item.healingIndex?.collagen?.toString() || "");
+      setFormBrewTime(item.healingIndex?.brewTime || "");
+      setFormImmuneBoost(item.healingIndex?.immuneBoost?.toString() || "1");
     } else {
       setFormName("");
       setFormNameEn("");
@@ -236,6 +256,15 @@ export default function AdminPage() {
       setFormImage("");
       setFormAllergens([]);
       setFormActive(true);
+      setFormIsSignature(false);
+      setFormIsHealing(false);
+      setFormStory("");
+      setFormStoryEn("");
+      setFormBenefits("");
+      setFormBenefitsEn("");
+      setFormCollagen("");
+      setFormBrewTime("");
+      setFormImmuneBoost("1");
     }
     setIsModalOpen(true);
   };
@@ -320,6 +349,17 @@ export default function AdminPage() {
       allergens: formAllergens,
       image: formImage || "/images/menu/default.webp",
       active: formActive,
+      isSignature: formIsSignature,
+      isHealing: formIsHealing,
+      story: formStory,
+      storyEn: formStoryEn,
+      benefits: formBenefits,
+      benefitsEn: formBenefitsEn,
+      healingIndex: formIsHealing ? {
+        collagen: Number(formCollagen || 0),
+        brewTime: formBrewTime || "",
+        immuneBoost: Number(formImmuneBoost || 1)
+      } : undefined
     };
 
     // 1. VERCEL DEMO MODU KAYDI
@@ -1158,6 +1198,161 @@ export default function AdminPage() {
                       </p>
                     </div>
                   </div>
+                </div>
+
+                {/* İnteraktif Gurme Özellikleri */}
+                <div className="space-y-4 border-t border-card-border pt-6">
+                  <h4 className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-accent">İnteraktif Deneyim Ayarları</h4>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* İmza Lezzet Checkbox */}
+                    <div 
+                      onClick={() => setFormIsSignature(!formIsSignature)}
+                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start space-x-3 ${
+                        formIsSignature 
+                          ? "bg-accent/5 border-accent text-foreground" 
+                          : "bg-background border-card-border text-foreground/70 hover:border-accent/40"
+                      }`}
+                    >
+                      <input 
+                        type="checkbox" 
+                        checked={formIsSignature} 
+                        onChange={() => {}} // Div click manages state
+                        className="mt-1 accent-accent"
+                      />
+                      <div>
+                        <p className="text-xs font-bold">Şefin İmza Lezzeti (Hikayeli Deneyim)</p>
+                        <p className="text-[10px] text-foreground/60 mt-0.5 leading-normal">Müşteriye özel bir lezzet hikayesi ve chef's secret pop-up'ı gösterir.</p>
+                      </div>
+                    </div>
+
+                    {/* Şifa Kaynağı Checkbox */}
+                    <div 
+                      onClick={() => setFormIsHealing(!formIsHealing)}
+                      className={`p-4 rounded-2xl border cursor-pointer transition-all flex items-start space-x-3 ${
+                        formIsHealing 
+                          ? "bg-accent/5 border-accent text-foreground" 
+                          : "bg-background border-card-border text-foreground/70 hover:border-accent/40"
+                      }`}
+                    >
+                      <input 
+                        type="checkbox" 
+                        checked={formIsHealing} 
+                        onChange={() => {}} // Div click manages state
+                        className="mt-1 accent-accent"
+                      />
+                      <div>
+                        <p className="text-xs font-bold">Şifa Kaynağı & Ağır Demleme</p>
+                        <p className="text-[10px] text-foreground/60 mt-0.5 leading-normal">Homepage Şifa Felsefesi alanında kolajen %, kaynama saati ve faydalarıyla listelenir.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* İmza Lezzet Alanları */}
+                  {formIsSignature && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-4 bg-background/50 p-5 rounded-2xl border border-card-border"
+                    >
+                      <h5 className="text-[10px] font-bold uppercase tracking-widest text-accent">Gourme Backstory / Lezzet Hikayesi</h5>
+                      <div className="grid grid-cols-1 gap-4">
+                        <div className="space-y-1.5">
+                          <label className="text-[9px] font-bold uppercase tracking-widest text-foreground/70">Hikaye (TR)</label>
+                          <textarea
+                            rows={3}
+                            value={formStory}
+                            onChange={(e) => setFormStory(e.target.value)}
+                            placeholder="Bu lezzetin gurme arka planı, şefin sırrı veya tarihçesi..."
+                            className="w-full bg-background border border-card-border rounded-xl py-2.5 px-3 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-accent leading-relaxed"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-[9px] font-bold uppercase tracking-widest text-foreground/70">Story (EN)</label>
+                          <textarea
+                            rows={3}
+                            value={formStoryEn}
+                            onChange={(e) => setFormStoryEn(e.target.value)}
+                            placeholder="Gourmet backstory, chef's secrets or legacy in English..."
+                            className="w-full bg-background border border-card-border rounded-xl py-2.5 px-3 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-accent leading-relaxed"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Şifa Kaynağı Alanları */}
+                  {formIsHealing && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-4 bg-background/50 p-5 rounded-2xl border border-card-border"
+                    >
+                      <h5 className="text-[10px] font-bold uppercase tracking-widest text-accent">Şifa Felsefesi Parametreleri</h5>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div className="space-y-1.5">
+                          <label className="text-[9px] font-bold uppercase tracking-widest text-foreground/70">Kolajen Oranı (%)</label>
+                          <input
+                            type="number"
+                            min={0}
+                            max={100}
+                            value={formCollagen}
+                            onChange={(e) => setFormCollagen(e.target.value)}
+                            placeholder="Örn: 95"
+                            className="w-full bg-background border border-card-border rounded-xl py-2.5 px-3 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-accent"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-[9px] font-bold uppercase tracking-widest text-foreground/70">Kaynatma Süresi</label>
+                          <input
+                            type="text"
+                            value={formBrewTime}
+                            onChange={(e) => setFormBrewTime(e.target.value)}
+                            placeholder="Örn: 12 Saat"
+                            className="w-full bg-background border border-card-border rounded-xl py-2.5 px-3 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-accent"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-[9px] font-bold uppercase tracking-widest text-foreground/70">Bağışıklık Gücü (1-5)</label>
+                          <select
+                            value={formImmuneBoost}
+                            onChange={(e) => setFormImmuneBoost(e.target.value)}
+                            className="w-full bg-background border border-card-border rounded-xl py-2.5 px-3 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-accent cursor-pointer"
+                          >
+                            <option value="1">1 (Düşük)</option>
+                            <option value="2">2 (Orta)</option>
+                            <option value="3">3 (İyi)</option>
+                            <option value="4">4 (Yüksek)</option>
+                            <option value="5">5 (Maksimum)</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-4">
+                        <div className="space-y-1.5">
+                          <label className="text-[9px] font-bold uppercase tracking-widest text-foreground/70">Şifa Faydaları (TR)</label>
+                          <input
+                            type="text"
+                            value={formBenefits}
+                            onChange={(e) => setFormBenefits(e.target.value)}
+                            placeholder="Örn: Eklem sağlığı, cilt yenileme, yüksek protein"
+                            className="w-full bg-background border border-card-border rounded-xl py-2.5 px-3 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-accent"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-[9px] font-bold uppercase tracking-widest text-foreground/70">Immune Benefits (EN)</label>
+                          <input
+                            type="text"
+                            value={formBenefitsEn}
+                            onChange={(e) => setFormBenefitsEn(e.target.value)}
+                            placeholder="Örn: Joint health, skin revitalization, high protein"
+                            className="w-full bg-background border border-card-border rounded-xl py-2.5 px-3 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-accent"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
 
                 {/* Alerjenler */}

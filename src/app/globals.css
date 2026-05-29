@@ -111,3 +111,46 @@ h1, h2, h3, h4, h5, h6 {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Müzik Dalgaları CSS Animasyonları */
+@keyframes audio-bounce-1 {
+  0%, 100% { height: 6px; }
+  50% { height: 20px; }
+}
+@keyframes audio-bounce-2 {
+  0%, 100% { height: 16px; }
+  50% { height: 6px; }
+}
+@keyframes audio-bounce-3 {
+  0%, 100% { height: 10px; }
+  50% { height: 24px; }
+}
+@keyframes audio-bounce-4 {
+  0%, 100% { height: 22px; }
+  50% { height: 8px; }
+}
+
+.animate-audio-bar-1 {
+  animation: audio-bounce-1 1.2s ease-in-out infinite;
+}
+.animate-audio-bar-2 {
+  animation: audio-bounce-2 1.4s ease-in-out infinite;
+}
+.animate-audio-bar-3 {
+  animation: audio-bounce-3 1.1s ease-in-out infinite;
+}
+.animate-audio-bar-4 {
+  animation: audio-bounce-4 1.3s ease-in-out infinite;
+}
+
+@keyframes pulse-light-glow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(217, 156, 61, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(217, 156, 61, 0.4);
+  }
+}
+.animate-pulse-light {
+  animation: pulse-light-glow 2s ease-in-out infinite;
+}

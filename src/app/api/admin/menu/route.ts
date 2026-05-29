@@ -76,7 +76,10 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { name, nameEn, price, category, description, descriptionEn, allergens, image, active } = body;
+    const { 
+      name, nameEn, price, category, description, descriptionEn, allergens, image, active,
+      isSignature, isHealing, story, storyEn, benefits, benefitsEn, healingIndex 
+    } = body;
 
     // Girdi kontrolleri
     if (!name || !price || !category) {
@@ -108,6 +111,17 @@ export async function POST(request: NextRequest) {
       allergens: Array.isArray(allergens) ? allergens : [],
       image: image || "/images/menu/default.webp",
       active: active !== undefined ? active : true,
+      isSignature: !!isSignature,
+      isHealing: !!isHealing,
+      story: story || "",
+      storyEn: storyEn || "",
+      benefits: benefits || "",
+      benefitsEn: benefitsEn || "",
+      healingIndex: healingIndex ? {
+        collagen: Number(healingIndex.collagen || 0),
+        brewTime: healingIndex.brewTime || "",
+        immuneBoost: Number(healingIndex.immuneBoost || 0)
+      } : undefined
     };
 
     menu.push(newItem);
@@ -134,7 +148,10 @@ export async function PUT(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { id, name, nameEn, price, category, description, descriptionEn, allergens, image, active } = body;
+    const { 
+      id, name, nameEn, price, category, description, descriptionEn, allergens, image, active,
+      isSignature, isHealing, story, storyEn, benefits, benefitsEn, healingIndex
+    } = body;
 
     if (!id) {
       return NextResponse.json({ success: false, error: "Güncellenecek ürünün ID'si belirtilmelidir." }, { status: 400 });
@@ -159,6 +176,19 @@ export async function PUT(request: NextRequest) {
       ...(allergens && { allergens }),
       ...(image !== undefined && { image }),
       ...(active !== undefined && { active }),
+      ...(isSignature !== undefined && { isSignature: !!isSignature }),
+      ...(isHealing !== undefined && { isHealing: !!isHealing }),
+      ...(story !== undefined && { story }),
+      ...(storyEn !== undefined && { storyEn }),
+      ...(benefits !== undefined && { benefits }),
+      ...(benefitsEn !== undefined && { benefitsEn }),
+      ...(healingIndex !== undefined && { 
+        healingIndex: healingIndex ? {
+          collagen: Number(healingIndex.collagen || 0),
+          brewTime: healingIndex.brewTime || "",
+          immuneBoost: Number(healingIndex.immuneBoost || 0)
+        } : undefined
+      }),
     };
 
     menu[itemIndex] = updatedItem;

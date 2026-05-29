@@ -13,6 +13,9 @@
     ],
     "image": "/images/menu/iskembe.png",
     "active": true,
+    "isHealing": true,
+    "benefits": "Kemik ve eklem sağlığı, hücre yenileme, yüksek kolajen deposu.",
+    "benefitsEn": "Bone & joint health, cell revitalization, high collagen source.",
     "healingIndex": {
       "collagen": 85,
       "brewTime": "8 Saat",
@@ -33,6 +36,9 @@
     ],
     "image": "/images/menu/kellepaca.png",
     "active": true,
+    "isHealing": true,
+    "benefits": "Yüksek protein, hücre yenileyici kolajen, bağışıklık kalkanı.",
+    "benefitsEn": "High protein, cell revitalizing collagen, immune shield.",
     "healingIndex": {
       "collagen": 100,
       "brewTime": "12 Saat",
@@ -53,6 +59,9 @@
     ],
     "image": "/images/menu/adana.png",
     "active": true,
+    "isSignature": true,
+    "story": "Sarıhan'ın asırlık zırh kıyım tekniğiyle hazırlanan kuzu kaburga ve boşluk eti, meşe kömürü ateşinde ağır ağır pişer. Lezzetinin sırrı, etin zırh ile çekilirken suyunu içinde hapsetmesidir.",
+    "storyEn": "Lamb rib and flank hand-minced using Sarıhan's ancestral double-blade zırh method, cooked slowly over oak charcoal fire. The secret lies in trapping the juices inside the meat.",
     "pairings": ["meze-humus", "icecek-ayran", "meze-haydari"]
   },
   {
@@ -118,6 +127,9 @@
     ],
     "image": "/images/menu/katmer.png",
     "active": true,
+    "isSignature": true,
+    "story": "Antep'in hakiki boz fıstığı, incecik açılmış el yapımı hamur ve taze manda kaymağıyla buluşur. Taş fırında dışı altın sarısı ve çıtır çıtır olana kadar pişirilerek, dumanı üstünde servis edilir.",
+    "storyEn": "Antep's genuine green boz pistachio meets paper-thin hand-rolled pastry and fresh water buffalo clotted cream. Baked in a stone oven until golden and perfectly crispy.",
     "pairings": ["icecek-ayran"]
   },
   {
