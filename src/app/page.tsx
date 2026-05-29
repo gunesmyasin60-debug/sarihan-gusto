@@ -87,7 +87,7 @@ export default function HomePage() {
           <img
             src="/images/kebap_hero_mobile.png"
             alt="Sarıhan Gusto Kebap Ocakbaşı"
-            className="block md:hidden absolute inset-0 w-full h-full object-cover z-0 opacity-25 pointer-events-none"
+            className="block md:hidden absolute inset-0 w-full h-full object-cover z-0 opacity-65 pointer-events-none"
             aria-hidden="true"
           />
 
@@ -129,86 +129,92 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. ANADOLU SICAKLIĞI BENTO GRID ALANI */}
+        {/* 2. ANADOLU SICAKLIĞI DENEYİMİ ALANI */}
         <section 
           className="py-24 bg-background border-t border-card-border"
-          aria-label="Sarıhan Gusto Bento Deneyimi"
+          aria-label="Sarıhan Gusto Deneyimi"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
               <span className="text-xs uppercase tracking-[0.2em] text-accent font-bold">Lezzet & Konsept</span>
               <h2 className="font-serif text-3xl md:text-5xl font-bold">Anadolu Sıcaklığı Etiler'de</h2>
               <p className="text-sm text-muted">
-                Her bir detayını premium konseptimizle ilmek ilmek dokuduğumuz bento yerleşiminde gastronomik felsefemizi keşfedin.
+                Her bir detayını premium konseptimizle ilmek ilmek dokuduğumuz modern editoryal yerleşiminde gastronomik felsefemizi keşfedin.
               </p>
             </div>
 
-            {/* Bento Grid Yapısı */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
+            {/* Kebaplar Showcase ve Bilgiler (Bespoke Tasarım) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
               
-              {/* Kart 1: Kebaplar (Büyük Kart - Açık Renk ve Mükemmel Metin Kontrastı) */}
-              <div className="md:col-span-2 md:row-span-2 rounded-3xl bg-card border border-card-border p-8 flex flex-col justify-between overflow-hidden relative group premium-hover ember-glow">
+              {/* Sol taraf: Kebaplar Showcase Kartı */}
+              <div className="lg:col-span-8 rounded-3xl bg-card border border-card-border p-8 md:p-12 flex flex-col justify-between overflow-hidden relative group premium-hover ember-glow min-h-[350px]">
                 {/* Zırh Kebabı Arka Plan Resmi ve Karartma Maskesi */}
                 <div className="absolute inset-0 z-0">
                   <img
                     src="/images/kebab.png"
                     alt="Zırh Kebabı"
-                    className="w-full h-full object-cover opacity-30 transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/55" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/80 to-transparent" />
                 </div>
                 <div className="relative z-10 flex justify-between items-start">
                   <span className="text-xs uppercase tracking-wider font-bold text-accent">Geleneksel Kıyım</span>
-                  <Award className="w-6 h-6 text-accent" />
+                  <Award className="w-6 h-6 text-accent animate-pulse" />
                 </div>
-                <div className="relative z-10 space-y-2 text-left">
+                <div className="relative z-10 space-y-3 text-left">
                   <h3 className="font-serif text-3xl font-extrabold text-foreground md:text-4xl">Zırh Kebabı & Kebaplar</h3>
-                  <p className="text-sm text-muted max-w-lg leading-relaxed">
+                  <p className="text-sm text-muted max-w-xl leading-relaxed">
                     Eti hiçbir makine değdirmeden, sadece usta ellerde zırh ile kıyarak kömür ateşinde ağır ağır pişiriyoruz. Gerçek kebap deneyimini, aydınlık ve ferah ambiyansımızda sunuyoruz.
                   </p>
-                  <Link 
-                    href="/menu" 
-                    className="inline-flex items-center space-x-1 text-xs font-semibold uppercase tracking-wider text-accent pt-2 hover:underline focus:outline-none"
-                  >
-                    <span>Kebapları Gör</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
+                  <div className="pt-2">
+                    <Link 
+                      href="/menu" 
+                      className="inline-flex items-center space-x-1.5 text-xs font-semibold uppercase tracking-wider text-accent border-b border-accent/25 pb-1 hover:border-accent transition-all duration-300"
+                    >
+                      <span>Kebapları Gör</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
 
-              {/* Kart 2: Çalışma Saatleri (Küçük Kart) */}
-              <div className="rounded-3xl bg-card border border-card-border p-6 flex flex-col justify-between text-left premium-hover">
-                <div className="w-10 h-10 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center text-accent">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div className="space-y-1">
-                  <h3 className="font-serif text-lg font-bold">Çalışma Saatleri</h3>
-                  <p className="text-xs text-muted leading-relaxed">
-                    Haftanın 7 günü, Etiler'de 08:00 - 02:00 saatleri arasında kesintisiz hizmet. (Cuma - Cmt 04:00'e kadar açığız).
+              {/* Sağ taraf: Çalışma Saatleri & Masa Rezervasyon (Clean, Cardless Typography) */}
+              <div className="lg:col-span-4 flex flex-col justify-between gap-8 py-4 text-left">
+                
+                {/* Çalışma Saatleri (Bespoke Typography) */}
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2 text-accent">
+                    <Clock className="w-5 h-5" />
+                    <span className="text-xs uppercase tracking-[0.15em] font-bold">Çalışma Saatleri</span>
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold text-foreground">Haftanın 7 Günü</h3>
+                  <p className="text-xs text-muted leading-relaxed max-w-sm">
+                    Etiler Nisbetiye Caddesi'nde her gün **08:00 - 02:00** saatleri arasında kesintisiz hizmetinizdeyiz. 
+                    <br />
+                    <span className="text-accent font-semibold">(Cuma ve Cumartesi günleri 04:00'e kadar açığız).</span>
                   </p>
                 </div>
-              </div>
 
-              {/* Kart 3: Telefon & Rezervasyon İletişim (Adaçayı Yeşili ve Beyaz Yazı ile Premium Uyum) */}
-              <div className="rounded-3xl bg-accent text-wood-dark p-6 flex flex-col justify-between text-left premium-hover relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(24,18,16,0.08),transparent)]" />
-                <div className="w-10 h-10 rounded-full bg-wood-dark/10 flex items-center justify-center text-wood-dark">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div className="space-y-1 relative z-10">
-                  <span className="text-[9px] uppercase tracking-wider font-bold text-wood-dark/80">Tek Tıkla Ulaşın</span>
-                  <h3 className="font-serif text-lg font-bold text-wood-dark">Masa Rezervasyonu</h3>
+                {/* Masa Rezervasyonu (Bespoke Typography) */}
+                <div className="space-y-3 border-t border-card-border/50 pt-8">
+                  <div className="flex items-center space-x-2 text-accent">
+                    <Phone className="w-5 h-5" />
+                    <span className="text-xs uppercase tracking-[0.15em] font-bold">Masa Rezervasyonu</span>
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold text-foreground">Hemen Yer Ayırın</h3>
+                  <p className="text-xs text-muted leading-relaxed max-w-sm">
+                    Sevdiklerinizle geçireceğiniz özel anlar ve iş yemekleriniz için tek tıkla masanızı ayırtın:
+                  </p>
                   <a
                     href={`tel:${RESTORAN_BILGILERI.phoneRaw}`}
-                    className="text-base font-extrabold block hover:underline"
+                    className="text-3xl font-serif font-extrabold text-accent hover:text-brand-gold-hover hover:scale-[1.01] transition-all duration-300 block pt-1"
                     aria-label={`Sarıhan Gusto Arama Yap: ${RESTORAN_BILGILERI.phone}`}
                   >
                     {RESTORAN_BILGILERI.phone}
                   </a>
                 </div>
-              </div>
 
-              {/* Google Yorumları Bento Grid'den kaldırıldı, zikzak hikaye anlatımına taşındı */}
+              </div>
 
             </div>
           </div>
